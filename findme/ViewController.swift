@@ -19,6 +19,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var error:NSError!
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
+    var menuExpanded = false
+    
+    @IBOutlet var mapView: MKMapView!
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchIcon: UITextField!
+    
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var paramButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var findMeButton: UIButton!
     
     @IBAction func showSearchBar(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
@@ -28,19 +40,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    @IBOutlet var mapView: MKMapView!
-
-    @IBOutlet weak var searchTextField: UITextField!
-    
-    @IBOutlet weak var searchIcon: UITextField!
-    
-    @IBOutlet weak var menuButton: UIButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchField()
-        initMenuButton()
+        initButton(menuButton, icon: "fa-plus")
+        initButton(paramButton, icon:"fa-cogs")
+        initButton(contactButton, icon:"fa-users")
+        initButton(findMeButton, icon:"fa-street-view")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -49,10 +55,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initMenuButton(){
-        menuButton.layer.cornerRadius = 25
-        menuButton.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
-        menuButton.setTitle(String.fontAwesomeIconWithName(.Plus), forState: .Normal)
+    func initButton(button:UIButton, icon:String){
+        button.layer.cornerRadius = 25
+        button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
+        button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
     }
     
     func initSearchField(){
@@ -95,6 +101,69 @@ class ViewController: UIViewController, UISearchBarDelegate {
             self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
         }
     }
+    
+    @IBAction func showMenu(sender: AnyObject) {
+        if menuExpanded == false{
+            rotateMenuButton()
+            showButtons()
+            menuExpanded = true
+        }
+        else{
+            rotateMenuButton()
+            hideButtons()
+            menuExpanded = false
+        }
+    }
+    
+    func rotateMenuButton(){
+        if menuExpanded == false{
+            let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+            rotateAnimation.fromValue = 0.0
+            rotateAnimation.toValue = CGFloat(M_PI_4)
+            rotateAnimation.duration = 0.3
+            menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
+            menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+        }
+        else{
+            let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+            rotateAnimation.fromValue = CGFloat(M_PI_4)
+            rotateAnimation.toValue = 0.0
+            rotateAnimation.duration = 0.3
+            menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
+            menuButton.transform = CGAffineTransformMakeRotation(0)
+        }
+    }
+    
+    func showButtons(){
+        UIView.animateWithDuration(0.2, delay: 0, options: [],animations: {
+            self.findMeButton.center.x -= 90
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [], animations: {
+            self.contactButton.center.x -= 60
+            self.contactButton.center.y -= 60
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [], animations: {
+            self.paramButton.center.y -= 90
+            }, completion: nil)
+    }
+    
+    func hideButtons(){
+        UIView.animateWithDuration(0.2, delay: 0, options: [],animations: {
+            self.findMeButton.center.x += 90
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [], animations: {
+            self.contactButton.center.x += 60
+            self.contactButton.center.y += 60
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [], animations: {
+            self.paramButton.center.y += 90
+            }, completion: nil)
+    }
+
 
 }
 
