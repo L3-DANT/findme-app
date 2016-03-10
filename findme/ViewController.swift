@@ -19,6 +19,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var error:NSError!
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
+    var menuExpanded = false
+    
+    @IBOutlet var mapView: MKMapView!
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchIcon: UITextField!
+    
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var paramButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var findMeButton: UIButton!
     
     @IBAction func showSearchBar(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
@@ -28,19 +40,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    @IBOutlet var mapView: MKMapView!
-
-    @IBOutlet weak var searchTextField: UITextField!
-    
-    @IBOutlet weak var searchIcon: UITextField!
-    
-    @IBOutlet weak var menuButton: UIButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchField()
-        initMenuButton()
+        initButton(menuButton, icon: "fa-plus", submenu: false)
+        initButton(paramButton, icon:"fa-cogs", submenu: true)
+        initButton(contactButton, icon:"fa-users", submenu: true)
+        initButton(findMeButton, icon:"fa-street-view", submenu: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -49,10 +55,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initMenuButton(){
-        menuButton.layer.cornerRadius = 25
-        menuButton.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
-        menuButton.setTitle(String.fontAwesomeIconWithName(.Plus), forState: .Normal)
+    func initButton(button:UIButton, icon:String, submenu : Bool){
+        button.layer.cornerRadius = 25
+        button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
+        button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
+        if submenu{
+            button.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        }
     }
     
     func initSearchField(){
@@ -95,6 +104,73 @@ class ViewController: UIViewController, UISearchBarDelegate {
             self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
         }
     }
+    
+    //action au clic du bouton du menu
+    @IBAction func showMenu(sender: AnyObject) {
+        rotateMenuButton(menuExpanded)
+        if menuExpanded == false{ showButtons() }
+        else{ hideButtons() }
+        menuExpanded = !menuExpanded
+    }
+    
+    //fonction qui permet d'effectuer une rotation sur le bouton du menu
+    func rotateMenuButton(expanded : Bool){
+        if expanded == false{
+            let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+            rotateAnimation.fromValue = 0.0
+            rotateAnimation.toValue = CGFloat(M_PI_4)
+            rotateAnimation.duration = 0.15
+            menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
+            menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+        }
+        else{
+            let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+            rotateAnimation.fromValue = CGFloat(M_PI_4)
+            rotateAnimation.toValue = 0.0
+            rotateAnimation.duration = 0.15
+            menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
+            menuButton.transform = CGAffineTransformMakeRotation(0)
+        }
+    }
+    
+    // fonction qui permet d'afficher les options du menu
+    func showButtons(){
+        UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
+            self.findMeButton.center.x -= 90
+            self.findMeButton.transform = CGAffineTransformMakeScale(1, 1)
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [.CurveEaseOut], animations: {
+            self.contactButton.center.x -= 60
+            self.contactButton.center.y -= 60
+            self.contactButton.transform = CGAffineTransformMakeScale(1, 1)
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [.CurveEaseOut], animations: {
+            self.paramButton.center.y -= 90
+            self.paramButton.transform = CGAffineTransformMakeScale(1, 1)
+            }, completion: nil)
+    }
+    
+    //fonction qui permet de cacher les option du menu
+    func hideButtons(){
+        UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
+            self.findMeButton.center.x += 90
+            self.findMeButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [.CurveEaseOut], animations: {
+            self.contactButton.center.x += 60
+            self.contactButton.center.y += 60
+            self.contactButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [.CurveEaseOut], animations: {
+            self.paramButton.center.y += 90
+            self.paramButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            }, completion: nil)
+    }
+
 
 }
 
