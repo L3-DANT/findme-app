@@ -43,10 +43,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchField()
-        initButton(menuButton, icon: "fa-plus")
-        initButton(paramButton, icon:"fa-cogs")
-        initButton(contactButton, icon:"fa-users")
-        initButton(findMeButton, icon:"fa-street-view")
+        initButton(menuButton, icon: "fa-plus", submenu: false)
+        initButton(paramButton, icon:"fa-cogs", submenu: true)
+        initButton(contactButton, icon:"fa-users", submenu: true)
+        initButton(findMeButton, icon:"fa-street-view", submenu: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -55,10 +55,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initButton(button:UIButton, icon:String){
+    func initButton(button:UIButton, icon:String, submenu : Bool){
         button.layer.cornerRadius = 25
         button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
         button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
+        if submenu{
+            button.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        }
     }
     
     func initSearchField(){
@@ -103,24 +106,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func showMenu(sender: AnyObject) {
-        if menuExpanded == false{
-            rotateMenuButton()
-            showButtons()
-            menuExpanded = true
-        }
-        else{
-            rotateMenuButton()
-            hideButtons()
-            menuExpanded = false
-        }
+        rotateMenuButton(menuExpanded)
+        if menuExpanded == false{ showButtons() }
+        else{ hideButtons() }
+        menuExpanded = !menuExpanded
     }
     
-    func rotateMenuButton(){
-        if menuExpanded == false{
+    func rotateMenuButton(expanded : Bool){
+        if expanded == false{
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
             rotateAnimation.fromValue = 0.0
             rotateAnimation.toValue = CGFloat(M_PI_4)
-            rotateAnimation.duration = 0.3
+            rotateAnimation.duration = 0.15
             menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
             menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
         }
@@ -128,39 +125,45 @@ class ViewController: UIViewController, UISearchBarDelegate {
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
             rotateAnimation.fromValue = CGFloat(M_PI_4)
             rotateAnimation.toValue = 0.0
-            rotateAnimation.duration = 0.3
+            rotateAnimation.duration = 0.15
             menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
             menuButton.transform = CGAffineTransformMakeRotation(0)
         }
     }
     
     func showButtons(){
-        UIView.animateWithDuration(0.2, delay: 0, options: [],animations: {
+        UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
             self.findMeButton.center.x -= 90
+            self.findMeButton.transform = CGAffineTransformMakeScale(1, 1)
             }, completion: nil)
         
-        UIView.animateWithDuration(0.2, delay: 0.1, options: [], animations: {
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [.CurveEaseOut], animations: {
             self.contactButton.center.x -= 60
             self.contactButton.center.y -= 60
+            self.contactButton.transform = CGAffineTransformMakeScale(1, 1)
             }, completion: nil)
         
-        UIView.animateWithDuration(0.2, delay: 0.2, options: [], animations: {
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [.CurveEaseOut], animations: {
             self.paramButton.center.y -= 90
+            self.paramButton.transform = CGAffineTransformMakeScale(1, 1)
             }, completion: nil)
     }
     
     func hideButtons(){
-        UIView.animateWithDuration(0.2, delay: 0, options: [],animations: {
+        UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
             self.findMeButton.center.x += 90
+            self.findMeButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             }, completion: nil)
         
-        UIView.animateWithDuration(0.2, delay: 0.1, options: [], animations: {
+        UIView.animateWithDuration(0.2, delay: 0.1, options: [.CurveEaseOut], animations: {
             self.contactButton.center.x += 60
             self.contactButton.center.y += 60
+            self.contactButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             }, completion: nil)
         
-        UIView.animateWithDuration(0.2, delay: 0.2, options: [], animations: {
+        UIView.animateWithDuration(0.2, delay: 0.2, options: [.CurveEaseOut], animations: {
             self.paramButton.center.y += 90
+            self.paramButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             }, completion: nil)
     }
 
