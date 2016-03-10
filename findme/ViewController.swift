@@ -30,14 +30,37 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet var mapView: MKMapView!
 
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchIcon: UITextField!
+    
+    @IBOutlet weak var menuButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initSearchField()
+        initMenuButton()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initMenuButton(){
+        menuButton.layer.cornerRadius = 25
+        menuButton.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
+        menuButton.setTitle(String.fontAwesomeIconWithName(.Plus), forState: .Normal)
+    }
+    
+    func initSearchField(){
+        let paddingView = UIView(frame: CGRectMake(0, 0, 25, self.searchTextField.frame.height))
+        searchTextField.leftView = paddingView
+        searchTextField.leftViewMode = UITextFieldViewMode.Always
+        searchIcon.font = UIFont.fontAwesomeOfSize(15)
+        searchIcon.text = String.fontAwesomeIconWithName(.Search)
     }
 
     //MARK: UISearchBar Delegate
