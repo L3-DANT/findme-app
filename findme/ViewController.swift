@@ -105,6 +105,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    //action au clic du bouton du menu
     @IBAction func showMenu(sender: AnyObject) {
         rotateMenuButton(menuExpanded)
         if menuExpanded == false{ showButtons() }
@@ -112,6 +113,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         menuExpanded = !menuExpanded
     }
     
+    //fonction qui permet d'effectuer une rotation sur le bouton du menu
     func rotateMenuButton(expanded : Bool){
         if expanded == false{
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
@@ -131,6 +133,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    // fonction qui permet d'afficher les options du menu
     func showButtons(){
         UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
             self.findMeButton.center.x -= 90
@@ -149,6 +152,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             }, completion: nil)
     }
     
+    //fonction qui permet de cacher les option du menu
     func hideButtons(){
         UIView.animateWithDuration(0.2, delay: 0, options: [.CurveEaseOut],animations: {
             self.findMeButton.center.x += 90
