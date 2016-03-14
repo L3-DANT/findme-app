@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-kU-nKA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="644"/>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rechercher dans FindMe" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-D3-leL">
-                                <rect key="frame" x="20" y="8" width="560" height="30"/>
+                                <rect key="frame" x="20" y="23" width="560" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -35,7 +35,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Iv-BN-Bbq">
-                                <rect key="frame" x="27" y="14" width="81" height="17"/>
+                                <rect key="frame" x="27" y="29" width="81" height="17"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="search-icon" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUd-6j-HSS">
                                         <rect key="frame" x="0.0" y="0.0" width="81" height="17"/>
@@ -98,7 +98,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eKj-Xc-bB0" kind="show" id="sRi-L5-lVe"/>
+                                    <segue destination="eKj-Xc-bB0" kind="custom" customClass="SegueFromRight" customModule="findme" customModuleProvider="target" id="sRi-L5-lVe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zF-YZ-4xw">
@@ -114,7 +114,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YyE-FK-c2d" kind="show" id="jIK-zb-WBI"/>
+                                    <segue destination="YyE-FK-c2d" kind="custom" customClass="SegueFromRight" customModule="findme" customModuleProvider="target" id="jIK-zb-WBI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-FC-9jz">
@@ -139,7 +139,7 @@
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="top" secondItem="9zF-YZ-4xw" secondAttribute="top" id="2Z1-Me-b3I"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="firstBaseline" secondItem="Fej-Ek-mdq" secondAttribute="firstBaseline" id="5he-D5-5gO"/>
                             <constraint firstItem="5Iv-BN-Bbq" firstAttribute="leading" secondItem="d7a-D3-leL" secondAttribute="leading" constant="7" id="5wS-L5-Wgu"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFp-kU-nKA" secondAttribute="bottom" id="93m-xm-qbb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFp-kU-nKA" secondAttribute="bottom" constant="-44" id="93m-xm-qbb"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="baseline" secondItem="Wzh-4n-Dhm" secondAttribute="baseline" id="AxR-mG-XA2"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="leading" secondItem="9zF-YZ-4xw" secondAttribute="leading" id="CAb-Gc-SVB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mFp-kU-nKA" secondAttribute="trailing" constant="-20" id="Def-Ft-tQe"/>
@@ -147,13 +147,14 @@
                             <constraint firstAttribute="bottom" secondItem="9zF-YZ-4xw" secondAttribute="bottom" constant="15" id="H7u-BK-Im0"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="top" secondItem="Fej-Ek-mdq" secondAttribute="top" id="He3-b8-rRq"/>
                             <constraint firstItem="d7a-D3-leL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hfi-qQ-x0W"/>
+                            <constraint firstItem="d7a-D3-leL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="23" id="IoY-jl-eg7"/>
                             <constraint firstAttribute="trailing" secondItem="9zF-YZ-4xw" secondAttribute="trailing" constant="20" id="Krc-0S-01g"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="baseline" secondItem="9zF-YZ-4xw" secondAttribute="baseline" id="MPb-71-Cab"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="firstBaseline" secondItem="Wzh-4n-Dhm" secondAttribute="firstBaseline" id="QrV-zA-XJz"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="leading" secondItem="Wzh-4n-Dhm" secondAttribute="leading" id="T9E-uC-iXd"/>
-                            <constraint firstItem="d7a-D3-leL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Uy7-hD-fgl"/>
+                            <constraint firstItem="d7a-D3-leL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-12" id="Uy7-hD-fgl"/>
                             <constraint firstItem="5Iv-BN-Bbq" firstAttribute="top" secondItem="d7a-D3-leL" secondAttribute="top" constant="6" id="Xtn-TA-5WR"/>
-                            <constraint firstItem="mFp-kU-nKA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZCw-ck-2g0"/>
+                            <constraint firstItem="mFp-kU-nKA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="ZCw-ck-2g0"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="top" secondItem="9zF-YZ-4xw" secondAttribute="bottom" constant="-50" id="aDY-1t-4JR"/>
                             <constraint firstItem="Fej-Ek-mdq" firstAttribute="leading" secondItem="9zF-YZ-4xw" secondAttribute="trailing" constant="-50" id="aT9-gC-jl0"/>
                             <constraint firstItem="mFp-kU-nKA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="kMF-wg-CM9"/>
@@ -162,11 +163,16 @@
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="firstBaseline" secondItem="Fej-Ek-mdq" secondAttribute="firstBaseline" id="qaF-V4-eYZ"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="baseline" secondItem="Fej-Ek-mdq" secondAttribute="baseline" id="rrO-BK-2K3"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="baseline" secondItem="9zF-YZ-4xw" secondAttribute="baseline" id="sHS-SZ-FmU"/>
+                            <constraint firstItem="5Iv-BN-Bbq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="29" id="tlm-gs-fm4"/>
                             <constraint firstItem="d7a-D3-leL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zbi-jT-2mL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="kRf-Kk-gbA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Uy7-hD-fgl"/>
+                                <exclude reference="Xtn-TA-5WR"/>
                             </mask>
                         </variation>
                     </view>
@@ -208,7 +214,7 @@
                                     <navigationItem title="Paramètres" id="0QH-YM-hGc">
                                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="wh6-o3-cl5">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="neo-bP-5NG"/>
+                                                <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="neo-bP-5NG"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -228,10 +234,18 @@
                                 <exclude reference="vg4-OM-5y1"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Rd5-AU-N48" appends="YES" id="Tue-bF-PH7"/>
+                        </connections>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ1-ej-SK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Rd5-AU-N48">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="B7p-P5-ORi"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1816" y="357"/>
         </scene>
@@ -258,7 +272,7 @@
                                     <navigationItem title="Contacts" id="YDM-aq-m8f">
                                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="Emx-oL-FeW">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="ZQ6-Nk-tXU"/>
+                                                <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="ZQ6-Nk-tXU"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -280,12 +294,20 @@
                                 <exclude reference="Kri-WP-DiV"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XP1-Gt-cyZ" appends="YES" id="nzH-KN-QTX"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ide-Ef-EhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="XP1-Gt-cyZ">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="4uM-cN-dIN"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1816" y="1082"/>
         </scene>
