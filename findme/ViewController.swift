@@ -119,8 +119,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 500
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -129,10 +128,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
         rotateMenuButton(menuExpanded)
         if menuExpanded == false {
             showButtons()
-        }
-        else {
+        } else {
             hideButtons()
         }
+        
         menuExpanded = !menuExpanded
     }
     
@@ -145,8 +144,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             rotateAnimation.duration = 0.30
             menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
             menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI + M_PI_4))
-        }
-        else {
+        } else {
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
             rotateAnimation.fromValue = CGFloat(M_PI + M_PI_4)
             rotateAnimation.toValue = 0.0
