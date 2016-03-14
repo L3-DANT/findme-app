@@ -21,7 +21,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var pinAnnotationView:MKPinAnnotationView!
     var menuExpanded = false
     
-    @IBOutlet var mapView: MKMapView!
+
     
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -29,7 +29,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var paramButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var contactButton: UIButton!
+    
     @IBOutlet weak var findMeButton: UIButton!
     
     @IBAction func showSearchBar(sender: AnyObject) {
@@ -47,6 +49,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         initButton(paramButton, icon:"fa-cogs", submenu: true)
         initButton(contactButton, icon:"fa-users", submenu: true)
         initButton(findMeButton, icon:"fa-street-view", submenu: true)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -105,29 +108,49 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    @IBAction func findMe(sender: AnyObject) {
+        //remplacer par userLocation plus tard
+        let jussieu = CLLocation(latitude: 48.84730, longitude: 2.35586)
+        centerMapOnLocation(jussieu)
+        hideButtons()
+        menuExpanded = false
+    }
+    
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let regionRadius: CLLocationDistance = 500
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     //action au clic du bouton du menu
-    @IBAction func showMenu(sender: AnyObject) {
+    @IBAction func showMenu(sender: AnyObject){
         rotateMenuButton(menuExpanded)
-        if menuExpanded == false{ showButtons() }
-        else{ hideButtons() }
+        if menuExpanded == false {
+            showButtons()
+        }
+        else {
+            hideButtons()
+        }
         menuExpanded = !menuExpanded
     }
     
     //fonction qui permet d'effectuer une rotation sur le bouton du menu
     func rotateMenuButton(expanded : Bool){
-        if expanded == false{
+        if expanded == false {
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
             rotateAnimation.fromValue = 0.0
-            rotateAnimation.toValue = CGFloat(M_PI_4)
-            rotateAnimation.duration = 0.15
+            rotateAnimation.toValue = CGFloat(M_PI + M_PI_4)
+            rotateAnimation.duration = 0.30
             menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
-            menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+            menuButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI + M_PI_4))
         }
-        else{
+        else {
             let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-            rotateAnimation.fromValue = CGFloat(M_PI_4)
+            rotateAnimation.fromValue = CGFloat(M_PI + M_PI_4)
             rotateAnimation.toValue = 0.0
-            rotateAnimation.duration = 0.15
+            rotateAnimation.duration = 0.30
             menuButton.layer.addAnimation(rotateAnimation, forKey: nil)
             menuButton.transform = CGAffineTransformMakeRotation(0)
         }
