@@ -68,13 +68,13 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
     
-    /*func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         self.mapView.setRegion(region , animated: true )
         self.locationManager.stopUpdatingLocation()
-    }*/
+    }
     
     //fonction appelée en cas d'erreur
     
