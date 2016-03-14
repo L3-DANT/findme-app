@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03CF68FE1C97491400194684 /* umpc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 03CF68FD1C97491400194684 /* umpc.gpx */; };
 		03EE52651C918682001FBA09 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE52621C918682001FBA09 /* Enum.swift */; };
 		03EE52661C918682001FBA09 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03EE52631C918682001FBA09 /* FontAwesome.otf */; };
 		03EE52671C918682001FBA09 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE52641C918682001FBA09 /* FontAwesome.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03CF68FD1C97491400194684 /* umpc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = umpc.gpx; sourceTree = "<group>"; };
 		03EE52621C918682001FBA09 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = "../../../../Downloads/FontAwesome.swift-master/FontAwesome/Enum.swift"; sourceTree = "<group>"; };
 		03EE52631C918682001FBA09 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "../../../../Downloads/FontAwesome.swift-master/FontAwesome/FontAwesome.otf"; sourceTree = "<group>"; };
 		03EE52641C918682001FBA09 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = "../../../../Downloads/FontAwesome.swift-master/FontAwesome/FontAwesome.swift"; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		29E3C5E41C8B19B900DDD92A = {
 			isa = PBXGroup;
 			children = (
+				03CF68FD1C97491400194684 /* umpc.gpx */,
 				29E3C5EF1C8B19B900DDD92A /* findme */,
 				29E3C6041C8B19B900DDD92A /* findmeTests */,
 				29E3C5EE1C8B19B900DDD92A /* Products */,
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29E3C5FB1C8B19B900DDD92A /* LaunchScreen.storyboard in Resources */,
+				03CF68FE1C97491400194684 /* umpc.gpx in Resources */,
 				29E3C5F81C8B19B900DDD92A /* Assets.xcassets in Resources */,
 				03EE52661C918682001FBA09 /* FontAwesome.otf in Resources */,
 				29E3C5F61C8B19B900DDD92A /* Main.storyboard in Resources */,

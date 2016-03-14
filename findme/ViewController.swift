@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var searchController:UISearchController!
     var annotation:MKAnnotation!
@@ -20,6 +21,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
     var menuExpanded = false
+    
+    
+    var locationManager = CLLocationManager()
     
 
     
@@ -45,12 +49,37 @@ class ViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchField()
+        
+        //initialisation des boutons rond du menu
         initButton(menuButton, icon: "fa-plus", submenu: false)
         initButton(paramButton, icon:"fa-cogs", submenu: true)
         initButton(contactButton, icon:"fa-users", submenu: true)
         initButton(findMeButton, icon:"fa-street-view", submenu: true)
         
-        // Do any additional setup after loading the view, typically from a nib.
+        //gestion de la localisation de l'utilisateur
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        
+        //affichage de la position de l'utilisateur
+        self.mapView.showsUserLocation = true
+    }
+    
+    //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
+    
+    /*func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        self.mapView.setRegion(region , animated: true )
+        self.locationManager.stopUpdatingLocation()
+    }*/
+    
+    //fonction appelée en cas d'erreur
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error" + error.localizedDescription)
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,13 +138,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func findMe(sender: AnyObject) {
-        //remplacer par userLocation plus tard
-        let jussieu = CLLocation(latitude: 48.84730, longitude: 2.35586)
-        centerMapOnLocation(jussieu)
+
+        let location = mapView.userLocation.location
+        centerMapOnLocation(location!)
         hideButtons()
+        rotateMenuButton(menuExpanded)
         menuExpanded = false
     }
-    
     
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 500
