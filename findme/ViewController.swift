@@ -87,13 +87,13 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     func initContactMarkers(){
         let antoineLocation = CLLocationCoordinate2D(latitude: 48.846813, longitude: 2.359335)
-        let antoine = Contact(coordinate: antoineLocation, title: "Antoine", subtitle: "")
+        let antoine = UserAnnotation(coordinate: antoineLocation, title: "Antoine", subtitle: "")
         
         let maximeLocation = CLLocationCoordinate2D(latitude: 48.846347, longitude: 2.356632)
-        let maxime = Contact(coordinate: maximeLocation, title: "Maxime", subtitle: "")
+        let maxime = UserAnnotation(coordinate: maximeLocation, title: "Maxime", subtitle: "")
         
         let francoisLocation = CLLocationCoordinate2D(latitude: 48.848507, longitude: 2.361116)
-        let francois = Contact(coordinate: francoisLocation, title: "Francois", subtitle: "")
+        let francois = UserAnnotation(coordinate: francoisLocation, title: "Francois", subtitle: "")
         
         var annotations = [MKAnnotation]()
         annotations.append(francois)
