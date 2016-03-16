@@ -25,8 +25,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     var locationManager = CLLocationManager()
     
-
-    
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var searchIcon: UITextField!
@@ -50,11 +48,15 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         super.viewDidLoad()
         initSearchField()
         
+        mapView.delegate = self
+        
         //initialisation des boutons rond du menu
         initButton(menuButton, icon: "fa-plus", submenu: false)
         initButton(paramButton, icon:"fa-cogs", submenu: true)
         initButton(contactButton, icon:"fa-users", submenu: true)
         initButton(findMeButton, icon:"fa-street-view", submenu: true)
+        
+        initContactMarkers()
         
         //gestion de la localisation de l'utilisateur
         self.locationManager.delegate = self
@@ -64,6 +66,26 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         
         //affichage de la position de l'utilisateur
         self.mapView.showsUserLocation = true
+    }
+    
+    //fonction qui initialise les markers des amis sur la carte
+    
+    func initContactMarkers(){
+        let antoineLocation = CLLocationCoordinate2D(latitude: 48.846813, longitude: 2.359335)
+        let antoine = Contact(coordinate: antoineLocation, title: "Antoine", subtitle: "")
+        
+        let maximeLocation = CLLocationCoordinate2D(latitude: 48.846347, longitude: 2.356632)
+        let maxime = Contact(coordinate: maximeLocation, title: "Maxime", subtitle: "")
+        
+        let francoisLocation = CLLocationCoordinate2D(latitude: 48.848507, longitude: 2.361116)
+        let francois = Contact(coordinate: francoisLocation, title: "Francois", subtitle: "")
+        
+        var annotations = [MKAnnotation]()
+        annotations.append(francois)
+        annotations.append(maxime)
+        annotations.append(antoine)
+        
+        mapView.addAnnotations(annotations)
     }
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
@@ -220,6 +242,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             self.paramButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             }, completion: nil)
     }
+    
+    
 
 
 }

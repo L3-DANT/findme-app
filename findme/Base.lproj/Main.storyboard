@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-kU-nKA">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-kU-nKA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="644"/>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rechercher dans FindMe" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-D3-leL">
@@ -98,7 +98,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eKj-Xc-bB0" kind="custom" customClass="SegueFromRight" customModule="findme" customModuleProvider="target" id="sRi-L5-lVe"/>
+                                    <segue destination="eKj-Xc-bB0" kind="push" id="sRi-L5-lVe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zF-YZ-4xw">
@@ -114,7 +114,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YyE-FK-c2d" kind="custom" customClass="SegueFromRight" customModule="findme" customModuleProvider="target" id="jIK-zb-WBI"/>
+                                    <segue destination="YyE-FK-c2d" kind="push" id="jIK-zb-WBI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-FC-9jz">
@@ -214,7 +214,7 @@
                                     <navigationItem title="Paramètres" id="0QH-YM-hGc">
                                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="wh6-o3-cl5">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="neo-bP-5NG"/>
+                                                <segue destination="BYZ-38-t0r" kind="push" id="neo-bP-5NG"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -234,18 +234,11 @@
                                 <exclude reference="vg4-OM-5y1"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Rd5-AU-N48" appends="YES" id="Tue-bF-PH7"/>
-                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="tJ8-ST-3Jf"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ1-ej-SK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Rd5-AU-N48">
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="B7p-P5-ORi"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1816" y="357"/>
         </scene>
@@ -272,7 +265,7 @@
                                     <navigationItem title="Contacts" id="YDM-aq-m8f">
                                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="Emx-oL-FeW">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="ZQ6-Nk-tXU"/>
+                                                <segue destination="BYZ-38-t0r" kind="push" id="ZQ6-Nk-tXU"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -294,20 +287,13 @@
                                 <exclude reference="Kri-WP-DiV"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="XP1-Gt-cyZ" appends="YES" id="nzH-KN-QTX"/>
-                        </connections>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jGM-Tr-P0o"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ide-Ef-EhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="XP1-Gt-cyZ">
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromLeft" customModule="findme" customModuleProvider="target" id="4uM-cN-dIN"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1816" y="1082"/>
         </scene>
@@ -337,7 +323,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZQ6-Nk-tXU"/>
+        <segue reference="neo-bP-5NG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
