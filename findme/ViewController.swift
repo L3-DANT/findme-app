@@ -68,6 +68,21 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         self.mapView.showsUserLocation = true
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    @IBAction func paramButtonClic(sender: AnyObject) {
+        hideButtons()
+        rotateMenuButton(menuExpanded)
+        menuExpanded = false
+    }
+    @IBAction func contactButtonClic(sender: AnyObject) {
+        hideButtons()
+        rotateMenuButton(menuExpanded)
+        menuExpanded = false
+    }
+    
     //fonction qui initialise les markers des amis sur la carte
     
     func initContactMarkers(){

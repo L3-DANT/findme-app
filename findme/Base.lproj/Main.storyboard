@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-kU-nKA">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-kU-nKA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="644"/>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rechercher dans FindMe" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-D3-leL">
@@ -98,7 +98,8 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eKj-Xc-bB0" kind="push" id="sRi-L5-lVe"/>
+                                    <action selector="paramButtonClic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UxR-hT-hOC"/>
+                                    <segue destination="vaO-KQ-9Ie" kind="push" id="6bW-1n-4MS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zF-YZ-4xw">
@@ -114,7 +115,8 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YyE-FK-c2d" kind="push" id="jIK-zb-WBI"/>
+                                    <action selector="contactButtonClic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Thq-7V-sLE"/>
+                                    <segue destination="7yf-W6-w9N" kind="push" id="naU-Og-A38"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-FC-9jz">
@@ -177,6 +179,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="hya-88-Pei"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="contactButton" destination="9zF-YZ-4xw" id="1Gi-YY-kC6"/>
                         <outlet property="findMeButton" destination="Wzh-4n-Dhm" id="IGb-Fm-sou"/>
@@ -191,111 +194,47 @@
             </objects>
             <point key="canvasLocation" x="1117" y="357"/>
         </scene>
-        <!--Options-->
-        <scene sceneID="qc9-ux-LrC">
+        <!--Paramètres-->
+        <scene sceneID="9Et-CD-U1p">
             <objects>
-                <viewController id="eKj-Xc-bB0" userLabel="Options" sceneMemberID="viewController">
+                <viewController id="vaO-KQ-9Ie" customClass="ParamViewController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="m2z-u1-zQF"/>
-                        <viewControllerLayoutGuide type="bottom" id="9xc-Cy-OUR"/>
+                        <viewControllerLayoutGuide type="top" id="Vgl-NV-48r"/>
+                        <viewControllerLayoutGuide type="bottom" id="QUU-3Y-x4W"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LyP-0a-378">
+                    <view key="view" contentMode="scaleToFill" id="KUT-AR-Skg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-Hh-lVe">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="0.24393503289999999" green="0.3087479441" blue="0.45317639799999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Paramètres" id="0QH-YM-hGc">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="wh6-o3-cl5">
-                                            <connections>
-                                                <segue destination="BYZ-38-t0r" kind="push" id="neo-bP-5NG"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="bdt-Hh-lVe" firstAttribute="centerX" secondItem="LyP-0a-378" secondAttribute="centerX" id="j7d-kO-EDa"/>
-                            <constraint firstItem="bdt-Hh-lVe" firstAttribute="leading" secondItem="LyP-0a-378" secondAttribute="leading" id="jfO-N3-ZJ9"/>
-                            <constraint firstItem="bdt-Hh-lVe" firstAttribute="top" secondItem="LyP-0a-378" secondAttribute="topMargin" constant="20" id="uNj-D7-p4F"/>
-                            <constraint firstItem="bdt-Hh-lVe" firstAttribute="top" secondItem="LyP-0a-378" secondAttribute="top" id="vg4-OM-5y1"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="vg4-OM-5y1"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="tJ8-ST-3Jf"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Paramètres" id="fz3-b1-XdQ">
+                        <barButtonItem key="backBarButtonItem" title="&lt;" id="xvY-WB-9NU"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CZ1-ej-SK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2n2-Ig-r0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="357"/>
+            <point key="canvasLocation" x="1765" y="357"/>
         </scene>
         <!--Contacts-->
-        <scene sceneID="8uM-Fe-k4d">
+        <scene sceneID="86n-Es-aPo">
             <objects>
-                <viewController title="Contacts" id="YyE-FK-c2d" userLabel="Contacts" sceneMemberID="viewController">
+                <viewController id="7yf-W6-w9N" customClass="ContactViewController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b87-0O-at0"/>
-                        <viewControllerLayoutGuide type="bottom" id="LmX-XH-pgg"/>
+                        <viewControllerLayoutGuide type="top" id="bQg-oE-X61"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yoj-c2-W80"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cMH-hu-UHS">
+                    <view key="view" contentMode="scaleToFill" id="9hz-Xo-NO7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUE-4R-UgS">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="0.24393503289999999" green="0.3087479441" blue="0.45317639799999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Contacts" id="YDM-aq-m8f">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Emx-oL-FeW">
-                                            <connections>
-                                                <segue destination="BYZ-38-t0r" kind="push" id="ZQ6-Nk-tXU"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="uUE-4R-UgS" firstAttribute="top" secondItem="cMH-hu-UHS" secondAttribute="topMargin" constant="20" id="4cW-kI-GnW"/>
-                            <constraint firstItem="uUE-4R-UgS" firstAttribute="top" secondItem="cMH-hu-UHS" secondAttribute="topMargin" constant="20" id="Iie-hL-RWw"/>
-                            <constraint firstItem="uUE-4R-UgS" firstAttribute="top" secondItem="b87-0O-at0" secondAttribute="bottom" constant="-20" id="Kri-WP-DiV"/>
-                            <constraint firstItem="uUE-4R-UgS" firstAttribute="leading" secondItem="cMH-hu-UHS" secondAttribute="leading" id="UAB-lA-AZt"/>
-                            <constraint firstItem="uUE-4R-UgS" firstAttribute="centerX" secondItem="cMH-hu-UHS" secondAttribute="centerX" id="c3y-QJ-fuL"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Iie-hL-RWw"/>
-                                <exclude reference="Kri-WP-DiV"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="jGM-Tr-P0o"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="Jha-ri-ZBd"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ide-Ef-EhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BI1-pu-G6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="1082"/>
+            <point key="canvasLocation" x="1765" y="1134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pAI-pI-6Do">
@@ -303,7 +242,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugu-uW-Eef" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RsY-6v-JPV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -322,8 +260,5 @@
             <point key="canvasLocation" x="305" y="357"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="neo-bP-5NG"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>
