@@ -10,7 +10,7 @@
 		0376F7401C9809350023C0A7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73C1C9809350023C0A7 /* Enum.swift */; };
 		0376F7411C9809350023C0A7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0376F73D1C9809350023C0A7 /* FontAwesome.otf */; };
 		0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73F1C9809350023C0A7 /* FontAwesome.swift */; };
-		03B27FE41C99F86700D744DA /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE31C99F86700D744DA /* Contact.swift */; };
+		03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE31C99F86700D744DA /* UserAnnotation.swift */; };
 		03B27FE61C99FE5400D744DA /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE51C99FE5400D744DA /* ParamViewController.swift */; };
 		03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE71C9A018600D744DA /* ContactViewController.swift */; };
 		03CF68FE1C97491400194684 /* umpc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 03CF68FD1C97491400194684 /* umpc.gpx */; };
@@ -37,7 +37,7 @@
 		0376F73D1C9809350023C0A7 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		0376F73E1C9809350023C0A7 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
 		0376F73F1C9809350023C0A7 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
-		03B27FE31C99F86700D744DA /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		03B27FE31C99F86700D744DA /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		03B27FE51C99FE5400D744DA /* ParamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamViewController.swift; sourceTree = "<group>"; };
 		03B27FE71C9A018600D744DA /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		03CF68FD1C97491400194684 /* umpc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = umpc.gpx; sourceTree = "<group>"; };
@@ -109,11 +109,11 @@
 				29E3C5F21C8B19B900DDD92A /* ViewController.swift */,
 				03B27FE51C99FE5400D744DA /* ParamViewController.swift */,
 				03B27FE71C9A018600D744DA /* ContactViewController.swift */,
+				03B27FE31C99F86700D744DA /* UserAnnotation.swift */,
 				29E3C5F41C8B19B900DDD92A /* Main.storyboard */,
 				29E3C5F71C8B19B900DDD92A /* Assets.xcassets */,
 				29E3C5F91C8B19B900DDD92A /* LaunchScreen.storyboard */,
 				29E3C5FC1C8B19B900DDD92A /* Info.plist */,
-				03B27FE31C99F86700D744DA /* Contact.swift */,
 			);
 			path = findme;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 				03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */,
 				0376F7401C9809350023C0A7 /* Enum.swift in Sources */,
 				03B27FE61C99FE5400D744DA /* ParamViewController.swift in Sources */,
-				03B27FE41C99F86700D744DA /* Contact.swift in Sources */,
+				03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */,
 				0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */,
 				29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */,
 			);
