@@ -261,12 +261,39 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     //fonction qui permet de fermer le menu lors d'un clic sur une annotation
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        hideButtons()
-        rotateMenuButton(menuExpanded)
-        menuExpanded = false
+        if menuExpanded {
+            hideButtons()
+            rotateMenuButton(menuExpanded)
+            menuExpanded = false
+        }
     }
     
-    
+    func mapView(mapView: MKMapView,
+        viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+            
+        if annotation.isKindOfClass(UserAnnotation.self) {
+            let reuseIdentifier = "pin"
+            
+            var v = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            if v == nil {
+                v = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                v!.canShowCallout = true
+            }
+            else {
+                v!.annotation = annotation
+            }
+            
+            let customPointAnnotation = annotation as! UserAnnotation
+            v!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
+        
+            return v
+                
+        } else {
+            return nil
+        }
+    }
+
+    /*
     //fonction qui permet de changer les annotation
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "UserAnnotation"
@@ -279,7 +306,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = true
                 
-                let callButton = UIButton(type: .Custom)
+                /*let callButton = UIButton(type: .Custom)
                 callButton.frame.size.width = 44
                 callButton.frame.size.height = 44
                 callButton.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
@@ -293,7 +320,9 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                 smsButton.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
                 smsButton.setTitle(String.fontAwesomeIconWithCode("fa-envelope"), forState: .Normal)
                 smsButton.setTitleColor(UIColor(colorLiteralRed:0.0, green:122.0/255.0, blue:1.0, alpha:1.0), forState: .Normal)
-                annotationView!.rightCalloutAccessoryView = smsButton
+                annotationView!.rightCalloutAccessoryView = smsButton*/
+                
+                annotationView!.image = UIImage(named:"customPin")
                 
             } else {
                 annotationView!.annotation = annotation
@@ -303,7 +332,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         }
         
         return nil
-    }
+    }*/
 
 
 }
