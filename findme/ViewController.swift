@@ -254,20 +254,19 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         if annotation.isKindOfClass(UserAnnotation.self) {
             let reuseIdentifier = "pin"
             
-            var v = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
-            if v == nil {
-                v = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-                v!.canShowCallout = true
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView!.canShowCallout = true
             }
             else {
-                v!.annotation = annotation
+                annotationView!.annotation = annotation
             }
             
             let customPointAnnotation = annotation as! UserAnnotation
-            v!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
+            annotationView!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
         
-            return v
-                
+            return annotationView                
         } else {
             return nil
         }
