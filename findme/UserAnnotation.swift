@@ -21,6 +21,6 @@ class UserAnnotation : NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
-        self.pinCustomImageName = title
+        self.pinCustomImageName = "customPin"
     }
 }

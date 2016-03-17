@@ -33,6 +33,9 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="testSearch:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="FMR-wa-HeF"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Iv-BN-Bbq">
                                 <rect key="frame" x="27" y="29" width="81" height="17"/>
@@ -116,7 +119,7 @@
                                 </state>
                                 <connections>
                                     <action selector="contactButtonClic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Thq-7V-sLE"/>
-                                    <segue destination="7yf-W6-w9N" kind="push" id="naU-Og-A38"/>
+                                    <segue destination="ofK-ZL-EWY" kind="push" id="BJi-xS-6kF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-FC-9jz">
@@ -216,25 +219,44 @@
             </objects>
             <point key="canvasLocation" x="1765" y="357"/>
         </scene>
-        <!--Contacts-->
-        <scene sceneID="86n-Es-aPo">
+        <!--Amis-->
+        <scene sceneID="Tk2-Dt-vTG">
             <objects>
-                <viewController id="7yf-W6-w9N" customClass="ContactViewController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bQg-oE-X61"/>
-                        <viewControllerLayoutGuide type="bottom" id="Yoj-c2-W80"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9hz-Xo-NO7">
+                <tableViewController title="Amis" id="ofK-ZL-EWY" customClass="ContactViewController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xx0-1d-PAD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Contacts" id="Jha-ri-ZBd"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BI1-pu-G6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="hxk-7F-xC8" style="IBUITableViewCellStyleDefault" id="d79-6w-uNz">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d79-6w-uNz" id="OSy-vG-qJc">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hxk-7F-xC8">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ofK-ZL-EWY" id="Bwa-xE-xwI"/>
+                            <outlet property="delegate" destination="ofK-ZL-EWY" id="a3k-gf-cX3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Amis" id="wv0-YY-6tC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8mV-4P-Cqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="1134"/>
+            <point key="canvasLocation" x="1760" y="1136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pAI-pI-6Do">
