@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ParamViewController: UIViewController {
+class ParamViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
         
