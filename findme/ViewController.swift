@@ -259,6 +259,51 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     
+    //fonction qui permet de fermer le menu lors d'un clic sur une annotation
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        hideButtons()
+        rotateMenuButton(menuExpanded)
+        menuExpanded = false
+    }
+    
+    
+    //fonction qui permet de changer les annotation
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "UserAnnotation"
+        if annotation.isKindOfClass(UserAnnotation.self) {
+            
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            
+            if annotationView == nil {
+                
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+                
+                let callButton = UIButton(type: .Custom)
+                callButton.frame.size.width = 44
+                callButton.frame.size.height = 44
+                callButton.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
+                callButton.setTitle(String.fontAwesomeIconWithCode("fa-phone"), forState: .Normal)
+                callButton.setTitleColor(UIColor(colorLiteralRed:0.0, green:122.0/255.0, blue:1.0, alpha:1.0), forState: .Normal)
+                annotationView!.leftCalloutAccessoryView = callButton
+                
+                let smsButton = UIButton(type: .Custom)
+                smsButton.frame.size.width = 44
+                smsButton.frame.size.height = 44
+                smsButton.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
+                smsButton.setTitle(String.fontAwesomeIconWithCode("fa-envelope"), forState: .Normal)
+                smsButton.setTitleColor(UIColor(colorLiteralRed:0.0, green:122.0/255.0, blue:1.0, alpha:1.0), forState: .Normal)
+                annotationView!.rightCalloutAccessoryView = smsButton
+                
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
+        }
+        
+        return nil
+    }
 
 
 }
