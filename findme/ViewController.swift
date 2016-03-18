@@ -43,6 +43,17 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         presentViewController(searchController, animated: true, completion: nil)
         
     }
+    @IBAction func testSearch(sender: AnyObject) {
+        let search = searchTextField.text
+        for annotation in mapView.annotations as [MKAnnotation]{
+            if annotation.title! == search!{
+                mapView.selectAnnotation(annotation, animated: true)
+                let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+                centerMapOnLocation(location)
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +104,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         let maxime = UserAnnotation(coordinate: maximeLocation, title: "Maxime", subtitle: "")
         
         let francoisLocation = CLLocationCoordinate2D(latitude: 48.848507, longitude: 2.361116)
-        let francois = UserAnnotation(coordinate: francoisLocation, title: "Francois", subtitle: "")
+        let francois = UserAnnotation(coordinate: francoisLocation, title: "François", subtitle: "")
         
         var annotations = [MKAnnotation]()
         annotations.append(francois)
@@ -141,38 +152,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         searchIcon.text = String.fontAwesomeIconWithName(.Search)
     }
 
-    //MARK: UISearchBar Delegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar){
-        //1
-        searchBar.resignFirstResponder()
-        dismissViewControllerAnimated(true, completion: nil)
-        if self.mapView.annotations.count != 0{
-            annotation = self.mapView.annotations[0]
-            self.mapView.removeAnnotation(annotation)
-        }
-        //2
-        localSearchRequest = MKLocalSearchRequest()
-        localSearchRequest.naturalLanguageQuery = searchBar.text
-        localSearch = MKLocalSearch(request: localSearchRequest)
-        localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
-            
-            if localSearchResponse == nil{
-                let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
-                return
-            }
-            //3
-            self.pointAnnotation = MKPointAnnotation()
-            self.pointAnnotation.title = searchBar.text
-            self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
-            
-            
-            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-            self.mapView.centerCoordinate = self.pointAnnotation.coordinate
-            self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
-        }
-    }
+    
     
     @IBAction func findMe(sender: AnyObject) {
 
@@ -259,7 +239,39 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     
-
+    //fonction qui permet de fermer le menu lors d'un clic sur une annotation
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if menuExpanded {
+            hideButtons()
+            rotateMenuButton(menuExpanded)
+            menuExpanded = false
+        }
+    }
+    
+    func mapView(mapView: MKMapView,
+        viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+            
+        if annotation.isKindOfClass(UserAnnotation.self) {
+            let reuseIdentifier = "pin"
+            
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView!.canShowCallout = true
+            }
+            else {
+                annotationView!.annotation = annotation
+            }
+            
+            let customPointAnnotation = annotation as! UserAnnotation
+            annotationView!.image = UIImage(named:customPointAnnotation.pinCustomImageName!)
+        
+            return annotationView                
+        } else {
+            return nil
+        }
+    }
+    
 
 }
 
