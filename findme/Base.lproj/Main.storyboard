@@ -496,7 +496,7 @@
                         <viewControllerLayoutGuide type="top" id="xeH-6j-djN"/>
                         <viewControllerLayoutGuide type="bottom" id="EzN-sA-Jb4"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="jX6-DI-UNy">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="jX6-DI-UNy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -515,7 +515,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9UK-Vq-QZE" firstAttribute="centerX" secondItem="jX6-DI-UNy" secondAttribute="centerX" id="LQb-Hk-BBw"/>
                             <constraint firstItem="SdG-Nk-EXY" firstAttribute="centerY" secondItem="jX6-DI-UNy" secondAttribute="centerY" id="Un8-9L-mSc"/>
