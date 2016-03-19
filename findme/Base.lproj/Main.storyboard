@@ -456,6 +456,23 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YMb-YI-ZFT">
+                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YMb-YI-ZFT" id="Eky-TG-a9V">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIB-Us-s9h">
+                                                    <rect key="frame" x="25" y="7" width="138" height="30"/>
+                                                    <state key="normal" title="A propos de FindMe"/>
+                                                    <connections>
+                                                        <segue destination="nEb-LS-6J9" kind="presentation" id="oqk-Fm-V04"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -470,6 +487,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THm-Xi-Y3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1800" y="357"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dGC-Eg-C8d">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="nEb-LS-6J9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xeH-6j-djN"/>
+                        <viewControllerLayoutGuide type="bottom" id="EzN-sA-Jb4"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="jX6-DI-UNy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="9UK-Vq-QZE">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="IwC-x2-if3"/>
+                                    <constraint firstAttribute="height" constant="200" id="l6R-Be-9ek"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SdG-Nk-EXY">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Vhe-3i-ygH"/>
+                                    <constraint firstAttribute="height" constant="200" id="wwR-qi-eAo"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9UK-Vq-QZE" firstAttribute="centerX" secondItem="jX6-DI-UNy" secondAttribute="centerX" id="LQb-Hk-BBw"/>
+                            <constraint firstItem="SdG-Nk-EXY" firstAttribute="centerY" secondItem="jX6-DI-UNy" secondAttribute="centerY" id="Un8-9L-mSc"/>
+                            <constraint firstItem="9UK-Vq-QZE" firstAttribute="centerY" secondItem="jX6-DI-UNy" secondAttribute="centerY" id="a5E-Y8-zns"/>
+                            <constraint firstItem="SdG-Nk-EXY" firstAttribute="centerX" secondItem="jX6-DI-UNy" secondAttribute="centerX" id="sSq-7I-aqt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qV0-sS-KqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2476" y="357"/>
         </scene>
         <!--Amis-->
         <scene sceneID="Tk2-Dt-vTG">
