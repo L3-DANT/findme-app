@@ -656,6 +656,10 @@
         <scene sceneID="gYk-YK-e5e">
             <objects>
                 <viewController id="nES-0M-8ZC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3AF-vx-9bu"/>
+                        <viewControllerLayoutGuide type="bottom" id="ova-SY-a7k"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I6X-gC-3Ff">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
