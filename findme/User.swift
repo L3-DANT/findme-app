@@ -11,12 +11,12 @@ import Foundation
 
 class User {
     var pseudo : String
-    var x : Float
-    var y : Float
+    var x : Double
+    var y : Double
     var friendList : [User]?
     var password : String
     
-    init(pseudo : String, x : Float, y : Float, password : String, friendList :[User]){
+    init(pseudo : String, x : Double, y : Double, password : String, friendList :[User]){
         self.pseudo = pseudo
         self.x = x
         self.y = y
