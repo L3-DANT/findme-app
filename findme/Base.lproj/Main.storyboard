@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1803" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -606,7 +606,7 @@
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="hxk-7F-xC8" style="IBUITableViewCellStyleDefault" id="d79-6w-uNz">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d79-6w-uNz" id="OSy-vG-qJc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -628,11 +628,78 @@
                             <outlet property="delegate" destination="ofK-ZL-EWY" id="a3k-gf-cX3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Amis" id="wv0-YY-6tC"/>
+                    <navigationItem key="navigationItem" title="Amis" id="n5h-yh-7Zr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txR-QZ-hUJ">
+                            <connections>
+                                <segue destination="uqd-6B-869" kind="show" id="6pQ-DE-Pxy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="friendsTable" destination="Xx0-1d-PAD" id="ddp-AP-10x"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mV-4P-Cqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1760" y="1136"/>
+        </scene>
+        <!--Ajout Ami-->
+        <scene sceneID="Jpj-fE-YwY">
+            <objects>
+                <viewController title="Ajout Ami" id="uqd-6B-869" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yao-ZG-J5s"/>
+                        <viewControllerLayoutGuide type="bottom" id="pEd-tz-Tf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xga-vK-SXB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j5j-k9-7hN">
+                                <rect key="frame" x="200" y="285" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Z4d-Eq-zKL"/>
+                                    <constraint firstAttribute="width" constant="100" id="znE-N0-9xh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="znE-N0-9xh"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pseudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKU-Q0-FLM">
+                                <rect key="frame" x="271" y="239" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSZ-0k-dMj">
+                                <rect key="frame" x="250" y="347" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="upP-l8-BnH"/>
+                                </constraints>
+                                <state key="normal" title="Ajouter"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j5j-k9-7hN" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="6Pw-a0-Qk9"/>
+                            <constraint firstItem="hKU-Q0-FLM" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="9s0-ne-doc"/>
+                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="9wX-wd-Ltn"/>
+                            <constraint firstItem="j5j-k9-7hN" firstAttribute="centerY" secondItem="Xga-vK-SXB" secondAttribute="centerY" id="V0s-9f-9bd"/>
+                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="centerX" secondItem="j5j-k9-7hN" secondAttribute="centerX" id="Xni-6E-Qao"/>
+                            <constraint firstItem="j5j-k9-7hN" firstAttribute="top" secondItem="hKU-Q0-FLM" secondAttribute="bottom" constant="25" id="iOb-J8-Cup"/>
+                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="top" secondItem="j5j-k9-7hN" secondAttribute="bottom" constant="32" id="tcs-LZ-Ggg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ajouter un ami" id="dav-pT-wlI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pWa-G0-F6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2488" y="1136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zmt-H3-hUb">
