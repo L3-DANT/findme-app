@@ -97,21 +97,42 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     //fonction qui initialise les markers des amis sur la carte
     
     func initContactMarkers(){
-        let antoineLocation = CLLocationCoordinate2D(latitude: 48.846813, longitude: 2.359335)
-        let antoine = UserAnnotation(coordinate: antoineLocation, title: "Antoine", subtitle: "")
-        
-        let maximeLocation = CLLocationCoordinate2D(latitude: 48.846347, longitude: 2.356632)
-        let maxime = UserAnnotation(coordinate: maximeLocation, title: "Maxime", subtitle: "")
-        
-        let francoisLocation = CLLocationCoordinate2D(latitude: 48.848507, longitude: 2.361116)
-        let francois = UserAnnotation(coordinate: francoisLocation, title: "François", subtitle: "")
         
         var annotations = [MKAnnotation]()
-        annotations.append(francois)
-        annotations.append(maxime)
-        annotations.append(antoine)
         
-        mapView.addAnnotations(annotations)
+        var users : [User] = []
+        
+        let feedUrl = "http://localhost:8080/findme/api/user/fixtures"
+        
+        let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
+        
+        
+        NSURLConnection.sendAsynchronousRequest(request,queue: NSOperationQueue.mainQueue()) {
+            response, data, error in if let jsonData = data,
+                json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)) as? [NSDictionary]{
+                    for user : NSDictionary in json{
+                        let name = user["pseudo"] as? String
+                        let password = user["password"] as? String
+                        let x = user["x"] as? Double
+                        let y = user["y"] as? Double
+                        let friendList = user["friendList"] as? [User]
+                        let jsonUser = User(pseudo: name!, x: x!, y: y!, password: password!, friendList: friendList!)
+                        users.append(jsonUser)
+                        
+                        let friendLocation = CLLocationCoordinate2D(latitude: x!, longitude: y!)
+                        let friend = UserAnnotation(coordinate: friendLocation, title: name, subtitle: "")
+                        annotations.append(friend)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        self.mapView.addAnnotations(annotations)
+                        
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    })
+            }
+        }
+        
     }
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
