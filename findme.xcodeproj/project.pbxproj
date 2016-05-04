@@ -23,6 +23,7 @@
 		292D66831C9AA99B00BE0DEC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */; };
 		292D66851C9ABD8100BE0DEC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66841C9ABD8100BE0DEC /* LoginService.swift */; };
 		292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */; };
+		297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */; };
 		29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */; };
 		29E3C5F31C8B19B900DDD92A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F21C8B19B900DDD92A /* ViewController.swift */; };
 		29E3C5F61C8B19B900DDD92A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F41C8B19B900DDD92A /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		292D66841C9ABD8100BE0DEC /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSettings.swift; sourceTree = "<group>"; };
+		297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		29E3C5ED1C8B19B900DDD92A /* findme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29E3C5F21C8B19B900DDD92A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				0340A4B91CBE888100A4984D /* AddFriendController.swift */,
 				0340A4BB1CBE88A700A4984D /* User.swift */,
 				037DB5431CDA2DDE008058DC /* FriendRequest.swift */,
+				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
 			);
 			path = findme;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				292D66851C9ABD8100BE0DEC /* LoginService.swift in Sources */,
 				0340A4BA1CBE888100A4984D /* AddFriendController.swift in Sources */,
 				0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */,
+				297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */,
 				29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */,
 				037DB5441CDA2DDE008058DC /* FriendRequest.swift in Sources */,
 			);
