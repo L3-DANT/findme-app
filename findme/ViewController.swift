@@ -25,6 +25,8 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     var locationManager = CLLocationManager()
     
+    var users : [User] = []
+    
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var searchIcon: UITextField!
@@ -106,6 +108,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         
         let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
         
+//  utiliser       NSURLSession !!
         
         NSURLConnection.sendAsynchronousRequest(request,queue: NSOperationQueue.mainQueue()) {
             response, data, error in if let jsonData = data,
@@ -122,17 +125,19 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                         let friendLocation = CLLocationCoordinate2D(latitude: x!, longitude: y!)
                         let friend = UserAnnotation(coordinate: friendLocation, title: name, subtitle: "")
                         annotations.append(friend)
+                        self.users.append(jsonUser)
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
                         self.mapView.addAnnotations(annotations)
-                        
+                        if let location = self.mapView.userLocation.location {
+                            self.centerMapOnLocation(location)
+                        }
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     })
             }
         }
-        
     }
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
@@ -184,9 +189,22 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         menuExpanded = false
     }
     
+    //
     func centerMapOnLocation(location: CLLocation) {
-        let regionRadius: CLLocationDistance = 500
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 2.0, regionRadius * 2.0)
+        var farFriendDistance:CLLocationDistance = 0
+        var newDistance:CLLocationDistance
+        var friendLocation:CLLocationCoordinate2D
+        for user in users{
+            friendLocation = CLLocationCoordinate2D.init(latitude: user.x, longitude: user.y)
+            newDistance = location.distanceFromLocation(CLLocation.init(latitude: friendLocation.latitude, longitude: friendLocation.longitude))
+            print(user.pseudo)
+            print(newDistance)
+            if(newDistance > farFriendDistance){
+                farFriendDistance = newDistance
+            }
+        }
+        print("farFriendDistance \(farFriendDistance)")
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,farFriendDistance*2, farFriendDistance*2)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
