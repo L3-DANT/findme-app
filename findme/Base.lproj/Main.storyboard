@@ -69,9 +69,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="V7R-gl-jc5" kind="popoverPresentation" popoverAnchorView="mf0-b5-Uzh" id="N4B-D9-RlB">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="V7R-gl-jc5" kind="presentation" identifier="" id="nTS-Uk-oBt"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9B4-QX-EMt">
@@ -199,9 +197,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1mY-7i-B5A" kind="popoverPresentation" popoverAnchorView="Ti2-a3-m0g" id="aas-Uu-BBH">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="1mY-7i-B5A" kind="presentation" id="Iz3-S1-KSQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-za-uOy">
@@ -484,21 +480,47 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YMb-YI-ZFT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="A0O-uT-XPe">
                                         <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A0O-uT-XPe" id="sf9-uO-ozs">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBa-YS-HVQ">
+                                                    <rect key="frame" x="28" y="7" width="109" height="30"/>
+                                                    <state key="normal" title="Se déconnecter"/>
+                                                    <connections>
+                                                        <action selector="logoutTapped:" destination="vtc-A9-yoa" eventType="touchUpInside" id="roP-Um-UCH"/>
+                                                        <segue destination="1mY-7i-B5A" kind="show" id="1fI-LR-z2n"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xBa-YS-HVQ" firstAttribute="leading" secondItem="sf9-uO-ozs" secondAttribute="leadingMargin" constant="20" id="1jp-nX-8sm"/>
+                                                <constraint firstItem="xBa-YS-HVQ" firstAttribute="centerY" secondItem="sf9-uO-ozs" secondAttribute="centerY" id="MMx-3l-B8h"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YMb-YI-ZFT">
+                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YMb-YI-ZFT" id="Eky-TG-a9V">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIB-Us-s9h">
-                                                    <rect key="frame" x="25" y="7" width="138" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIB-Us-s9h">
+                                                    <rect key="frame" x="28" y="7" width="138" height="30"/>
                                                     <state key="normal" title="A propos de FindMe"/>
                                                     <connections>
                                                         <segue destination="4lL-oU-TtK" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="uui-Kc-wlJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IIB-Us-s9h" firstAttribute="leading" secondItem="Eky-TG-a9V" secondAttribute="leadingMargin" constant="20" id="big-5K-x3Z"/>
+                                                <constraint firstItem="IIB-Us-s9h" firstAttribute="centerY" secondItem="Eky-TG-a9V" secondAttribute="centerY" id="hME-jh-P5j"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -755,7 +777,7 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aas-Uu-BBH"/>
+        <segue reference="1fI-LR-z2n"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>
