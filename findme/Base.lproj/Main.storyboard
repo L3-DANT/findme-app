@@ -69,7 +69,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="V7R-gl-jc5" kind="presentation" identifier="" id="nTS-Uk-oBt"/>
+                                    <segue destination="V7R-gl-jc5" kind="show" id="AKr-Fv-KPL"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9B4-QX-EMt">
@@ -197,7 +197,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1mY-7i-B5A" kind="presentation" id="Iz3-S1-KSQ"/>
+                                    <segue destination="1mY-7i-B5A" kind="show" id="lNq-q6-quc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-za-uOy">
@@ -777,7 +777,7 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fI-LR-z2n"/>
+        <segue reference="lNq-q6-quc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>
