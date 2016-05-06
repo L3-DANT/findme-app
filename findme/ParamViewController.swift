@@ -11,6 +11,13 @@ import MapKit
 import CoreLocation
 
 class ParamViewController: UITableViewController {
+    
+    @IBAction func logoutTapped(sender: UIButton) {
+        let appDomain = NSBundle.mainBundle().bundleIdentifier
+        print(appDomain)
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
         
