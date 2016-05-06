@@ -56,6 +56,35 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
         return cell
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let sms = UITableViewRowAction(style: .Default, title: "\u{2606}\n Sms") { action, index in
+            print("sms button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+        }
+        sms.backgroundColor = UIColor.blueColor()
+        
+        let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
+            print("call button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+        }
+        call.backgroundColor = UIColor.greenColor()
+        
+        let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
+            print("delete button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete, sms, call]
+    }
     
     func loadUsers(){
         let feedUrl = "http://localhost:8080/findme/api/user/fixtures"
@@ -86,6 +115,24 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 })
             }
+        }
+    }
+    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
+    func initButton(button:UIButton, icon:String, submenu : Bool){
+        button.layer.cornerRadius = 25
+        button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
+        button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
+        if submenu{
+            button.transform = CGAffineTransformMakeScale(0.5, 0.5)
         }
     }
 }
