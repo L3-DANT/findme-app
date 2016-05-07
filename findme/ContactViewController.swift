@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ContactViewController: UITableViewController, NSURLConnectionDelegate{
+class ContactViewController: UITableViewController, NSURLConnectionDelegate {
 
     @IBOutlet var friendsTable: UITableView!
     
@@ -62,8 +62,18 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
+            // Add method to remove friend server side
             users.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        if editingStyle == UITableViewCellEditingStyle.Insert {
+            // Fix with true sms number
+            let number = "sms:+33667479299"
+            UIApplication.sharedApplication().openURL(NSURL(string: number)!)
+        }
+        if editingStyle == UITableViewCellEditingStyle.None {
+            let url = NSURL(string: "tel://0667479299")
+            UIApplication.sharedApplication().openURL(url!)
         }
     }
     
