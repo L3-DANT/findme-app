@@ -61,7 +61,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            users.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -115,24 +118,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 })
             }
-        }
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
-    func initButton(button:UIButton, icon:String, submenu : Bool){
-        button.layer.cornerRadius = 25
-        button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
-        button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
-        if submenu{
-            button.transform = CGAffineTransformMakeScale(0.5, 0.5)
         }
     }
 }
