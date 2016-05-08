@@ -36,6 +36,17 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        print("Row: \(row)")
+        
+        //print(meetingArray[row] as! String)
+        
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -100,7 +111,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func loadUsers(){
-        let feedUrl = "http://localhost:8080/findme/api/user/fixtures"
+        let feedUrl = "http://172.20.10.2:8080/findme/api/user/v1/users"
         
         let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
         
