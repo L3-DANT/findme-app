@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ContactViewController: UITableViewController, NSURLConnectionDelegate{
+class ContactViewController: UITableViewController, NSURLConnectionDelegate {
 
     @IBOutlet var friendsTable: UITableView!
     
@@ -36,6 +36,17 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        print("Row: \(row)")
+        
+        //print(meetingArray[row] as! String)
+        
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -56,9 +67,51 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate{
         return cell
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // Add method to remove friend server side
+            users.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        if editingStyle == UITableViewCellEditingStyle.Insert {
+            // Fix with true sms number
+            let number = "sms:+33667479299"
+            UIApplication.sharedApplication().openURL(NSURL(string: number)!)
+        }
+        if editingStyle == UITableViewCellEditingStyle.None {
+            let url = NSURL(string: "tel://0667479299")
+            UIApplication.sharedApplication().openURL(url!)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let sms = UITableViewRowAction(style: .Default, title: "\u{2606}\n Sms") { action, index in
+            print("sms button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+        }
+        sms.backgroundColor = UIColor.blueColor()
+        
+        let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
+            print("call button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+        }
+        call.backgroundColor = UIColor.greenColor()
+        
+        let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
+            print("delete button tapped")
+            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete, sms, call]
+    }
     
     func loadUsers(){
-        let feedUrl = "http://localhost:8080/findme/api/user/fixtures"
+        let feedUrl = "http://172.20.10.2:8080/findme/api/user/v1/users"
         
         let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
         

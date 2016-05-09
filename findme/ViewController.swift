@@ -10,6 +10,18 @@ import UIKit
 import MapKit
 import CoreLocation
 
+//Hide keyboard on touch around
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var searchController:UISearchController!
@@ -59,6 +71,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         initSearchField()
         
         mapView.delegate = self
