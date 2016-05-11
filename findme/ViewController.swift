@@ -161,6 +161,10 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         self.mapView.setRegion(region , animated: true )
         self.locationManager.stopUpdatingLocation()
+        if (menuExpanded){
+            rotateMenuButton(menuExpanded)
+            menuExpanded = !menuExpanded
+        }
     }
     
     //fonction appelée en cas d'erreur
