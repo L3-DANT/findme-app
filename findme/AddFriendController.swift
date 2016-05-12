@@ -17,6 +17,7 @@ class AddFriendController : UIViewController{
     var dataTask: NSURLSessionDataTask?
     
     @IBAction func addFriend(sender: AnyObject) {
+        //TODO will be switched for the real current user
         self.user.pseudo = "Nicolas"
         let friendRequest = ["caller" : self.user.pseudo, "receiver" : self.receiver.text!] as Dictionary<String, String>
         sendFriendRequest(friendRequest)
