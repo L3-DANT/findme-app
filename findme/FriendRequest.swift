@@ -14,4 +14,5 @@ class FriendRequest{
         self.asker = asker
         self.receiver = receiver
     }
+    
 }

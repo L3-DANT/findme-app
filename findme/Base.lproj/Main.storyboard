@@ -722,7 +722,7 @@
         <!--Ajout Ami-->
         <scene sceneID="Jpj-fE-YwY">
             <objects>
-                <viewController title="Ajout Ami" id="uqd-6B-869" sceneMemberID="viewController">
+                <viewController title="Ajout Ami" id="uqd-6B-869" customClass="AddFriendController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yao-ZG-J5s"/>
                         <viewControllerLayoutGuide type="bottom" id="pEd-tz-Tf1"/>
@@ -757,6 +757,9 @@
                                     <constraint firstAttribute="width" constant="100" id="upP-l8-BnH"/>
                                 </constraints>
                                 <state key="normal" title="Ajouter"/>
+                                <connections>
+                                    <action selector="addFriend:" destination="uqd-6B-869" eventType="touchUpInside" id="XJg-lh-0HZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -771,6 +774,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter un ami" id="dav-pT-wlI"/>
+                    <connections>
+                        <outlet property="receiver" destination="j5j-k9-7hN" id="Jij-GO-RlI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWa-G0-F6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -800,7 +806,7 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lNq-q6-quc"/>
+        <segue reference="1fI-LR-z2n"/>
         <segue reference="AKr-Fv-KPL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
