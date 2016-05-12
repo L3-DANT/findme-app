@@ -11,23 +11,23 @@ import Foundation
 
 class User {
     var pseudo : String
-    var x : Double
-    var y : Double
-    var password : String
+    var longitude : Double
+    var latitude : Double
     var friendList : [User]?
+    var phoneNumber : String
     
     init() {
         self.pseudo = ""
-        self.x = 0.0
-        self.y = 0.0
-        self.password = ""
+        self.longitude = 0.0
+        self.latitude = 0.0
+        self.phoneNumber = "0000000000"
     }
     
-    init(pseudo : String, x : Double, y : Double, password : String, friendList :[User]){
+    init(pseudo : String, latitude : Double, longitude : Double, friendList :[User], phoneNumber : String){
         self.pseudo = pseudo
-        self.x = x
-        self.y = y
-        self.password = password
+        self.longitude = longitude
+        self.latitude = latitude
         self.friendList = friendList
+        self.phoneNumber = phoneNumber
     }
 }

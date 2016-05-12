@@ -6,6 +6,7 @@
 //  Copyright © 2016 Maxime Signoret. All rights reserved.
 //
 
+
 import UIKit
 
 class RegisterViewController: UIViewController {
@@ -146,3 +147,4 @@ class RegisterViewController: UIViewController {
         self.presentViewController(alert, animated: true){}
     }
 }
+

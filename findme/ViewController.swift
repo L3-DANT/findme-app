@@ -11,11 +11,14 @@ import MapKit
 import CoreLocation
 
 //Hide keyboard on touch around
+
 extension UIViewController {
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
+ 
     
     func dismissKeyboard() {
         view.endEditing(true)
@@ -117,7 +120,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         
         var users : [User] = []
         
-        let feedUrl = "http://localhost:8080/findme/api/user/fixtures"
+        let feedUrl = "http://localhost:8080/findme/api/user/v1/users"
         
         let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
         
@@ -128,14 +131,14 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                 json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)) as? [NSDictionary]{
                     for user : NSDictionary in json{
                         let name = user["pseudo"] as? String
-                        let password = user["password"] as? String
-                        let x = user["x"] as? Double
-                        let y = user["y"] as? Double
+                        let latitude = user["latitude"] as? Double
+                        let longitude = user["longitude"] as? Double
                         let friendList = user["friendList"] as? [User]
-                        let jsonUser = User(pseudo: name!, x: x!, y: y!, password: password!, friendList: friendList!)
+                        let phoneNumber = user["phoneNumber"] as? String
+                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
                         users.append(jsonUser)
                         
-                        let friendLocation = CLLocationCoordinate2D(latitude: x!, longitude: y!)
+                        let friendLocation = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
                         let friend = UserAnnotation(coordinate: friendLocation, title: name, subtitle: "")
                         annotations.append(friend)
                         self.users.append(jsonUser)
@@ -212,7 +215,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         var newDistance:CLLocationDistance
         var friendLocation:CLLocationCoordinate2D
         for user in users{
-            friendLocation = CLLocationCoordinate2D.init(latitude: user.x, longitude: user.y)
+            friendLocation = CLLocationCoordinate2D.init(latitude: user.latitude, longitude: user.longitude)
             newDistance = location.distanceFromLocation(CLLocation.init(latitude: friendLocation.latitude, longitude: friendLocation.longitude))
             print(user.pseudo)
             print(newDistance)
