@@ -120,40 +120,67 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         
         var users : [User] = []
         
-        let feedUrl = "http://localhost:8080/findme/api/user/v1/users"
+        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var dataTask: NSURLSessionDataTask?
         
-        let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
         
-//  utiliser       NSURLSession !!
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        NSURLConnection.sendAsynchronousRequest(request,queue: NSOperationQueue.mainQueue()) {
-            response, data, error in if let jsonData = data,
-                json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)) as? [NSDictionary]{
-                    for user : NSDictionary in json{
-                        let name = user["pseudo"] as? String
-                        let latitude = user["latitude"] as? Double
-                        let longitude = user["longitude"] as? Double
-                        let friendList = user["friendList"] as? [User]
-                        let phoneNumber = user["phoneNumber"] as? String
-                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                        users.append(jsonUser)
-                        
-                        let friendLocation = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-                        let friend = UserAnnotation(coordinate: friendLocation, title: name, subtitle: "")
-                        annotations.append(friend)
-                        self.users.append(jsonUser)
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        
-                        self.mapView.addAnnotations(annotations)
-                        if let location = self.mapView.userLocation.location {
-                            self.centerMapOnLocation(location)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/user/v1/users")!)
+        request.HTTPMethod = "GET"
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            do{
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let httpResponse = response as? NSHTTPURLResponse {
+                    print(httpResponse.statusCode)
+                    if httpResponse.statusCode == 200 {
+                        if self.navigationController != nil
+                        {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    
+                                    for user : NSDictionary in jsonResult{
+                                        let name = user["pseudo"] as? String
+                                        let latitude = user["latitude"] as? Double
+                                        let longitude = user["longitude"] as? Double
+                                        let friendList = user["friendList"] as? [User]
+                                        let phoneNumber = user["phoneNumber"] as? String
+                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
+                                        users.append(jsonUser)
+                                        
+                                        let friendLocation = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+                                        let friend = UserAnnotation(coordinate: friendLocation, title: name, subtitle: "")
+                                        annotations.append(friend)
+                                        self.users.append(jsonUser)
+                                    }
+                                    
+                                    self.mapView.addAnnotations(annotations)
+                                    if let location = self.mapView.userLocation.location {
+                                        self.centerMapOnLocation(location)
+                                    }
+                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                })
+                            }
                         }
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    })
+                    }
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
             }
         }
+        dataTask?.resume()
+
     }
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
