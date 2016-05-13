@@ -111,34 +111,58 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func loadUsers(){
-        let feedUrl = "http://localhost:8080/findme/api/user/v1/users"
-        
-        let request = NSURLRequest(URL: NSURL(string: feedUrl)!)
         
         self.users = []
         
-        NSURLConnection.sendAsynchronousRequest(request,queue: NSOperationQueue.mainQueue()) {
-            response, data, error in if let jsonData = data,
-            json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)) as? [NSDictionary]{
-                for user : NSDictionary in json{
-                    let name = user["pseudo"] as? String
-                    let latitude = user["latitude"] as? Double
-                    let longitude = user["longitude"] as? Double
-                    let friendList = user["friendList"] as? [User]
-                    let phoneNumber = user["phoneNumber"] as? String
-                    let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                    self.users.append(jsonUser)
+        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var dataTask: NSURLSessionDataTask?
+        
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/user/v1/users")!)
+        request.HTTPMethod = "GET"
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            do{
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let httpResponse = response as? NSHTTPURLResponse {
+                    print(httpResponse.statusCode)
+                    if httpResponse.statusCode == 200 {
+                        if self.navigationController != nil
+                        {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    for user : NSDictionary in jsonResult{
+                                        let name = user["pseudo"] as? String
+                                        let latitude = user["latitude"] as? Double
+                                        let longitude = user["longitude"] as? Double
+                                        let friendList = user["friendList"] as? [User]
+                                        let phoneNumber = user["phoneNumber"] as? String
+                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
+                                        self.users.append(jsonUser)
+                                    }
+                                    self.friendsTable.reloadData()
+                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                })
+                            }
+                        }
+                    }
                 }
-                
-                //Vu que c'est asynchrone on doit reload le tableau dans la closure !
-                dispatch_async(dispatch_get_main_queue(), {
-                    
-                    self.friendsTable.reloadData()
-                    
-                    // Masquer l'icône de chargement dans la barre de status
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                })
+            } catch let error as NSError {
+                print(error.localizedDescription)
             }
         }
+        dataTask?.resume()
     }
 }

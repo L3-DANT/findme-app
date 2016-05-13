@@ -26,7 +26,7 @@
 		295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295635711CDB7A20007F3DE9 /* WSConnection.swift */; };
 		297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */; };
 		29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */; };
-		29E3C5F31C8B19B900DDD92A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F21C8B19B900DDD92A /* ViewController.swift */; };
+		29E3C5F31C8B19B900DDD92A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F21C8B19B900DDD92A /* MapViewController.swift */; };
 		29E3C5F61C8B19B900DDD92A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F41C8B19B900DDD92A /* Main.storyboard */; };
 		29E3C5F81C8B19B900DDD92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F71C8B19B900DDD92A /* Assets.xcassets */; };
 		29E3C5FB1C8B19B900DDD92A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F91C8B19B900DDD92A /* LaunchScreen.storyboard */; };
@@ -65,7 +65,7 @@
 		297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		29E3C5ED1C8B19B900DDD92A /* findme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29E3C5F21C8B19B900DDD92A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		29E3C5F21C8B19B900DDD92A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		29E3C5F51C8B19B900DDD92A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29E3C5F71C8B19B900DDD92A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29E3C5FA1C8B19B900DDD92A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			children = (
 				0376F73B1C9808DB0023C0A7 /* Font Awesome */,
 				29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */,
-				29E3C5F21C8B19B900DDD92A /* ViewController.swift */,
+				29E3C5F21C8B19B900DDD92A /* MapViewController.swift */,
 				03B27FE51C99FE5400D744DA /* ParamViewController.swift */,
 				03B27FE71C9A018600D744DA /* ContactViewController.swift */,
 				03B27FE31C99F86700D744DA /* UserAnnotation.swift */,
@@ -267,7 +267,7 @@
 				292D66831C9AA99B00BE0DEC /* RegisterViewController.swift in Sources */,
 				03B27FEA1C9A2BF900D744DA /* UserAnnotationView.swift in Sources */,
 				03B27FEC1C9AE3F000D744DA /* Users.swift in Sources */,
-				29E3C5F31C8B19B900DDD92A /* ViewController.swift in Sources */,
+				29E3C5F31C8B19B900DDD92A /* MapViewController.swift in Sources */,
 				03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */,
 				0376F7401C9809350023C0A7 /* Enum.swift in Sources */,
 				03B27FE61C99FE5400D744DA /* ParamViewController.swift in Sources */,
