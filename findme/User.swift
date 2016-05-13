@@ -23,4 +23,6 @@ class User {
         self.friendList = friendList
         self.phoneNumber = phoneNumber
     }
+    
+    init(){}
 }
