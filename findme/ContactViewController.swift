@@ -33,26 +33,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         super.viewDidLoad()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        loadFAIcons()
-    }
-    
-    func loadFAIcons(){
-        print("gogo")
-        for view in self.view.subviews as [UIView] {
-            if let button = view as? UIButton {
-                
-                    button.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
-                    button.setTitle(String.fontAwesomeIconWithName(.Envelope), forState: .Normal)
-                 if (button.titleLabel == "Call"){
-                    button.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
-                    button.setTitle(String.fontAwesomeIconWithName(.Phone), forState: .Normal)
-                } else if (button.titleLabel == "Delete"){
-                    button.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
-                    button.setTitle(String.fontAwesomeIconWithName(.Trash), forState: .Normal)
-                }
-            }
-        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
