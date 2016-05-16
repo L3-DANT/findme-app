@@ -85,28 +85,55 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let sms = UITableViewRowAction(style: .Default, title: "\u{2606}\n Sms") { action, index in
-            print("sms button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
-        }
+        if (indexPath.section == 0){
+            let accept = UITableViewRowAction(style: .Default, title: "Accept") { action, index in
+                print("accept button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+            }
+            
+            accept.backgroundColor = UIColor.greenColor()
+            
+            let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
+                print("decline button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+            }
+            
+            decline.backgroundColor = UIColor.redColor()
+            
+            return [decline, accept]
+        } else if(indexPath.section == 2){
+            let sms = UITableViewRowAction(style: .Default, title: "\u{2606}\n Sms") { action, index in
+                print("sms button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+            }
+            
+            sms.backgroundColor = UIColor.blueColor()
+            
+            let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
+                print("call button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+            }
+            
+            call.backgroundColor = UIColor.greenColor()
+            
+            let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
+                print("delete button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+            }
+            
+            delete.backgroundColor = UIColor.redColor()
+            
+            return [delete, sms, call]
+        } else {
+            let cancel = UITableViewRowAction(style: .Default, title: "Cancel") { action, index in
+                print("cancel button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+            }
+            
+            cancel.backgroundColor = UIColor.darkGrayColor()
 
-        sms.backgroundColor = UIColor.blueColor()
-        
-        let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
-            print("call button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+            return [cancel]
         }
-
-        call.backgroundColor = UIColor.greenColor()
-        
-        let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
-            print("delete button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
-        }
-
-        delete.backgroundColor = UIColor.redColor()
-        
-        return [delete, sms, call]
     }
     
     func loadItems() {
