@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  findme
 //
 //  Created by Maxime Signoret on 05/03/16.
@@ -11,21 +11,18 @@ import MapKit
 import CoreLocation
 
 //Hide keyboard on touch around
-
 extension UIViewController {
-    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
- 
-    
+
     func dismissKeyboard() {
         view.endEditing(true)
     }
 }
 
-class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var searchController:UISearchController!
     var annotation:MKAnnotation!
@@ -36,21 +33,15 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
     var menuExpanded = false
-    
-    
     var locationManager = CLLocationManager()
-    
     var users : [User] = []
     
     @IBOutlet weak var searchTextField: UITextField!
-    
     @IBOutlet weak var searchIcon: UITextField!
-    
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var paramButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var contactButton: UIButton!
-    
     @IBOutlet weak var findMeButton: UIButton!
     
     @IBAction func showSearchBar(sender: AnyObject) {
@@ -60,6 +51,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         presentViewController(searchController, animated: true, completion: nil)
         
     }
+
     @IBAction func testSearch(sender: AnyObject) {
         let search = searchTextField.text
         for annotation in mapView.annotations as [MKAnnotation]{
@@ -113,15 +105,12 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     //fonction qui initialise les markers des amis sur la carte
-    
-    func initContactMarkers(){
-        
+    func initContactMarkers() {
         var annotations = [MKAnnotation]()
-        
         var users : [User] = []
-        
-        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         var dataTask: NSURLSessionDataTask?
+
+        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         if dataTask != nil {
             dataTask?.cancel()
@@ -139,7 +128,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
             
-            do{
+            do {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
@@ -179,18 +168,19 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
                 print(error.localizedDescription)
             }
         }
-        dataTask?.resume()
 
+        dataTask?.resume()
     }
     
     //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
-    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+
         self.mapView.setRegion(region , animated: true )
         self.locationManager.stopUpdatingLocation()
+
         if (menuExpanded){
             rotateMenuButton(menuExpanded)
             menuExpanded = !menuExpanded
@@ -198,7 +188,6 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     }
     
     //fonction appelée en cas d'erreur
-    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error" + error.localizedDescription)
     }
@@ -212,6 +201,7 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
         button.layer.cornerRadius = 25
         button.titleLabel?.font = UIFont.fontAwesomeOfSize(25)
         button.setTitle(String.fontAwesomeIconWithCode(icon), forState: .Normal)
+
         if submenu{
             button.transform = CGAffineTransformMakeScale(0.5, 0.5)
         }
@@ -228,15 +218,13 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
     
     
     @IBAction func findMe(sender: AnyObject) {
-
         let location = mapView.userLocation.location
         centerMapOnLocation(location!)
         hideButtons()
         rotateMenuButton(menuExpanded)
         menuExpanded = false
     }
-    
-    //
+
     func centerMapOnLocation(location: CLLocation) {
         var farFriendDistance:CLLocationDistance = 0
         var newDistance:CLLocationDistance
@@ -357,7 +345,4 @@ class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDe
             return nil
         }
     }
-    
-
 }
-
