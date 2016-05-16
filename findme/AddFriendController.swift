@@ -33,7 +33,7 @@ class AddFriendController : UIViewController{
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1/create")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1")!)
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(friendRequest, options: NSJSONWritingOptions.PrettyPrinted)
         
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -50,7 +50,7 @@ class AddFriendController : UIViewController{
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 print(httpResponse.statusCode)
-                if httpResponse.statusCode == 200 {
+                if httpResponse.statusCode == 204 {
                     if let navigationController = self.navigationController
                     {
                         navigationController.popViewControllerAnimated(true)

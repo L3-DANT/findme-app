@@ -13,7 +13,7 @@ import CoreLocation
 class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     @IBOutlet var friendsTable: UITableView!
     
-    var items : [[User]] = [[],[],[]]
+    var items : [[String]] = [[],[],[]]
 
     let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
     
@@ -58,7 +58,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row].pseudo)"
+        cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row])"
         
         return cell
     }
@@ -147,12 +147,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                                 dispatch_async(dispatch_get_main_queue(), {
                                     for user : NSDictionary in jsonResult{
                                         let name = user["pseudo"] as? String
-                                        let latitude = user["latitude"] as? Double
-                                        let longitude = user["longitude"] as? Double
-                                        let friendList = user["friendList"] as? [User]
-                                        let phoneNumber = user["phoneNumber"] as? String
-                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                                        self.items[2].append(jsonUser)
+                                        self.items[2].append(name!)
                                     }
                                     self.friendsTable.reloadData()
                                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -201,16 +196,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
-                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [String] {
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    for user : NSDictionary in jsonResult{
-                                        let name = user["pseudo"] as? String
-                                        let latitude = user["latitude"] as? Double
-                                        let longitude = user["longitude"] as? Double
-                                        let friendList = user["friendList"] as? [User]
-                                        let phoneNumber = user["phoneNumber"] as? String
-                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                                        self.items[1].append(jsonUser)
+                                    for user : String in jsonResult{
+                                        self.items[1].append(user)
                                     }
                                     self.friendsTable.reloadData()
                                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -257,16 +246,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
-                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [String] {
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    for user : NSDictionary in jsonResult{
-                                        let name = user["pseudo"] as? String
-                                        let latitude = user["latitude"] as? Double
-                                        let longitude = user["longitude"] as? Double
-                                        let friendList = user["friendList"] as? [User]
-                                        let phoneNumber = user["phoneNumber"] as? String
-                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                                        self.items[0].append(jsonUser)
+                                    for user : String in jsonResult{
+                                        self.items[0].append(user)
                                     }
                                     self.friendsTable.reloadData()
                                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
