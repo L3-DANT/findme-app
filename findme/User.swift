@@ -15,14 +15,14 @@ class User {
     var latitude : Double = 0.0
     var friendList : [User]?
     var phoneNumber : String = "000000000"
-    
-    init(pseudo : String, latitude : Double, longitude : Double, friendList :[User], phoneNumber : String){
+
+    init() {}
+
+    init(pseudo : String, latitude : Double, longitude : Double, friendList :[User], phoneNumber : String) {
         self.pseudo = pseudo
         self.longitude = longitude
         self.latitude = latitude
         self.friendList = friendList
         self.phoneNumber = phoneNumber
     }
-    
-    init(){}
 }
