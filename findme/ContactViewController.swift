@@ -13,12 +13,12 @@ import CoreLocation
 class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     @IBOutlet var friendsTable: UITableView!
     
-    var users : [User] = []
+    var items : [[User]] = [[],[],[]]
 
+    let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
-        
-        loadUsers()
         
         navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 52/255, green: 73/255, blue: 94/255, alpha: 1.0)
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -26,7 +26,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadUsers()
+        loadItems()
     }
     
     override func viewDidLoad() {
@@ -44,21 +44,21 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return self.items[section].count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return self.sections[section]
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = "\(self.users[indexPath.row].pseudo)"
+        cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row].pseudo)"
         
         return cell
     }
@@ -70,7 +70,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             // Add method to remove friend server side
-            users.removeAtIndex(indexPath.row)
+            items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         if editingStyle == UITableViewCellEditingStyle.Insert {
@@ -109,9 +109,15 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         return [delete, sms, call]
     }
     
-    func loadUsers() {
-        self.users = []
+    func loadItems() {
+        loadUsers()
+        loadAsked()
+        loadReceived()
+    }
+    
         
+    func loadUsers(){
+        self.items[2] = []
         let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         var dataTask: NSURLSessionDataTask?
         
@@ -119,9 +125,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             dataTask?.cancel()
         }
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/user/v1/users")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/user/fixtures")!)
         request.HTTPMethod = "GET"
         
         dataTask = defaultSession.dataTaskWithRequest(request) {
@@ -135,7 +140,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    print(httpResponse.statusCode)
                     if httpResponse.statusCode == 200 {
                         if self.navigationController != nil
                         {
@@ -148,7 +152,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                                         let friendList = user["friendList"] as? [User]
                                         let phoneNumber = user["phoneNumber"] as? String
                                         let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
-                                        self.users.append(jsonUser)
+                                        self.items[2].append(jsonUser)
                                     }
                                     self.friendsTable.reloadData()
                                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -161,7 +165,122 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 print(error.localizedDescription)
             }
         }
-
+        
         dataTask?.resume()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+
+    }
+    
+    func loadAsked(){
+        self.items[1] = []
+        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var dataTask: NSURLSessionDataTask?
+        
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?caller=Nicolas")!)
+        request.HTTPMethod = "GET"
+        
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            do {
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let httpResponse = response as? NSHTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print(httpResponse.statusCode)
+                        if self.navigationController != nil
+                        {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    for user : NSDictionary in jsonResult{
+                                        let name = user["pseudo"] as? String
+                                        let latitude = user["latitude"] as? Double
+                                        let longitude = user["longitude"] as? Double
+                                        let friendList = user["friendList"] as? [User]
+                                        let phoneNumber = user["phoneNumber"] as? String
+                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
+                                        self.items[1].append(jsonUser)
+                                    }
+                                    self.friendsTable.reloadData()
+                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                })
+                            }
+                        }
+                    }
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+        
+        dataTask?.resume()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func loadReceived(){
+        self.items[0] = []
+        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var dataTask: NSURLSessionDataTask?
+        
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?receiver=Nicolas")!)
+        request.HTTPMethod = "GET"
+        
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            do {
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let httpResponse = response as? NSHTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print(httpResponse.statusCode)
+                        if self.navigationController != nil
+                        {
+                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    for user : NSDictionary in jsonResult{
+                                        let name = user["pseudo"] as? String
+                                        let latitude = user["latitude"] as? Double
+                                        let longitude = user["longitude"] as? Double
+                                        let friendList = user["friendList"] as? [User]
+                                        let phoneNumber = user["phoneNumber"] as? String
+                                        let jsonUser = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber : phoneNumber!)
+                                        self.items[0].append(jsonUser)
+                                    }
+                                    self.friendsTable.reloadData()
+                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                })
+                            }
+                        }
+                    }
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+        
+        dataTask?.resume()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
 }
