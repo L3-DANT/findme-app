@@ -82,22 +82,49 @@ class WSService {
     }
     
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        makeHTTPRequest(wsConnection + "/user/v1/getUser?pseudo=\(username)", params: nil, onCompletion: { json, err in
+        makeHTTPRequest(wsConnection + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
             let data = json!["data"]
             
             if err != nil || (data is NSNull) {
                 onCompletion(nil, err)
             } else {
-                let name = data!["pseudo"] as? String
-                let latitude = data!["latitude"] as? Double
-                let longitude = data!["longitude"] as? Double
-                let friendList = data!["friendList"] as? [User]
-                let phoneNumber = data!["phoneNumber"] as? String
+                let name = json!["pseudo"] as? String
+                let latitude = json!["latitude"] as? Double
+                let longitude = json!["longitude"] as? Double
+                let friends = json!["friendList"] as? [NSDictionary]
+                var friendList : [User] = []
+                for user in friends! as [NSDictionary]{
+                    let friendName = user["pseudo"] as? String
+                    let friendLatitude = user["latitude"] as? Double
+                    let friendLongitude = user["longitude"] as? Double
+                    let friendPhoneNumber = user["phoneNumber"] as? String
+                    let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
+                    friendList.append(friend)
+                }
+                let phoneNumber = json!["phoneNumber"] as? String
                 
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber: phoneNumber!)
+                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
                 
                 onCompletion(user, nil)
             }
+        })
+    }
+    
+    func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
+    
+    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
+    
+    func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+            onCompletion(err)
         })
     }
 
@@ -106,7 +133,7 @@ class WSService {
             let request = NSMutableURLRequest(URL: NSURL(string: path)!)
             request.HTTPMethod = HTTPMethod
             
-            if HTTPMethod != "GET" {
+            if HTTPMethod != "GET" && HTTPMethod != "DELETE"{
                 let postData:NSData = try NSJSONSerialization.dataWithJSONObject(params!, options: NSJSONWritingOptions())
                 let postLength:NSString = String(postData.length)
             

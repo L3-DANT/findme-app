@@ -50,11 +50,8 @@ class AddFriendController : UIViewController{
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 print(httpResponse.statusCode)
-                if httpResponse.statusCode == 204 {
-                    if let navigationController = self.navigationController
-                    {
-                        navigationController.popViewControllerAnimated(true)
-                    }
+                if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300 {
+                    self.navigationController!.popViewControllerAnimated(true)
                 }
                 //TODO autres status
             }

@@ -18,7 +18,7 @@ class User {
 
     init() {}
 
-    init(pseudo : String, latitude : Double, longitude : Double, friendList :[User], phoneNumber : String) {
+    init(pseudo : String, latitude : Double, longitude : Double, friendList :[User] = [], phoneNumber : String) {
         self.pseudo = pseudo
         self.longitude = longitude
         self.latitude = latitude

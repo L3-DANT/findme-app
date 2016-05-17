@@ -13,9 +13,13 @@ import CoreLocation
 class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     @IBOutlet var friendsTable: UITableView!
     
+    
     var items : [[String]] = [[],[],[]]
 
     let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
+    
+    let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    var dataTask: NSURLSessionDataTask?
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
@@ -35,6 +39,24 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
+    @IBAction func addFriend(sender: AnyObject) {
+        let alert = UIAlertController(title: "Add Friend", message: "Enter the name of the friend you want to add", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.sendFriendRequest(textField.text!)
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -44,7 +66,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return sections.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +74,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section]
+        return self.items[section].count > 0 ? sections[section] : nil
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,37 +100,80 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let number = "sms:+33667479299"
             UIApplication.sharedApplication().openURL(NSURL(string: number)!)
         }
-        if editingStyle == UITableViewCellEditingStyle.None {
-            let url = NSURL(string: "tel://0667479299")
-            UIApplication.sharedApplication().openURL(url!)
-        }
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        let sms = UITableViewRowAction(style: .Default, title: "Sms") { action, index in
-            print("sms button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+        if (indexPath.section == 0){
+            let accept = UITableViewRowAction(style: .Default, title: "Accept", handler: { (action:UITableViewRowAction!, indexPath: NSIndexPath) -> Void in
+                
+                let acceptMenu = UIAlertController(title: nil, message: "Accept Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
+                
+                let acceptAction = UIAlertAction(title: "Accept", style: .Default, handler: {(alert: UIAlertAction!) in self.acceptFriendRequest(indexPath)})
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                acceptMenu.addAction(acceptAction)
+                acceptMenu.addAction(cancelAction)
+                
+                self.presentViewController(acceptMenu, animated : true, completion : nil)
+            })
             
-        }
-        
-        sms.backgroundColor = UIColor(colorLiteralRed: 0.9450, green: 0.7686, blue: 0.0588, alpha: 1.0)
-        
-        let call = UITableViewRowAction(style: .Normal, title: "Call") { action, index in
-            print("call button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
-        }
+            accept.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
+            
+            let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
+                let declineMenu = UIAlertController(title: nil, message: "Decline Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
+                
+                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                declineMenu.addAction(declineAction)
+                declineMenu.addAction(cancelAction)
+                
+                self.presentViewController(declineMenu, animated : true, completion : nil)
+            }
+            
+            decline.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
+            
+            return [decline, accept]
+        } else if(indexPath.section == 2){
+            let sms = UITableViewRowAction(style: .Default, title: "Sms") { action, index in
+                print("sms button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+            }
+            
+            sms.backgroundColor = UIColor(colorLiteralRed: 0.9450, green: 0.7686, blue: 0.0588, alpha: 1.0)
+            
+            let call = UITableViewRowAction(style: .Normal, title: "Call") { action, index in
+                print("call button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+            }
+            
+            call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
+            
+            let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
+                print("delete button tapped")
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+            }
+            
+            delete.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
+            
+            return [delete, sms, call]
+        } else {
+            let cancel = UITableViewRowAction(style: .Default, title: "Cancel") { action, index in
+                let cancelMenu = UIAlertController(title: nil, message: "Cancel Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
+                
+                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: {(alert: UIAlertAction!) in self.cancelFriendRequest(indexPath)})
+                let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+                
+                cancelMenu.addAction(acceptAction)
+                cancelMenu.addAction(cancelAction)
+                
+                self.presentViewController(cancelMenu, animated : true, completion : nil)
+            }
+            
+            cancel.backgroundColor = UIColor.darkGrayColor()
 
-        call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
-        
-        let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
-            print("delete button tapped")
-            self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+            return [cancel]
         }
-
-        delete.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
-        
-        return [delete, sms, call]
     }
     
     func loadItems() {
@@ -120,59 +185,24 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
     func loadUsers(){
         self.items[2] = []
-        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        var dataTask: NSURLSessionDataTask?
         
-        if dataTask != nil {
-            dataTask?.cancel()
-        }
+        //TODO change with username in memory
+        let pseudo = "Nicolas"
         
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/user/fixtures")!)
-        request.HTTPMethod = "GET"
-        
-        dataTask = defaultSession.dataTaskWithRequest(request) {
-            data, response, error in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-            
-            do {
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        if self.navigationController != nil
-                        {
-                            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    for user : NSDictionary in jsonResult{
-                                        let name = user["pseudo"] as? String
-                                        self.items[2].append(name!)
-                                    }
-                                    self.friendsTable.reloadData()
-                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                                })
-                            }
-                        }
-                    }
+        let wsService = WSService()
+        wsService.getUser(pseudo, onCompletion: { user, err in
+            if err != nil && user != nil && user?.friendList != nil {
+                for friend in user!.friendList!{
+                    self.items[2].append(friend.pseudo)
                 }
-            } catch let error as NSError {
-                print(error.localizedDescription)
+                self.friendsTable.reloadData()
             }
-        }
-        
-        dataTask?.resume()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-
+        })
     }
     
     func loadAsked(){
         self.items[1] = []
-        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        var dataTask: NSURLSessionDataTask?
+        
         
         if dataTask != nil {
             dataTask?.cancel()
@@ -194,7 +224,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -221,13 +251,13 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadReceived(){
         self.items[0] = []
+        
         let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         var dataTask: NSURLSessionDataTask?
         
         if dataTask != nil {
             dataTask?.cancel()
         }
-        
         
         let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?receiver=Nicolas")!)
         request.HTTPMethod = "GET"
@@ -244,7 +274,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -267,5 +297,62 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         dataTask?.resume()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
     }
+    
+    
+    func acceptFriendRequest(indexPath : NSIndexPath){
+        let caller = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let receiver = "Nicolas"
+        
+        let friendrequest = ["caller" : caller, "receiver" : receiver]
+        
+        let wsService = WSService()
+        wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
+            if (err != nil){
+                self.loadItems()
+            }
+        })
+    }
+    
+    func cancelFriendRequest(indexPath : NSIndexPath){
+        let receiver = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let caller = "Nicolas"
+    
+        let wsService = WSService()
+        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+            if (err != nil){
+                self.loadItems()
+            }
+        })
+    }
+    
+    func declineFriendRequest(indexPath : NSIndexPath){
+        let caller = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let receiver = "Nicolas"
+        
+        let wsService = WSService()
+        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+            if (err != nil){
+                self.loadItems()
+            }
+        })
+
+    }
+    
+    func sendFriendRequest(name : String){
+        //TODO change for logged in user name
+        let friendRequest = ["caller" :  "Nicolas", "receiver" : name]
+        
+        let wsService = WSService()
+        wsService.sendFriendRequest(friendRequest, onCompletion: { err in
+            if (err != nil){
+                self.loadItems()
+            }
+        })
+    }
+    
 }
