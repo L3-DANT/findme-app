@@ -13,6 +13,7 @@ import CoreLocation
 class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     @IBOutlet var friendsTable: UITableView!
     
+    
     var items : [[String]] = [[],[],[]]
 
     let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
@@ -36,6 +37,24 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         super.viewDidLoad()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    @IBAction func addFriend(sender: AnyObject) {
+        let alert = UIAlertController(title: "Add Friend", message: "Enter the name of the friend you want to add", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.sendFriendRequest(textField.text!)
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -374,6 +393,43 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             }
         }
         dataTask?.resume()
+    }
+    
+    func sendFriendRequest(name : String){
+        //TODO change for logged in user name
+        let friendRequest = ["caller" :  "Nicolas", "receiver" : name]
+        
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1")!)
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(friendRequest, options: NSJSONWritingOptions.PrettyPrinted)
+        
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "PUT"
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? NSHTTPURLResponse {
+                print(httpResponse.statusCode)
+                if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300 {
+                    self.loadItems()
+                }
+                //TODO autres status
+            }
+        }
+        dataTask?.resume()
+
     }
     
 }

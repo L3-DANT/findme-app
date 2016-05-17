@@ -707,7 +707,7 @@
                     <navigationItem key="navigationItem" title="Amis" id="n5h-yh-7Zr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="txR-QZ-hUJ">
                             <connections>
-                                <segue destination="uqd-6B-869" kind="show" id="6pQ-DE-Pxy"/>
+                                <action selector="addFriend:" destination="ofK-ZL-EWY" id="ufi-Kw-jQW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -719,70 +719,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mV-4P-Cqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="p7R-sG-ePt"/>
             </objects>
-            <point key="canvasLocation" x="1760" y="1136"/>
-        </scene>
-        <!--Ajout Ami-->
-        <scene sceneID="Jpj-fE-YwY">
-            <objects>
-                <viewController title="Ajout Ami" id="uqd-6B-869" customClass="AddFriendController" customModule="findme" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yao-ZG-J5s"/>
-                        <viewControllerLayoutGuide type="bottom" id="pEd-tz-Tf1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Xga-vK-SXB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j5j-k9-7hN">
-                                <rect key="frame" x="200" y="285" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Z4d-Eq-zKL"/>
-                                    <constraint firstAttribute="width" constant="100" id="znE-N0-9xh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="znE-N0-9xh"/>
-                                    </mask>
-                                </variation>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pseudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKU-Q0-FLM">
-                                <rect key="frame" x="271" y="239" width="58" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSZ-0k-dMj">
-                                <rect key="frame" x="250" y="347" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="upP-l8-BnH"/>
-                                </constraints>
-                                <state key="normal" title="Ajouter"/>
-                                <connections>
-                                    <action selector="addFriend:" destination="uqd-6B-869" eventType="touchUpInside" id="XJg-lh-0HZ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="j5j-k9-7hN" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="6Pw-a0-Qk9"/>
-                            <constraint firstItem="hKU-Q0-FLM" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="9s0-ne-doc"/>
-                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="centerX" secondItem="Xga-vK-SXB" secondAttribute="centerX" id="9wX-wd-Ltn"/>
-                            <constraint firstItem="j5j-k9-7hN" firstAttribute="centerY" secondItem="Xga-vK-SXB" secondAttribute="centerY" id="V0s-9f-9bd"/>
-                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="centerX" secondItem="j5j-k9-7hN" secondAttribute="centerX" id="Xni-6E-Qao"/>
-                            <constraint firstItem="j5j-k9-7hN" firstAttribute="top" secondItem="hKU-Q0-FLM" secondAttribute="bottom" constant="25" id="iOb-J8-Cup"/>
-                            <constraint firstItem="mSZ-0k-dMj" firstAttribute="top" secondItem="j5j-k9-7hN" secondAttribute="bottom" constant="32" id="tcs-LZ-Ggg"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Ajouter un ami" id="dav-pT-wlI"/>
-                    <connections>
-                        <outlet property="receiver" destination="j5j-k9-7hN" id="Jij-GO-RlI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pWa-G0-F6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2488" y="1136"/>
+            <point key="canvasLocation" x="1686" y="1144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zmt-H3-hUb">

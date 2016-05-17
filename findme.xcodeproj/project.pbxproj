@@ -12,7 +12,6 @@
 		0376F7401C9809350023C0A7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73C1C9809350023C0A7 /* Enum.swift */; };
 		0376F7411C9809350023C0A7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0376F73D1C9809350023C0A7 /* FontAwesome.otf */; };
 		0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73F1C9809350023C0A7 /* FontAwesome.swift */; };
-		037DB5441CDA2DDE008058DC /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037DB5431CDA2DDE008058DC /* FriendRequest.swift */; };
 		03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE31C99F86700D744DA /* UserAnnotation.swift */; };
 		03B27FE61C99FE5400D744DA /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE51C99FE5400D744DA /* ParamViewController.swift */; };
 		03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE71C9A018600D744DA /* ContactViewController.swift */; };
@@ -50,7 +49,6 @@
 		0376F73D1C9809350023C0A7 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		0376F73E1C9809350023C0A7 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
 		0376F73F1C9809350023C0A7 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
-		037DB5431CDA2DDE008058DC /* FriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
 		03B27FE31C99F86700D744DA /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		03B27FE51C99FE5400D744DA /* ParamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamViewController.swift; sourceTree = "<group>"; };
 		03B27FE71C9A018600D744DA /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				03B27FEB1C9AE3F000D744DA /* Users.swift */,
 				0340A4B91CBE888100A4984D /* AddFriendController.swift */,
 				0340A4BB1CBE88A700A4984D /* User.swift */,
-				037DB5431CDA2DDE008058DC /* FriendRequest.swift */,
 				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
 				295635711CDB7A20007F3DE9 /* WSConnection.swift */,
 				29C3EC9B1CE31C0E00F613C1 /* WSService.swift */,
@@ -281,7 +278,6 @@
 				29C3EC9C1CE31C0E00F613C1 /* WSService.swift in Sources */,
 				297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */,
 				29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */,
-				037DB5441CDA2DDE008058DC /* FriendRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
