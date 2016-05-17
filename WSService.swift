@@ -107,13 +107,31 @@ class WSService {
             }
         })
     }
+    
+    func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
+    
+    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
+    
+    func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
+        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
 
     func makeHTTPRequest(path: String, params: [String: String]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
         do {
             let request = NSMutableURLRequest(URL: NSURL(string: path)!)
             request.HTTPMethod = HTTPMethod
             
-            if HTTPMethod != "GET" {
+            if HTTPMethod != "GET" && HTTPMethod != "DELETE"{
                 let postData:NSData = try NSJSONSerialization.dataWithJSONObject(params!, options: NSJSONWritingOptions())
                 let postLength:NSString = String(postData.length)
             

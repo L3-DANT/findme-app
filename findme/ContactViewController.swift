@@ -314,36 +314,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let friendrequest = ["caller" : caller, "receiver" : receiver]
         
-        if dataTask != nil {
-            dataTask?.cancel()
-        }
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1")!)
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(friendrequest, options: NSJSONWritingOptions.PrettyPrinted)
-        
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "POST"
-        
-        dataTask = defaultSession.dataTaskWithRequest(request) {
-            data, response, error in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-            
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let httpResponse = response as? NSHTTPURLResponse {
-                print(httpResponse.statusCode)
-                if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
-                    self.loadItems()
-                }
-                
-            }
-        }
-        dataTask?.resume()
+        let wsService = WSService()
+        wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
+            self.loadItems()
+        })
     }
     
     func cancelFriendRequest(indexPath : NSIndexPath){
@@ -351,7 +325,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         //TODO change for logged user
         let caller = "Nicolas"
     
-        deleteFriendRequest(caller, receiver : receiver)
+        let wsService = WSService()
+        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+            self.loadItems()
+        })
 
     }
     
@@ -360,76 +337,21 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         //TODO change for logged user
         let receiver = "Nicolas"
         
-        deleteFriendRequest(caller, receiver : receiver)
+        let wsService = WSService()
+        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+            self.loadItems()
+        })
 
-    }
-    
-    func deleteFriendRequest(caller: String, receiver : String){
-        if dataTask != nil {
-            dataTask?.cancel()
-        }
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?caller=\(caller)&receiver=\(receiver)")!)
-        
-        request.HTTPMethod = "DELETE"
-        
-        dataTask = defaultSession.dataTaskWithRequest(request) {
-            data, response, error in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-            
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let httpResponse = response as? NSHTTPURLResponse {
-                print(httpResponse.statusCode)
-                if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
-                    self.loadItems()
-                }
-                
-            }
-        }
-        dataTask?.resume()
     }
     
     func sendFriendRequest(name : String){
         //TODO change for logged in user name
         let friendRequest = ["caller" :  "Nicolas", "receiver" : name]
         
-        if dataTask != nil {
-            dataTask?.cancel()
-        }
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1")!)
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(friendRequest, options: NSJSONWritingOptions.PrettyPrinted)
-        
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "PUT"
-        
-        dataTask = defaultSession.dataTaskWithRequest(request) {
-            data, response, error in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-            
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let httpResponse = response as? NSHTTPURLResponse {
-                print(httpResponse.statusCode)
-                if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300 {
-                    self.loadItems()
-                }
-                //TODO autres status
-            }
-        }
-        dataTask?.resume()
-
+        let wsService = WSService()
+        wsService.sendFriendRequest(friendRequest, onCompletion: { err in
+            self.loadItems()
+        })
     }
     
 }
