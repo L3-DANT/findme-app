@@ -100,9 +100,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let number = "sms:+33667479299"
             UIApplication.sharedApplication().openURL(NSURL(string: number)!)
         }
-        
-        
-        
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -194,7 +191,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let wsService = WSService()
         wsService.getUser(pseudo, onCompletion: { user, err in
-            if user != nil && user?.friendList != nil {
+            if err != nil && user != nil && user?.friendList != nil {
                 for friend in user!.friendList!{
                     self.items[2].append(friend.pseudo)
                 }
@@ -227,7 +224,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -277,7 +274,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -313,7 +310,9 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let wsService = WSService()
         wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
-            self.loadItems()
+            if (err != nil){
+                self.loadItems()
+            }
         })
     }
     
@@ -324,9 +323,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
         let wsService = WSService()
         wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
-            self.loadItems()
+            if (err != nil){
+                self.loadItems()
+            }
         })
-
     }
     
     func declineFriendRequest(indexPath : NSIndexPath){
@@ -336,7 +336,9 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let wsService = WSService()
         wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
-            self.loadItems()
+            if (err != nil){
+                self.loadItems()
+            }
         })
 
     }
@@ -347,7 +349,9 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let wsService = WSService()
         wsService.sendFriendRequest(friendRequest, onCompletion: { err in
-            self.loadItems()
+            if (err != nil){
+                self.loadItems()
+            }
         })
     }
     
