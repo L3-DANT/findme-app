@@ -13,7 +13,7 @@ import CoreLocation
 class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     @IBOutlet var friendsTable: UITableView!
     
-    
+    var user : User = User()
     var items : [[String]] = [[],[],[]]
 
     let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
@@ -30,30 +30,26 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadItems()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadItems()
+        getCurrentUser()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     @IBAction func addFriend(sender: AnyObject) {
         let alert = UIAlertController(title: "Add Friend", message: "Enter the name of the friend you want to add", preferredStyle: .Alert)
         
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = ""
-        })
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in })
         
-        //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.sendFriendRequest(textField.text!)
         }))
         
-        // 4. Present the alert.
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -96,8 +92,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         if editingStyle == UITableViewCellEditingStyle.Insert {
-            // Fix with true sms number
-            let number = "sms:+33667479299"
+            let number = self.user.phoneNumber
             UIApplication.sharedApplication().openURL(NSURL(string: number)!)
         }
     }
@@ -150,8 +145,15 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
             
             let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
-                print("delete button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
+                let deleteMenu = UIAlertController(title: nil, message: "Remove \(self.items[indexPath.section][indexPath.row]) from your friend list ?", preferredStyle: .Alert)
+                
+                let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                deleteMenu.addAction(deleteAction)
+                deleteMenu.addAction(cancelAction)
+                
+                self.presentViewController(deleteMenu, animated : true, completion : nil)
             }
             
             delete.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
@@ -185,14 +187,12 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
     func loadUsers(){
         self.items[2] = []
-        
-        //TODO change with username in memory
-        let pseudo = "Nicolas"
+        getCurrentUser()
         
         let wsService = WSService()
-        wsService.getUser(pseudo, onCompletion: { user, err in
-            if err != nil && user != nil && user?.friendList != nil {
-                for friend in user!.friendList!{
+        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
+            if err == nil{
+                for friend in (user?.friendList)!{
                     self.items[2].append(friend.pseudo)
                 }
                 self.friendsTable.reloadData()
@@ -202,14 +202,13 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadAsked(){
         self.items[1] = []
-        
+        getCurrentUser()
         
         if dataTask != nil {
             dataTask?.cancel()
         }
         
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?caller=Nicolas")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?caller=\(self.user.pseudo)")!)
         request.HTTPMethod = "GET"
         
         
@@ -250,6 +249,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func loadReceived(){
+        getCurrentUser()
         self.items[0] = []
         
         let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -259,7 +259,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             dataTask?.cancel()
         }
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?receiver=Nicolas")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?receiver=\(self.user.pseudo)")!)
         request.HTTPMethod = "GET"
         
         
@@ -302,57 +302,56 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     
     func acceptFriendRequest(indexPath : NSIndexPath){
+        getCurrentUser()
         let caller = items[indexPath.section][indexPath.row]
-        //TODO change for logged user
-        let receiver = "Nicolas"
+        let receiver = self.user.pseudo
         
         let friendrequest = ["caller" : caller, "receiver" : receiver]
         
         let wsService = WSService()
         wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
-            if (err != nil){
-                self.loadItems()
-            }
+            self.loadItems()
         })
     }
     
     func cancelFriendRequest(indexPath : NSIndexPath){
+        getCurrentUser()
         let receiver = items[indexPath.section][indexPath.row]
-        //TODO change for logged user
-        let caller = "Nicolas"
+        let caller = self.user.pseudo
     
         let wsService = WSService()
         wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
-            if (err != nil){
-                self.loadItems()
-            }
+            self.loadItems()
         })
     }
     
     func declineFriendRequest(indexPath : NSIndexPath){
+        getCurrentUser()
         let caller = items[indexPath.section][indexPath.row]
-        //TODO change for logged user
-        let receiver = "Nicolas"
+        let receiver = self.user.pseudo
         
         let wsService = WSService()
         wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
-            if (err != nil){
-                self.loadItems()
-            }
+            self.loadItems()
         })
-
     }
     
     func sendFriendRequest(name : String){
-        //TODO change for logged in user name
-        let friendRequest = ["caller" :  "Nicolas", "receiver" : name]
+        getCurrentUser()
+        let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
         
         let wsService = WSService()
         wsService.sendFriendRequest(friendRequest, onCompletion: { err in
-            if (err != nil){
-                self.loadItems()
-            }
+            self.loadItems()
         })
     }
     
+    func getCurrentUser(){
+        let userStored = NSUserDefaults.standardUserDefaults().objectForKey("user")
+        let name = userStored!["pseudo"] as? String
+        let longitude = userStored!["longitude"] as? Double
+        let latitude = userStored!["latitude"] as? Double
+        let phoneNumber = userStored!["phoneNumber"] as? String
+        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, phoneNumber: phoneNumber!)
+    }
 }

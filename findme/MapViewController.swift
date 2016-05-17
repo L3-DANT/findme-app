@@ -35,6 +35,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     var menuExpanded = false
     var locationManager = CLLocationManager()
     var users : [User] = []
+    var user : User = User()
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIcon: UITextField!
@@ -49,7 +50,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = self
         presentViewController(searchController, animated: true, completion: nil)
-        
     }
 
     @IBAction func testSearch(sender: AnyObject) {
@@ -91,6 +91,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
+        
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -106,13 +107,11 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
+        getCurrentUser()
         var annotations = [MKAnnotation]()
         
-        //TODO change with username in memory
-        let pseudo = "Nicolas"
-        
         let wsService = WSService()
-        wsService.getUser(pseudo, onCompletion: { user, err in
+        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
             if user != nil && user?.friendList != nil {
                 for friend in user!.friendList!{
                     let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
@@ -171,8 +170,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         searchIcon.font = UIFont.fontAwesomeOfSize(15)
         searchIcon.text = String.fontAwesomeIconWithName(.Search)
     }
-
-    
     
     @IBAction func findMe(sender: AnyObject) {
         let location = mapView.userLocation.location
@@ -301,5 +298,14 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         } else {
             return nil
         }
+    }
+    
+    func getCurrentUser(){
+        let userStored = NSUserDefaults.standardUserDefaults().objectForKey("user")
+        let name = userStored!["pseudo"] as? String
+        let longitude = userStored!["longitude"] as? Double
+        let latitude = userStored!["latitude"] as? Double
+        let phoneNumber = userStored!["phoneNumber"] as? String
+        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, phoneNumber: phoneNumber!)
     }
 }

@@ -46,9 +46,8 @@ class LoginViewController: UIViewController {
         let user = NSUserDefaults.standardUserDefaults().objectForKey(self.userAppSession)
         //No need login if user in session
         if user != nil {
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MapViewController")
-            self.presentViewController(vc, animated: true, completion: nil)
+            let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
+            self.showViewController(vc as UIViewController, sender: vc)
         }
     }
     
