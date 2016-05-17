@@ -189,10 +189,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     func loadUsers(){
         self.items[2] = []
         
-        if dataTask != nil {
-            dataTask?.cancel()
-        }
-        
         //TODO change with username in memory
         let pseudo = "Nicolas"
         
@@ -258,13 +254,13 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadReceived(){
         self.items[0] = []
+        
         let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         var dataTask: NSURLSessionDataTask?
         
         if dataTask != nil {
             dataTask?.cancel()
         }
-        
         
         let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?receiver=Nicolas")!)
         request.HTTPMethod = "GET"
@@ -304,6 +300,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         dataTask?.resume()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
     }
     
     

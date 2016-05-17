@@ -95,8 +95,10 @@ class WSService {
                 var friendList : [User] = []
                 for user in friends! as [NSDictionary]{
                     let friendName = user["pseudo"] as? String
-                    let friend : User = User()
-                    friend.pseudo = friendName!
+                    let friendLatitude = user["latitude"] as? Double
+                    let friendLongitude = user["longitude"] as? Double
+                    let friendPhoneNumber = user["phoneNumber"] as? String
+                    let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
                     friendList.append(friend)
                 }
                 let phoneNumber = json!["phoneNumber"] as? String
