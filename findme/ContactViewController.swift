@@ -17,6 +17,9 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
 
     let sections : [String] = ["Incoming Requests", "Request sended", "Friends"]
     
+    let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    var dataTask: NSURLSessionDataTask?
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
         
@@ -44,7 +47,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return sections.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +55,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section]
+        return self.items[section].count > 0 ? sections[section] : nil
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,7 +92,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 
                 let acceptMenu = UIAlertController(title: nil, message: "Accept Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
                 
-                let acceptAction = UIAlertAction(title: "Accept", style: .Default, handler: nil)
+                let acceptAction = UIAlertAction(title: "Accept", style: .Default, handler: {(alert: UIAlertAction!) in self.acceptFriendRequest(indexPath)})
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 
                 acceptMenu.addAction(acceptAction)
@@ -103,7 +106,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
                 let declineMenu = UIAlertController(title: nil, message: "Decline Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
                 
-                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: nil)
+                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 
                 declineMenu.addAction(declineAction)
@@ -142,7 +145,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let cancel = UITableViewRowAction(style: .Default, title: "Cancel") { action, index in
                 let cancelMenu = UIAlertController(title: nil, message: "Cancel Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
                 
-                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: nil)
+                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: {(alert: UIAlertAction!) in self.cancelFriendRequest(indexPath)})
                 let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
                 
                 cancelMenu.addAction(acceptAction)
@@ -188,7 +191,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
                         if self.navigationController != nil
                         {
                             if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [NSDictionary] {
@@ -217,8 +220,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadAsked(){
         self.items[1] = []
-        let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        var dataTask: NSURLSessionDataTask?
+        
         
         if dataTask != nil {
             dataTask?.cancel()
@@ -240,7 +242,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -290,7 +292,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
                         print(httpResponse.statusCode)
                         if self.navigationController != nil
                         {
@@ -314,4 +316,94 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         dataTask?.resume()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
+    
+    
+    func acceptFriendRequest(indexPath : NSIndexPath){
+        let caller = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let receiver = "Nicolas"
+        
+        let friendrequest = ["caller" : caller, "receiver" : receiver]
+        
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1")!)
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(friendrequest, options: NSJSONWritingOptions.PrettyPrinted)
+        
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "POST"
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? NSHTTPURLResponse {
+                print(httpResponse.statusCode)
+                if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
+                    self.loadItems()
+                }
+                
+            }
+        }
+        dataTask?.resume()
+    }
+    
+    func cancelFriendRequest(indexPath : NSIndexPath){
+        let receiver = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let caller = "Nicolas"
+    
+        deleteFriendRequest(caller, receiver : receiver)
+
+    }
+    
+    func declineFriendRequest(indexPath : NSIndexPath){
+        let caller = items[indexPath.section][indexPath.row]
+        //TODO change for logged user
+        let receiver = "Nicolas"
+        
+        deleteFriendRequest(caller, receiver : receiver)
+
+    }
+    
+    func deleteFriendRequest(caller: String, receiver : String){
+        if dataTask != nil {
+            dataTask?.cancel()
+        }
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:8080/findme/api/friendrequest/v1?caller=\(caller)&receiver=\(receiver)")!)
+        
+        request.HTTPMethod = "DELETE"
+        
+        dataTask = defaultSession.dataTaskWithRequest(request) {
+            data, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? NSHTTPURLResponse {
+                print(httpResponse.statusCode)
+                if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 300) {
+                    self.loadItems()
+                }
+                
+            }
+        }
+        dataTask?.resume()
+    }
+    
 }
