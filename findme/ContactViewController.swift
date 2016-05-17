@@ -78,24 +78,38 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let number = "sms:+33667479299"
             UIApplication.sharedApplication().openURL(NSURL(string: number)!)
         }
-        if editingStyle == UITableViewCellEditingStyle.None {
-            let url = NSURL(string: "tel://0667479299")
-            UIApplication.sharedApplication().openURL(url!)
-        }
+        
+        
+        
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         if (indexPath.section == 0){
-            let accept = UITableViewRowAction(style: .Default, title: "Accept") { action, index in
-                print("accept button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
-            }
+            let accept = UITableViewRowAction(style: .Default, title: "Accept", handler: { (action:UITableViewRowAction!, indexPath: NSIndexPath) -> Void in
+                
+                let acceptMenu = UIAlertController(title: nil, message: "Accept Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
+                
+                let acceptAction = UIAlertAction(title: "Accept", style: .Default, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                acceptMenu.addAction(acceptAction)
+                acceptMenu.addAction(cancelAction)
+                
+                self.presentViewController(acceptMenu, animated : true, completion : nil)
+            })
             
             accept.backgroundColor = UIColor.greenColor()
             
             let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
-                print("decline button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+                let declineMenu = UIAlertController(title: nil, message: "Decline Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
+                
+                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                declineMenu.addAction(declineAction)
+                declineMenu.addAction(cancelAction)
+                
+                self.presentViewController(declineMenu, animated : true, completion : nil)
             }
             
             decline.backgroundColor = UIColor.redColor()
@@ -126,8 +140,15 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             return [delete, sms, call]
         } else {
             let cancel = UITableViewRowAction(style: .Default, title: "Cancel") { action, index in
-                print("cancel button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+                let cancelMenu = UIAlertController(title: nil, message: "Cancel Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .ActionSheet)
+                
+                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: nil)
+                let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+                
+                cancelMenu.addAction(acceptAction)
+                cancelMenu.addAction(cancelAction)
+                
+                self.presentViewController(cancelMenu, animated : true, completion : nil)
             }
             
             cancel.backgroundColor = UIColor.darkGrayColor()
