@@ -138,21 +138,21 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             
             return [decline, accept]
         } else if(indexPath.section == 2){
-            let sms = UITableViewRowAction(style: .Default, title: "\u{2606}\n Sms") { action, index in
+            let sms = UITableViewRowAction(style: .Default, title: "Sms") { action, index in
                 print("sms button tapped")
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
             }
             
             sms.backgroundColor = UIColor(colorLiteralRed: 0.9450, green: 0.7686, blue: 0.0588, alpha: 1.0)
             
-            let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
+            let call = UITableViewRowAction(style: .Normal, title: "Call") { action, index in
                 print("call button tapped")
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
             }
             
             call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
             
-            let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
+            let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
                 print("delete button tapped")
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
             }

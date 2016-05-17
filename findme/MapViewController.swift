@@ -107,7 +107,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
         var annotations = [MKAnnotation]()
-        var users : [User] = []
         
         //TODO change with username in memory
         let pseudo = "Nicolas"
