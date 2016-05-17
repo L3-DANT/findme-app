@@ -120,7 +120,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 self.presentViewController(acceptMenu, animated : true, completion : nil)
             })
             
-            accept.backgroundColor = UIColor.greenColor()
+            accept.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
             
             let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
                 let declineMenu = UIAlertController(title: nil, message: "Decline Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
@@ -134,7 +134,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 self.presentViewController(declineMenu, animated : true, completion : nil)
             }
             
-            decline.backgroundColor = UIColor.redColor()
+            decline.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
             
             return [decline, accept]
         } else if(indexPath.section == 2){
@@ -143,21 +143,21 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
             }
             
-            sms.backgroundColor = UIColor.blueColor()
+            sms.backgroundColor = UIColor(colorLiteralRed: 0.9450, green: 0.7686, blue: 0.0588, alpha: 1.0)
             
             let call = UITableViewRowAction(style: .Normal, title: "\u{2605}\n Call") { action, index in
                 print("call button tapped")
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
             }
             
-            call.backgroundColor = UIColor.greenColor()
+            call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
             
             let delete = UITableViewRowAction(style: .Default, title: "\u{267A}\n Delete") { action, index in
                 print("delete button tapped")
                 self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: indexPath)
             }
             
-            delete.backgroundColor = UIColor.redColor()
+            delete.backgroundColor = UIColor(colorLiteralRed: 0.7529, green: 0.2235, blue: 0.1686, alpha: 1.0)
             
             return [delete, sms, call]
         } else {
