@@ -54,14 +54,12 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
 
     @IBAction func testSearch(sender: AnyObject) {
         let search = searchTextField.text
-        for annotation in mapView.annotations as [MKAnnotation]{
-            if annotation.title! == search!{
-                mapView.selectAnnotation(annotation, animated: true)
-                let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-                centerMapOnLocation(location)
+        for user in users{
+            if search == user.pseudo{
+                let searchLocation  = CLLocation(latitude: user.latitude, longitude: user.longitude)
+                centerMapOnLocation(searchLocation)
             }
         }
-        
     }
     
     override func viewDidLoad() {
