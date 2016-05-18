@@ -380,6 +380,13 @@
                                     <action selector="showMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Erk-mP-JjF"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="simple logo" translatesAutoresizingMaskIntoConstraints="NO" id="4aR-wV-Px4">
+                                <rect key="frame" x="0.0" y="537" width="119" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="Xit-Yl-2M2"/>
+                                    <constraint firstAttribute="width" constant="119" id="mvp-8d-mGL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -402,10 +409,12 @@
                             <constraint firstItem="d7a-D3-leL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-12" id="Uy7-hD-fgl"/>
                             <constraint firstItem="5Iv-BN-Bbq" firstAttribute="top" secondItem="d7a-D3-leL" secondAttribute="top" constant="6" id="Xtn-TA-5WR"/>
                             <constraint firstItem="mFp-kU-nKA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="ZCw-ck-2g0"/>
+                            <constraint firstItem="4aR-wV-Px4" firstAttribute="leading" secondItem="mFp-kU-nKA" secondAttribute="leading" id="aAo-Pf-9c4"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="top" secondItem="9zF-YZ-4xw" secondAttribute="bottom" constant="-50" id="aDY-1t-4JR"/>
                             <constraint firstItem="Fej-Ek-mdq" firstAttribute="leading" secondItem="9zF-YZ-4xw" secondAttribute="trailing" constant="-50" id="aT9-gC-jl0"/>
                             <constraint firstItem="mFp-kU-nKA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="kMF-wg-CM9"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="baseline" secondItem="Fej-Ek-mdq" secondAttribute="baseline" id="mM8-20-lMv"/>
+                            <constraint firstItem="4aR-wV-Px4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="pqb-lk-kLY"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="firstBaseline" secondItem="9zF-YZ-4xw" secondAttribute="firstBaseline" id="pzF-eC-exU"/>
                             <constraint firstItem="xy0-FC-9jz" firstAttribute="firstBaseline" secondItem="Fej-Ek-mdq" secondAttribute="firstBaseline" id="qaF-V4-eYZ"/>
                             <constraint firstItem="Wzh-4n-Dhm" firstAttribute="baseline" secondItem="Fej-Ek-mdq" secondAttribute="baseline" id="rrO-BK-2K3"/>
@@ -732,6 +741,7 @@
     <resources>
         <image name="gradient" width="1280" height="1280"/>
         <image name="logo" width="1280" height="1280"/>
+        <image name="simple logo" width="752" height="248"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jLV-4M-19c"/>
