@@ -178,21 +178,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
 
     func centerMapOnLocation(location: CLLocation) {
-        var farFriendDistance:CLLocationDistance = 0
-        var newDistance:CLLocationDistance
-        var friendLocation:CLLocationCoordinate2D
-        for user in users{
-            friendLocation = CLLocationCoordinate2D.init(latitude: user.latitude, longitude: user.longitude)
-            newDistance = location.distanceFromLocation(CLLocation.init(latitude: friendLocation.latitude, longitude: friendLocation.longitude))
-            print(user.pseudo)
-            print(newDistance)
-            if(newDistance > farFriendDistance){
-                farFriendDistance = newDistance
-            }
-        }
-        print("farFriendDistance \(farFriendDistance)")
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,farFriendDistance*2, farFriendDistance*2)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setRegion(MKCoordinateRegionMakeWithDistance(location.coordinate, 1000, 1000), animated: true)
     }
     
     //action au clic du bouton du menu
