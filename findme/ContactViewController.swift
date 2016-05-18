@@ -147,7 +147,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
                 let deleteMenu = UIAlertController(title: nil, message: "Remove \(self.items[indexPath.section][indexPath.row]) from your friend list ?", preferredStyle: .Alert)
                 
-                let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
+                let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {(alert: UIAlertAction!) in self.deleteFriend(self.items[indexPath.section][indexPath.row])})
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 
                 deleteMenu.addAction(deleteAction)
@@ -343,6 +343,27 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let wsService = WSService()
         wsService.sendFriendRequest(friendRequest, onCompletion: { err in
             self.loadItems()
+        })
+    }
+    
+    func deleteFriend(name: String){
+        getCurrentUser()
+        var friends : [User] = []
+        
+        let wsService = WSService()
+        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
+            if err == nil{
+                for friend in (user?.friendList)!{
+                    friends.append(friend)
+                }
+                self.user.friendList = friends
+                wsService.deleteFriend(user!, onCompletion: { err in
+                    if err != nil{
+                        self.getCurrentUser()
+                        self.loadItems()
+                    }
+                })
+            }
         })
     }
     

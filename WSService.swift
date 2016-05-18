@@ -132,6 +132,23 @@ class WSService {
             onCompletion(err)
         })
     }
+    
+    func deleteFriend(user : User, onCompletion : (ErrorType?) -> Void) {
+        //friendList serialization
+        var updatedFriendList :[[String : String]] = []
+        for friend in user.friendList!{
+            let serializedFriend : [String: String] = ["pseudo":friend.pseudo, "latitude":"\(friend.latitude)", "longitude":"\(friend.longitude)", "friendList": "[]", "phoneNumber" : friend.phoneNumber]
+            updatedFriendList.append(serializedFriend)
+        }
+        
+        //currentUser serialization
+        let updatedUser : [String: AnyObject] = ["pseudo":user.pseudo, "latitude":user.latitude, "longitude":user.longitude, "friendList": updatedFriendList, "phoneNumber" : user.phoneNumber]
+        
+        //call makehttprequest with param [String : AnyObject]
+        makeHTTPRequestAnyObject(wsConnection + "/user/v1", params: updatedUser, HTTPMethod: "POST", onCompletion : {json, err in
+            onCompletion(err)
+        })
+    }
 
     func makeHTTPRequest(path: String, params: [String: String]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
         do {
@@ -168,4 +185,42 @@ class WSService {
             NSLog("Error: %ld", "Bad data");
         }
     }
+
+    func makeHTTPRequestAnyObject(path: String, params: [String: AnyObject]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
+        do {
+            let request = NSMutableURLRequest(URL: NSURL(string: path)!)
+            request.HTTPMethod = HTTPMethod
+            
+            if HTTPMethod != "GET" && HTTPMethod != "DELETE"{
+                let postData:NSData = try NSJSONSerialization.dataWithJSONObject(params!, options: NSJSONWritingOptions())
+                let postLength:NSString = String(postData.length)
+                
+                request.HTTPBody = postData
+                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+            }
+            
+            let session = NSURLSession.sharedSession()
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+                if error != nil {
+                    onCompletion(nil, error)
+                } else {
+                    do {
+                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? [String:AnyObject]
+                        onCompletion(json, nil)
+                    } catch {
+                        onCompletion(nil, error)
+                    }
+                }
+            })
+            
+            task.resume()
+        } catch {
+            NSLog("Error: %ld", "Bad data");
+        }
+    }
+
+
 }
