@@ -348,16 +348,18 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func deleteFriend(name: String){
         getCurrentUser()
-        var friends : [User] = []
+        var updatedfriends : [User] = []
         
         let wsService = WSService()
         wsService.getUser(self.user.pseudo, onCompletion: { user, err in
             if err == nil{
                 for friend in (user?.friendList)!{
-                    friends.append(friend)
+                    if (friend.pseudo != name){
+                        updatedfriends.append(friend)
+                    }
                 }
-                self.user.friendList = friends
-                wsService.deleteFriend(user!, onCompletion: { err in
+                self.user.friendList = updatedfriends
+                wsService.deleteFriend(self.user, onCompletion: { err in
                     if err != nil{
                         self.getCurrentUser()
                         self.loadItems()
