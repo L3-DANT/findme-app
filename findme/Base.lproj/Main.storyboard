@@ -26,15 +26,6 @@
                                     <outletCollection property="gestureRecognizers" destination="CkC-SV-jSm" appends="YES" id="9o7-l6-Leb"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gJ-lF-dNQ">
-                                <rect key="frame" x="260" y="531" width="80" height="30"/>
-                                <state key="normal" title="STEP OVER">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="G7W-7v-iXM"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="STT-wK-dWZ">
                                 <rect key="frame" x="148" y="277" width="305" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -97,10 +88,8 @@
                             <constraint firstItem="STT-wK-dWZ" firstAttribute="top" secondItem="9B4-QX-EMt" secondAttribute="bottom" constant="20" id="NfR-p0-sXI"/>
                             <constraint firstItem="9B4-QX-EMt" firstAttribute="leading" secondItem="STT-wK-dWZ" secondAttribute="leading" id="OyX-Il-Au2"/>
                             <constraint firstItem="w05-vk-8xN" firstAttribute="leading" secondItem="mf0-b5-Uzh" secondAttribute="leading" id="SGa-bO-fwk"/>
-                            <constraint firstItem="1gJ-lF-dNQ" firstAttribute="centerX" secondItem="6Fr-jc-g7L" secondAttribute="centerX" id="V94-ZW-r91"/>
                             <constraint firstItem="mf0-b5-Uzh" firstAttribute="centerX" secondItem="6Fr-jc-g7L" secondAttribute="centerX" id="Z0Y-Nu-lj8"/>
                             <constraint firstItem="STT-wK-dWZ" firstAttribute="centerX" secondItem="6Fr-jc-g7L" secondAttribute="centerX" id="ZnI-T6-hDR"/>
-                            <constraint firstItem="g9O-m6-hOI" firstAttribute="top" secondItem="1gJ-lF-dNQ" secondAttribute="bottom" constant="39" id="bJZ-nu-SK9"/>
                             <constraint firstItem="w05-vk-8xN" firstAttribute="leading" secondItem="EG8-j6-RJK" secondAttribute="leading" id="eOv-pl-kF8"/>
                             <constraint firstItem="w05-vk-8xN" firstAttribute="top" secondItem="6Fr-jc-g7L" secondAttribute="top" constant="366" id="fz6-HS-Sxj"/>
                             <constraint firstItem="w05-vk-8xN" firstAttribute="top" secondItem="EG8-j6-RJK" secondAttribute="bottom" constant="14" id="hpC-pj-orv"/>
@@ -745,9 +734,9 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lsm-Ce-kbv"/>
-        <segue reference="AKr-Fv-KPL"/>
         <segue reference="jLV-4M-19c"/>
+        <segue reference="AKr-Fv-KPL"/>
+        <segue reference="GCt-V7-TB9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -20,19 +20,26 @@ class WSService {
             if err != nil {
                 onCompletion(nil, err)
             } else {
-                let data = json!["data"]
-                
                 let userSession = NSUserDefaults.standardUserDefaults()
-                userSession.setObject(data!, forKey: self.userAppSession)
+                userSession.setObject(json!, forKey: self.userAppSession)
                 userSession.synchronize()
                 
-                let name = data!["pseudo"] as? String
-                let latitude = data!["latitude"] as? Double
-                let longitude = data!["longitude"] as? Double
-                let friendList = data!["friendList"] as? [User]
-                let phoneNumber = data!["phoneNumber"] as? String
+                let name = json!["pseudo"] as? String
+                let latitude = json!["latitude"] as? Double
+                let longitude = json!["longitude"] as? Double
+                let friends = json!["friendList"] as? [NSDictionary]
+                var friendList : [User] = []
+                for user in friends! as [NSDictionary]{
+                    let friendName = user["pseudo"] as? String
+                    let friendLatitude = user["latitude"] as? Double
+                    let friendLongitude = user["longitude"] as? Double
+                    let friendPhoneNumber = user["phoneNumber"] as? String
+                    let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
+                    friendList.append(friend)
+                }
+                let phoneNumber = json!["phoneNumber"] as? String
 
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber: phoneNumber!)
+                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
 
                 onCompletion(user, nil)
             }
@@ -83,9 +90,7 @@ class WSService {
     
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         makeHTTPRequest(wsConnection + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
-            let data = json!["data"]
-            
-            if err != nil || (data is NSNull) {
+            if err != nil {
                 onCompletion(nil, err)
             } else {
                 let name = json!["pseudo"] as? String
