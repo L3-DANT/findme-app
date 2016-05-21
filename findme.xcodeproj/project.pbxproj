@@ -89,6 +89,7 @@
 		03B27FEA1C9A2BF900D744DA /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */; };
 		03B27FEC1C9AE3F000D744DA /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FEB1C9AE3F000D744DA /* Users.swift */; };
 		03CF68FE1C97491400194684 /* umpc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 03CF68FD1C97491400194684 /* umpc.gpx */; };
+		27E25A12ADAECA0C8D3D46BB /* Pods_findmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */; };
 		292D66811C9AA92100BE0DEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66801C9AA92100BE0DEC /* LoginViewController.swift */; };
 		292D66831C9AA99B00BE0DEC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */; };
 		292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */; };
@@ -101,6 +102,7 @@
 		29E3C5F81C8B19B900DDD92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F71C8B19B900DDD92A /* Assets.xcassets */; };
 		29E3C5FB1C8B19B900DDD92A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F91C8B19B900DDD92A /* LaunchScreen.storyboard */; };
 		29E3C6061C8B19B900DDD92A /* findmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C6051C8B19B900DDD92A /* findmeTests.swift */; };
+		BEF23BF55139BE6844CCB5EE /* Pods_findme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C85E7EE193324D72BB8B90C /* Pods_findme.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +215,12 @@
 		29E3C6011C8B19B900DDD92A /* findmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = findmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C6051C8B19B900DDD92A /* findmeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findmeTests.swift; sourceTree = "<group>"; };
 		29E3C6071C8B19B900DDD92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C85E7EE193324D72BB8B90C /* Pods_findme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_findme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_findmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B9CBB78F6E833E8ACA030A3 /* Pods-findme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findme/Pods-findme.debug.xcconfig"; sourceTree = "<group>"; };
+		A629CCAD56C2752C3DC755D6 /* Pods-findmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB008B91A044316AECEF39FA /* Pods-findme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findme.release.xcconfig"; path = "Pods/Target Support Files/Pods-findme/Pods-findme.release.xcconfig"; sourceTree = "<group>"; };
+		AC81916FCF2F81FA9E09FBC8 /* Pods-findmeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF23BF55139BE6844CCB5EE /* Pods_findme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E25A12ADAECA0C8D3D46BB /* Pods_findmeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +346,8 @@
 				29E3C5EF1C8B19B900DDD92A /* findme */,
 				29E3C6041C8B19B900DDD92A /* findmeTests */,
 				29E3C5EE1C8B19B900DDD92A /* Products */,
+				E14EC0CF6B71E1EE123A8C71 /* Pods */,
+				CAD5736B5CBB3B7C5CA01CD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -386,6 +398,26 @@
 			path = findmeTests;
 			sourceTree = "<group>";
 		};
+		CAD5736B5CBB3B7C5CA01CD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C85E7EE193324D72BB8B90C /* Pods_findme.framework */,
+				83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E14EC0CF6B71E1EE123A8C71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B9CBB78F6E833E8ACA030A3 /* Pods-findme.debug.xcconfig */,
+				AB008B91A044316AECEF39FA /* Pods-findme.release.xcconfig */,
+				A629CCAD56C2752C3DC755D6 /* Pods-findmeTests.debug.xcconfig */,
+				AC81916FCF2F81FA9E09FBC8 /* Pods-findmeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,9 +425,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29E3C60A1C8B19B900DDD92A /* Build configuration list for PBXNativeTarget "findme" */;
 			buildPhases = (
+				ACF4626886EEDFE8074E7CCB /* 📦 Check Pods Manifest.lock */,
 				29E3C5E91C8B19B900DDD92A /* Sources */,
 				29E3C5EA1C8B19B900DDD92A /* Frameworks */,
 				29E3C5EB1C8B19B900DDD92A /* Resources */,
+				780B9660ADE53449584F208D /* 📦 Embed Pods Frameworks */,
+				F5650830874FAEC96C087547 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,9 +445,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29E3C60D1C8B19B900DDD92A /* Build configuration list for PBXNativeTarget "findmeTests" */;
 			buildPhases = (
+				DCD2324680E3BD8E5BF38FE5 /* 📦 Check Pods Manifest.lock */,
 				29E3C5FD1C8B19B900DDD92A /* Sources */,
 				29E3C5FE1C8B19B900DDD92A /* Frameworks */,
 				29E3C5FF1C8B19B900DDD92A /* Resources */,
+				3D12D5D552F0459A02BEE2B3 /* 📦 Embed Pods Frameworks */,
+				032E4B46CEA6BB27F1B1695C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -554,6 +592,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		032E4B46CEA6BB27F1B1695C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D12D5D552F0459A02BEE2B3 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		780B9660ADE53449584F208D /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findme/Pods-findme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACF4626886EEDFE8074E7CCB /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DCD2324680E3BD8E5BF38FE5 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5650830874FAEC96C087547 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findme/Pods-findme-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29E3C5E91C8B19B900DDD92A /* Sources */ = {
@@ -704,6 +835,7 @@
 		};
 		29E3C60B1C8B19B900DDD92A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B9CBB78F6E833E8ACA030A3 /* Pods-findme.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -718,6 +850,7 @@
 		};
 		29E3C60C1C8B19B900DDD92A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB008B91A044316AECEF39FA /* Pods-findme.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -732,6 +865,7 @@
 		};
 		29E3C60E1C8B19B900DDD92A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A629CCAD56C2752C3DC755D6 /* Pods-findmeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = findmeTests/Info.plist;
@@ -744,6 +878,7 @@
 		};
 		29E3C60F1C8B19B900DDD92A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC81916FCF2F81FA9E09FBC8 /* Pods-findmeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = findmeTests/Info.plist;
