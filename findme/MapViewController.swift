@@ -170,11 +170,27 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
     
     @IBAction func findMe(sender: AnyObject) {
-        let location = mapView.userLocation.location
-        centerMapOnLocation(location!)
-        hideButtons()
-        rotateMenuButton(menuExpanded)
-        menuExpanded = false
+        if mapView.userLocation.location != nil{
+            let location = mapView.userLocation.location
+            centerMapOnLocation(location!)
+            hideButtons()
+            rotateMenuButton(menuExpanded)
+            menuExpanded = false
+        } else {
+            let locationDisabledController = UIAlertController(title: "Location Disabled", message: "We can't find you", preferredStyle: .Alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .Default, handler: {(alert: UIAlertAction!) in
+                self.paramButton.sendActionsForControlEvents(.TouchUpInside)
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            
+            locationDisabledController.addAction(settingsAction)
+            locationDisabledController.addAction(cancelAction)
+            
+            self.presentViewController(locationDisabledController, animated : true, completion : nil)
+
+        }
     }
 
     func centerMapOnLocation(location: CLLocation) {
