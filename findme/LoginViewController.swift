@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     let wsBaseUrl = WSConnection.getInstance.getBaseUrl()
     let userAppSession = "user"
     
+    @IBOutlet weak var findMeIntroView: UIImageView!
+    @IBOutlet weak var pulseView: UIImageView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -49,6 +51,35 @@ class LoginViewController: UIViewController {
             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
             self.showViewController(vc as UIViewController, sender: vc)
         }
+        var imageName : String = ""
+        
+        var imageList : [UIImage] = []
+        
+        for i in 0...9 {
+            imageName =  "FindMe_intro_0000\(i)"
+            imageList.append(UIImage(named: imageName)!)
+        }
+        for i in 10...69 {
+            imageName =  "FindMe_intro_000\(i)"
+            imageList.append(UIImage(named: imageName)!)
+        }
+        
+        self.findMeIntroView.animationImages = imageList
+        
+        startAniamtion()
+    }
+    
+    func startAniamtion(){
+        self.findMeIntroView.animationDuration = 2
+        self.findMeIntroView.animationRepeatCount = 1
+        self.findMeIntroView.startAnimating()
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.startPulse), userInfo: nil, repeats: false)
+    }
+    
+    func startPulse(){
+        let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:100, position: self.pulseView.center)
+        pulseEffect.backgroundColor = UIColor(colorLiteralRed: 0.33, green: 0.69, blue: 0.69, alpha: 1).CGColor
+        view.layer.insertSublayer(pulseEffect, below: self.findMeIntroView.layer)
     }
     
     func keyboardWillShow(notification: NSNotification) {

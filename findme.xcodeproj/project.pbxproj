@@ -9,6 +9,77 @@
 /* Begin PBXBuildFile section */
 		0340A4BA1CBE888100A4984D /* AddFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340A4B91CBE888100A4984D /* AddFriendController.swift */; };
 		0340A4BC1CBE88A700A4984D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340A4BB1CBE88A700A4984D /* User.swift */; };
+		0376DA301CEF6B8700CCD5A4 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */; };
+		0376DA771CF0621800CCD5A4 /* FindMe_intro_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */; };
+		0376DA781CF0621800CCD5A4 /* FindMe_intro_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA321CF0621800CCD5A4 /* FindMe_intro_00001.png */; };
+		0376DA791CF0621800CCD5A4 /* FindMe_intro_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA331CF0621800CCD5A4 /* FindMe_intro_00002.png */; };
+		0376DA7A1CF0621800CCD5A4 /* FindMe_intro_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA341CF0621800CCD5A4 /* FindMe_intro_00003.png */; };
+		0376DA7B1CF0621800CCD5A4 /* FindMe_intro_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA351CF0621800CCD5A4 /* FindMe_intro_00004.png */; };
+		0376DA7C1CF0621800CCD5A4 /* FindMe_intro_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA361CF0621800CCD5A4 /* FindMe_intro_00005.png */; };
+		0376DA7D1CF0621800CCD5A4 /* FindMe_intro_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA371CF0621800CCD5A4 /* FindMe_intro_00006.png */; };
+		0376DA7E1CF0621800CCD5A4 /* FindMe_intro_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA381CF0621800CCD5A4 /* FindMe_intro_00007.png */; };
+		0376DA7F1CF0621800CCD5A4 /* FindMe_intro_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA391CF0621800CCD5A4 /* FindMe_intro_00008.png */; };
+		0376DA801CF0621800CCD5A4 /* FindMe_intro_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3A1CF0621800CCD5A4 /* FindMe_intro_00009.png */; };
+		0376DA811CF0621800CCD5A4 /* FindMe_intro_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3B1CF0621800CCD5A4 /* FindMe_intro_00010.png */; };
+		0376DA821CF0621800CCD5A4 /* FindMe_intro_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3C1CF0621800CCD5A4 /* FindMe_intro_00011.png */; };
+		0376DA831CF0621800CCD5A4 /* FindMe_intro_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3D1CF0621800CCD5A4 /* FindMe_intro_00012.png */; };
+		0376DA841CF0621800CCD5A4 /* FindMe_intro_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3E1CF0621800CCD5A4 /* FindMe_intro_00013.png */; };
+		0376DA851CF0621800CCD5A4 /* FindMe_intro_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA3F1CF0621800CCD5A4 /* FindMe_intro_00014.png */; };
+		0376DA861CF0621800CCD5A4 /* FindMe_intro_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA401CF0621800CCD5A4 /* FindMe_intro_00015.png */; };
+		0376DA871CF0621800CCD5A4 /* FindMe_intro_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA411CF0621800CCD5A4 /* FindMe_intro_00016.png */; };
+		0376DA881CF0621800CCD5A4 /* FindMe_intro_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA421CF0621800CCD5A4 /* FindMe_intro_00017.png */; };
+		0376DA891CF0621800CCD5A4 /* FindMe_intro_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA431CF0621800CCD5A4 /* FindMe_intro_00018.png */; };
+		0376DA8A1CF0621800CCD5A4 /* FindMe_intro_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA441CF0621800CCD5A4 /* FindMe_intro_00019.png */; };
+		0376DA8B1CF0621800CCD5A4 /* FindMe_intro_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA451CF0621800CCD5A4 /* FindMe_intro_00020.png */; };
+		0376DA8C1CF0621800CCD5A4 /* FindMe_intro_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA461CF0621800CCD5A4 /* FindMe_intro_00021.png */; };
+		0376DA8D1CF0621800CCD5A4 /* FindMe_intro_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA471CF0621800CCD5A4 /* FindMe_intro_00022.png */; };
+		0376DA8E1CF0621800CCD5A4 /* FindMe_intro_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA481CF0621800CCD5A4 /* FindMe_intro_00023.png */; };
+		0376DA8F1CF0621800CCD5A4 /* FindMe_intro_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA491CF0621800CCD5A4 /* FindMe_intro_00024.png */; };
+		0376DA901CF0621800CCD5A4 /* FindMe_intro_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4A1CF0621800CCD5A4 /* FindMe_intro_00025.png */; };
+		0376DA911CF0621800CCD5A4 /* FindMe_intro_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4B1CF0621800CCD5A4 /* FindMe_intro_00026.png */; };
+		0376DA921CF0621800CCD5A4 /* FindMe_intro_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4C1CF0621800CCD5A4 /* FindMe_intro_00027.png */; };
+		0376DA931CF0621800CCD5A4 /* FindMe_intro_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4D1CF0621800CCD5A4 /* FindMe_intro_00028.png */; };
+		0376DA941CF0621800CCD5A4 /* FindMe_intro_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4E1CF0621800CCD5A4 /* FindMe_intro_00029.png */; };
+		0376DA951CF0621800CCD5A4 /* FindMe_intro_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA4F1CF0621800CCD5A4 /* FindMe_intro_00030.png */; };
+		0376DA961CF0621800CCD5A4 /* FindMe_intro_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA501CF0621800CCD5A4 /* FindMe_intro_00031.png */; };
+		0376DA971CF0621800CCD5A4 /* FindMe_intro_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA511CF0621800CCD5A4 /* FindMe_intro_00032.png */; };
+		0376DA981CF0621800CCD5A4 /* FindMe_intro_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA521CF0621800CCD5A4 /* FindMe_intro_00033.png */; };
+		0376DA991CF0621800CCD5A4 /* FindMe_intro_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA531CF0621800CCD5A4 /* FindMe_intro_00034.png */; };
+		0376DA9A1CF0621800CCD5A4 /* FindMe_intro_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA541CF0621800CCD5A4 /* FindMe_intro_00035.png */; };
+		0376DA9B1CF0621800CCD5A4 /* FindMe_intro_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA551CF0621800CCD5A4 /* FindMe_intro_00036.png */; };
+		0376DA9C1CF0621800CCD5A4 /* FindMe_intro_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA561CF0621800CCD5A4 /* FindMe_intro_00037.png */; };
+		0376DA9D1CF0621800CCD5A4 /* FindMe_intro_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA571CF0621800CCD5A4 /* FindMe_intro_00038.png */; };
+		0376DA9E1CF0621800CCD5A4 /* FindMe_intro_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA581CF0621800CCD5A4 /* FindMe_intro_00039.png */; };
+		0376DA9F1CF0621800CCD5A4 /* FindMe_intro_00040.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA591CF0621800CCD5A4 /* FindMe_intro_00040.png */; };
+		0376DAA01CF0621800CCD5A4 /* FindMe_intro_00041.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5A1CF0621800CCD5A4 /* FindMe_intro_00041.png */; };
+		0376DAA11CF0621800CCD5A4 /* FindMe_intro_00042.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5B1CF0621800CCD5A4 /* FindMe_intro_00042.png */; };
+		0376DAA21CF0621800CCD5A4 /* FindMe_intro_00043.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5C1CF0621800CCD5A4 /* FindMe_intro_00043.png */; };
+		0376DAA31CF0621800CCD5A4 /* FindMe_intro_00044.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5D1CF0621800CCD5A4 /* FindMe_intro_00044.png */; };
+		0376DAA41CF0621800CCD5A4 /* FindMe_intro_00045.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5E1CF0621800CCD5A4 /* FindMe_intro_00045.png */; };
+		0376DAA51CF0621800CCD5A4 /* FindMe_intro_00046.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA5F1CF0621800CCD5A4 /* FindMe_intro_00046.png */; };
+		0376DAA61CF0621800CCD5A4 /* FindMe_intro_00047.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA601CF0621800CCD5A4 /* FindMe_intro_00047.png */; };
+		0376DAA71CF0621800CCD5A4 /* FindMe_intro_00048.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA611CF0621800CCD5A4 /* FindMe_intro_00048.png */; };
+		0376DAA81CF0621800CCD5A4 /* FindMe_intro_00049.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA621CF0621800CCD5A4 /* FindMe_intro_00049.png */; };
+		0376DAA91CF0621800CCD5A4 /* FindMe_intro_00050.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA631CF0621800CCD5A4 /* FindMe_intro_00050.png */; };
+		0376DAAA1CF0621800CCD5A4 /* FindMe_intro_00051.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA641CF0621800CCD5A4 /* FindMe_intro_00051.png */; };
+		0376DAAB1CF0621800CCD5A4 /* FindMe_intro_00052.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA651CF0621800CCD5A4 /* FindMe_intro_00052.png */; };
+		0376DAAC1CF0621800CCD5A4 /* FindMe_intro_00053.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA661CF0621800CCD5A4 /* FindMe_intro_00053.png */; };
+		0376DAAD1CF0621800CCD5A4 /* FindMe_intro_00054.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA671CF0621800CCD5A4 /* FindMe_intro_00054.png */; };
+		0376DAAE1CF0621800CCD5A4 /* FindMe_intro_00055.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA681CF0621800CCD5A4 /* FindMe_intro_00055.png */; };
+		0376DAAF1CF0621800CCD5A4 /* FindMe_intro_00056.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA691CF0621800CCD5A4 /* FindMe_intro_00056.png */; };
+		0376DAB01CF0621800CCD5A4 /* FindMe_intro_00057.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6A1CF0621800CCD5A4 /* FindMe_intro_00057.png */; };
+		0376DAB11CF0621800CCD5A4 /* FindMe_intro_00058.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6B1CF0621800CCD5A4 /* FindMe_intro_00058.png */; };
+		0376DAB21CF0621800CCD5A4 /* FindMe_intro_00059.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6C1CF0621800CCD5A4 /* FindMe_intro_00059.png */; };
+		0376DAB31CF0621800CCD5A4 /* FindMe_intro_00060.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6D1CF0621800CCD5A4 /* FindMe_intro_00060.png */; };
+		0376DAB41CF0621800CCD5A4 /* FindMe_intro_00061.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6E1CF0621800CCD5A4 /* FindMe_intro_00061.png */; };
+		0376DAB51CF0621800CCD5A4 /* FindMe_intro_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA6F1CF0621800CCD5A4 /* FindMe_intro_00062.png */; };
+		0376DAB61CF0621800CCD5A4 /* FindMe_intro_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA701CF0621800CCD5A4 /* FindMe_intro_00063.png */; };
+		0376DAB71CF0621800CCD5A4 /* FindMe_intro_00064.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA711CF0621800CCD5A4 /* FindMe_intro_00064.png */; };
+		0376DAB81CF0621800CCD5A4 /* FindMe_intro_00065.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA721CF0621800CCD5A4 /* FindMe_intro_00065.png */; };
+		0376DAB91CF0621800CCD5A4 /* FindMe_intro_00066.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA731CF0621800CCD5A4 /* FindMe_intro_00066.png */; };
+		0376DABA1CF0621800CCD5A4 /* FindMe_intro_00067.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA741CF0621800CCD5A4 /* FindMe_intro_00067.png */; };
+		0376DABB1CF0621800CCD5A4 /* FindMe_intro_00068.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA751CF0621800CCD5A4 /* FindMe_intro_00068.png */; };
+		0376DABC1CF0621800CCD5A4 /* FindMe_intro_00069.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA761CF0621800CCD5A4 /* FindMe_intro_00069.png */; };
 		0376F7401C9809350023C0A7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73C1C9809350023C0A7 /* Enum.swift */; };
 		0376F7411C9809350023C0A7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0376F73D1C9809350023C0A7 /* FontAwesome.otf */; };
 		0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376F73F1C9809350023C0A7 /* FontAwesome.swift */; };
@@ -45,6 +116,77 @@
 /* Begin PBXFileReference section */
 		0340A4B91CBE888100A4984D /* AddFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendController.swift; sourceTree = "<group>"; };
 		0340A4BB1CBE88A700A4984D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
+		0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00000.png; sourceTree = "<group>"; };
+		0376DA321CF0621800CCD5A4 /* FindMe_intro_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00001.png; sourceTree = "<group>"; };
+		0376DA331CF0621800CCD5A4 /* FindMe_intro_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00002.png; sourceTree = "<group>"; };
+		0376DA341CF0621800CCD5A4 /* FindMe_intro_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00003.png; sourceTree = "<group>"; };
+		0376DA351CF0621800CCD5A4 /* FindMe_intro_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00004.png; sourceTree = "<group>"; };
+		0376DA361CF0621800CCD5A4 /* FindMe_intro_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00005.png; sourceTree = "<group>"; };
+		0376DA371CF0621800CCD5A4 /* FindMe_intro_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00006.png; sourceTree = "<group>"; };
+		0376DA381CF0621800CCD5A4 /* FindMe_intro_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00007.png; sourceTree = "<group>"; };
+		0376DA391CF0621800CCD5A4 /* FindMe_intro_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00008.png; sourceTree = "<group>"; };
+		0376DA3A1CF0621800CCD5A4 /* FindMe_intro_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00009.png; sourceTree = "<group>"; };
+		0376DA3B1CF0621800CCD5A4 /* FindMe_intro_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00010.png; sourceTree = "<group>"; };
+		0376DA3C1CF0621800CCD5A4 /* FindMe_intro_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00011.png; sourceTree = "<group>"; };
+		0376DA3D1CF0621800CCD5A4 /* FindMe_intro_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00012.png; sourceTree = "<group>"; };
+		0376DA3E1CF0621800CCD5A4 /* FindMe_intro_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00013.png; sourceTree = "<group>"; };
+		0376DA3F1CF0621800CCD5A4 /* FindMe_intro_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00014.png; sourceTree = "<group>"; };
+		0376DA401CF0621800CCD5A4 /* FindMe_intro_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00015.png; sourceTree = "<group>"; };
+		0376DA411CF0621800CCD5A4 /* FindMe_intro_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00016.png; sourceTree = "<group>"; };
+		0376DA421CF0621800CCD5A4 /* FindMe_intro_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00017.png; sourceTree = "<group>"; };
+		0376DA431CF0621800CCD5A4 /* FindMe_intro_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00018.png; sourceTree = "<group>"; };
+		0376DA441CF0621800CCD5A4 /* FindMe_intro_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00019.png; sourceTree = "<group>"; };
+		0376DA451CF0621800CCD5A4 /* FindMe_intro_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00020.png; sourceTree = "<group>"; };
+		0376DA461CF0621800CCD5A4 /* FindMe_intro_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00021.png; sourceTree = "<group>"; };
+		0376DA471CF0621800CCD5A4 /* FindMe_intro_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00022.png; sourceTree = "<group>"; };
+		0376DA481CF0621800CCD5A4 /* FindMe_intro_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00023.png; sourceTree = "<group>"; };
+		0376DA491CF0621800CCD5A4 /* FindMe_intro_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00024.png; sourceTree = "<group>"; };
+		0376DA4A1CF0621800CCD5A4 /* FindMe_intro_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00025.png; sourceTree = "<group>"; };
+		0376DA4B1CF0621800CCD5A4 /* FindMe_intro_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00026.png; sourceTree = "<group>"; };
+		0376DA4C1CF0621800CCD5A4 /* FindMe_intro_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00027.png; sourceTree = "<group>"; };
+		0376DA4D1CF0621800CCD5A4 /* FindMe_intro_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00028.png; sourceTree = "<group>"; };
+		0376DA4E1CF0621800CCD5A4 /* FindMe_intro_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00029.png; sourceTree = "<group>"; };
+		0376DA4F1CF0621800CCD5A4 /* FindMe_intro_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00030.png; sourceTree = "<group>"; };
+		0376DA501CF0621800CCD5A4 /* FindMe_intro_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00031.png; sourceTree = "<group>"; };
+		0376DA511CF0621800CCD5A4 /* FindMe_intro_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00032.png; sourceTree = "<group>"; };
+		0376DA521CF0621800CCD5A4 /* FindMe_intro_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00033.png; sourceTree = "<group>"; };
+		0376DA531CF0621800CCD5A4 /* FindMe_intro_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00034.png; sourceTree = "<group>"; };
+		0376DA541CF0621800CCD5A4 /* FindMe_intro_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00035.png; sourceTree = "<group>"; };
+		0376DA551CF0621800CCD5A4 /* FindMe_intro_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00036.png; sourceTree = "<group>"; };
+		0376DA561CF0621800CCD5A4 /* FindMe_intro_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00037.png; sourceTree = "<group>"; };
+		0376DA571CF0621800CCD5A4 /* FindMe_intro_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00038.png; sourceTree = "<group>"; };
+		0376DA581CF0621800CCD5A4 /* FindMe_intro_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00039.png; sourceTree = "<group>"; };
+		0376DA591CF0621800CCD5A4 /* FindMe_intro_00040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00040.png; sourceTree = "<group>"; };
+		0376DA5A1CF0621800CCD5A4 /* FindMe_intro_00041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00041.png; sourceTree = "<group>"; };
+		0376DA5B1CF0621800CCD5A4 /* FindMe_intro_00042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00042.png; sourceTree = "<group>"; };
+		0376DA5C1CF0621800CCD5A4 /* FindMe_intro_00043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00043.png; sourceTree = "<group>"; };
+		0376DA5D1CF0621800CCD5A4 /* FindMe_intro_00044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00044.png; sourceTree = "<group>"; };
+		0376DA5E1CF0621800CCD5A4 /* FindMe_intro_00045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00045.png; sourceTree = "<group>"; };
+		0376DA5F1CF0621800CCD5A4 /* FindMe_intro_00046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00046.png; sourceTree = "<group>"; };
+		0376DA601CF0621800CCD5A4 /* FindMe_intro_00047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00047.png; sourceTree = "<group>"; };
+		0376DA611CF0621800CCD5A4 /* FindMe_intro_00048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00048.png; sourceTree = "<group>"; };
+		0376DA621CF0621800CCD5A4 /* FindMe_intro_00049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00049.png; sourceTree = "<group>"; };
+		0376DA631CF0621800CCD5A4 /* FindMe_intro_00050.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00050.png; sourceTree = "<group>"; };
+		0376DA641CF0621800CCD5A4 /* FindMe_intro_00051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00051.png; sourceTree = "<group>"; };
+		0376DA651CF0621800CCD5A4 /* FindMe_intro_00052.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00052.png; sourceTree = "<group>"; };
+		0376DA661CF0621800CCD5A4 /* FindMe_intro_00053.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00053.png; sourceTree = "<group>"; };
+		0376DA671CF0621800CCD5A4 /* FindMe_intro_00054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00054.png; sourceTree = "<group>"; };
+		0376DA681CF0621800CCD5A4 /* FindMe_intro_00055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00055.png; sourceTree = "<group>"; };
+		0376DA691CF0621800CCD5A4 /* FindMe_intro_00056.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00056.png; sourceTree = "<group>"; };
+		0376DA6A1CF0621800CCD5A4 /* FindMe_intro_00057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00057.png; sourceTree = "<group>"; };
+		0376DA6B1CF0621800CCD5A4 /* FindMe_intro_00058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00058.png; sourceTree = "<group>"; };
+		0376DA6C1CF0621800CCD5A4 /* FindMe_intro_00059.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00059.png; sourceTree = "<group>"; };
+		0376DA6D1CF0621800CCD5A4 /* FindMe_intro_00060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00060.png; sourceTree = "<group>"; };
+		0376DA6E1CF0621800CCD5A4 /* FindMe_intro_00061.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00061.png; sourceTree = "<group>"; };
+		0376DA6F1CF0621800CCD5A4 /* FindMe_intro_00062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00062.png; sourceTree = "<group>"; };
+		0376DA701CF0621800CCD5A4 /* FindMe_intro_00063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00063.png; sourceTree = "<group>"; };
+		0376DA711CF0621800CCD5A4 /* FindMe_intro_00064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00064.png; sourceTree = "<group>"; };
+		0376DA721CF0621800CCD5A4 /* FindMe_intro_00065.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00065.png; sourceTree = "<group>"; };
+		0376DA731CF0621800CCD5A4 /* FindMe_intro_00066.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00066.png; sourceTree = "<group>"; };
+		0376DA741CF0621800CCD5A4 /* FindMe_intro_00067.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00067.png; sourceTree = "<group>"; };
+		0376DA751CF0621800CCD5A4 /* FindMe_intro_00068.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00068.png; sourceTree = "<group>"; };
+		0376DA761CF0621800CCD5A4 /* FindMe_intro_00069.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00069.png; sourceTree = "<group>"; };
 		0376F73C1C9809350023C0A7 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		0376F73D1C9809350023C0A7 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		0376F73E1C9809350023C0A7 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
@@ -91,6 +233,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		035FA8F51CEE143A006991B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				036D9E6C1CEE19F500B76278 /* login animation */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		036D9E6C1CEE19F500B76278 /* login animation */ = {
+			isa = PBXGroup;
+			children = (
+				0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */,
+				0376DA321CF0621800CCD5A4 /* FindMe_intro_00001.png */,
+				0376DA331CF0621800CCD5A4 /* FindMe_intro_00002.png */,
+				0376DA341CF0621800CCD5A4 /* FindMe_intro_00003.png */,
+				0376DA351CF0621800CCD5A4 /* FindMe_intro_00004.png */,
+				0376DA361CF0621800CCD5A4 /* FindMe_intro_00005.png */,
+				0376DA371CF0621800CCD5A4 /* FindMe_intro_00006.png */,
+				0376DA381CF0621800CCD5A4 /* FindMe_intro_00007.png */,
+				0376DA391CF0621800CCD5A4 /* FindMe_intro_00008.png */,
+				0376DA3A1CF0621800CCD5A4 /* FindMe_intro_00009.png */,
+				0376DA3B1CF0621800CCD5A4 /* FindMe_intro_00010.png */,
+				0376DA3C1CF0621800CCD5A4 /* FindMe_intro_00011.png */,
+				0376DA3D1CF0621800CCD5A4 /* FindMe_intro_00012.png */,
+				0376DA3E1CF0621800CCD5A4 /* FindMe_intro_00013.png */,
+				0376DA3F1CF0621800CCD5A4 /* FindMe_intro_00014.png */,
+				0376DA401CF0621800CCD5A4 /* FindMe_intro_00015.png */,
+				0376DA411CF0621800CCD5A4 /* FindMe_intro_00016.png */,
+				0376DA421CF0621800CCD5A4 /* FindMe_intro_00017.png */,
+				0376DA431CF0621800CCD5A4 /* FindMe_intro_00018.png */,
+				0376DA441CF0621800CCD5A4 /* FindMe_intro_00019.png */,
+				0376DA451CF0621800CCD5A4 /* FindMe_intro_00020.png */,
+				0376DA461CF0621800CCD5A4 /* FindMe_intro_00021.png */,
+				0376DA471CF0621800CCD5A4 /* FindMe_intro_00022.png */,
+				0376DA481CF0621800CCD5A4 /* FindMe_intro_00023.png */,
+				0376DA491CF0621800CCD5A4 /* FindMe_intro_00024.png */,
+				0376DA4A1CF0621800CCD5A4 /* FindMe_intro_00025.png */,
+				0376DA4B1CF0621800CCD5A4 /* FindMe_intro_00026.png */,
+				0376DA4C1CF0621800CCD5A4 /* FindMe_intro_00027.png */,
+				0376DA4D1CF0621800CCD5A4 /* FindMe_intro_00028.png */,
+				0376DA4E1CF0621800CCD5A4 /* FindMe_intro_00029.png */,
+				0376DA4F1CF0621800CCD5A4 /* FindMe_intro_00030.png */,
+				0376DA501CF0621800CCD5A4 /* FindMe_intro_00031.png */,
+				0376DA511CF0621800CCD5A4 /* FindMe_intro_00032.png */,
+				0376DA521CF0621800CCD5A4 /* FindMe_intro_00033.png */,
+				0376DA531CF0621800CCD5A4 /* FindMe_intro_00034.png */,
+				0376DA541CF0621800CCD5A4 /* FindMe_intro_00035.png */,
+				0376DA551CF0621800CCD5A4 /* FindMe_intro_00036.png */,
+				0376DA561CF0621800CCD5A4 /* FindMe_intro_00037.png */,
+				0376DA571CF0621800CCD5A4 /* FindMe_intro_00038.png */,
+				0376DA581CF0621800CCD5A4 /* FindMe_intro_00039.png */,
+				0376DA591CF0621800CCD5A4 /* FindMe_intro_00040.png */,
+				0376DA5A1CF0621800CCD5A4 /* FindMe_intro_00041.png */,
+				0376DA5B1CF0621800CCD5A4 /* FindMe_intro_00042.png */,
+				0376DA5C1CF0621800CCD5A4 /* FindMe_intro_00043.png */,
+				0376DA5D1CF0621800CCD5A4 /* FindMe_intro_00044.png */,
+				0376DA5E1CF0621800CCD5A4 /* FindMe_intro_00045.png */,
+				0376DA5F1CF0621800CCD5A4 /* FindMe_intro_00046.png */,
+				0376DA601CF0621800CCD5A4 /* FindMe_intro_00047.png */,
+				0376DA611CF0621800CCD5A4 /* FindMe_intro_00048.png */,
+				0376DA621CF0621800CCD5A4 /* FindMe_intro_00049.png */,
+				0376DA631CF0621800CCD5A4 /* FindMe_intro_00050.png */,
+				0376DA641CF0621800CCD5A4 /* FindMe_intro_00051.png */,
+				0376DA651CF0621800CCD5A4 /* FindMe_intro_00052.png */,
+				0376DA661CF0621800CCD5A4 /* FindMe_intro_00053.png */,
+				0376DA671CF0621800CCD5A4 /* FindMe_intro_00054.png */,
+				0376DA681CF0621800CCD5A4 /* FindMe_intro_00055.png */,
+				0376DA691CF0621800CCD5A4 /* FindMe_intro_00056.png */,
+				0376DA6A1CF0621800CCD5A4 /* FindMe_intro_00057.png */,
+				0376DA6B1CF0621800CCD5A4 /* FindMe_intro_00058.png */,
+				0376DA6C1CF0621800CCD5A4 /* FindMe_intro_00059.png */,
+				0376DA6D1CF0621800CCD5A4 /* FindMe_intro_00060.png */,
+				0376DA6E1CF0621800CCD5A4 /* FindMe_intro_00061.png */,
+				0376DA6F1CF0621800CCD5A4 /* FindMe_intro_00062.png */,
+				0376DA701CF0621800CCD5A4 /* FindMe_intro_00063.png */,
+				0376DA711CF0621800CCD5A4 /* FindMe_intro_00064.png */,
+				0376DA721CF0621800CCD5A4 /* FindMe_intro_00065.png */,
+				0376DA731CF0621800CCD5A4 /* FindMe_intro_00066.png */,
+				0376DA741CF0621800CCD5A4 /* FindMe_intro_00067.png */,
+				0376DA751CF0621800CCD5A4 /* FindMe_intro_00068.png */,
+				0376DA761CF0621800CCD5A4 /* FindMe_intro_00069.png */,
+			);
+			name = "login animation";
+			sourceTree = "<group>";
+		};
 		0376F73B1C9808DB0023C0A7 /* Font Awesome */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +371,8 @@
 				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
 				295635711CDB7A20007F3DE9 /* WSConnection.swift */,
 				29C3EC9B1CE31C0E00F613C1 /* WSService.swift */,
+				0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */,
+				035FA8F51CEE143A006991B6 /* Supporting Files */,
 			);
 			path = findme;
 			sourceTree = "<group>";
@@ -239,11 +468,81 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0376DAAB1CF0621800CCD5A4 /* FindMe_intro_00052.png in Resources */,
+				0376DA9D1CF0621800CCD5A4 /* FindMe_intro_00038.png in Resources */,
+				0376DA901CF0621800CCD5A4 /* FindMe_intro_00025.png in Resources */,
+				0376DABB1CF0621800CCD5A4 /* FindMe_intro_00068.png in Resources */,
+				0376DA9C1CF0621800CCD5A4 /* FindMe_intro_00037.png in Resources */,
+				0376DA961CF0621800CCD5A4 /* FindMe_intro_00031.png in Resources */,
+				0376DA821CF0621800CCD5A4 /* FindMe_intro_00011.png in Resources */,
+				0376DA7C1CF0621800CCD5A4 /* FindMe_intro_00005.png in Resources */,
+				0376DAA31CF0621800CCD5A4 /* FindMe_intro_00044.png in Resources */,
+				0376DAB01CF0621800CCD5A4 /* FindMe_intro_00057.png in Resources */,
+				0376DA931CF0621800CCD5A4 /* FindMe_intro_00028.png in Resources */,
+				0376DAA91CF0621800CCD5A4 /* FindMe_intro_00050.png in Resources */,
+				0376DA831CF0621800CCD5A4 /* FindMe_intro_00012.png in Resources */,
+				0376DA991CF0621800CCD5A4 /* FindMe_intro_00034.png in Resources */,
+				0376DAAA1CF0621800CCD5A4 /* FindMe_intro_00051.png in Resources */,
+				0376DAB51CF0621800CCD5A4 /* FindMe_intro_00062.png in Resources */,
+				0376DA771CF0621800CCD5A4 /* FindMe_intro_00000.png in Resources */,
+				0376DAA51CF0621800CCD5A4 /* FindMe_intro_00046.png in Resources */,
 				29E3C5FB1C8B19B900DDD92A /* LaunchScreen.storyboard in Resources */,
+				0376DABA1CF0621800CCD5A4 /* FindMe_intro_00067.png in Resources */,
+				0376DA851CF0621800CCD5A4 /* FindMe_intro_00014.png in Resources */,
+				0376DAB31CF0621800CCD5A4 /* FindMe_intro_00060.png in Resources */,
+				0376DAA81CF0621800CCD5A4 /* FindMe_intro_00049.png in Resources */,
+				0376DAB71CF0621800CCD5A4 /* FindMe_intro_00064.png in Resources */,
+				0376DA9E1CF0621800CCD5A4 /* FindMe_intro_00039.png in Resources */,
 				0376F7411C9809350023C0A7 /* FontAwesome.otf in Resources */,
+				0376DA8C1CF0621800CCD5A4 /* FindMe_intro_00021.png in Resources */,
+				0376DA871CF0621800CCD5A4 /* FindMe_intro_00016.png in Resources */,
+				0376DA8D1CF0621800CCD5A4 /* FindMe_intro_00022.png in Resources */,
+				0376DA891CF0621800CCD5A4 /* FindMe_intro_00018.png in Resources */,
+				0376DA7B1CF0621800CCD5A4 /* FindMe_intro_00004.png in Resources */,
+				0376DA921CF0621800CCD5A4 /* FindMe_intro_00027.png in Resources */,
+				0376DA7E1CF0621800CCD5A4 /* FindMe_intro_00007.png in Resources */,
+				0376DA9B1CF0621800CCD5A4 /* FindMe_intro_00036.png in Resources */,
+				0376DA8B1CF0621800CCD5A4 /* FindMe_intro_00020.png in Resources */,
+				0376DA861CF0621800CCD5A4 /* FindMe_intro_00015.png in Resources */,
+				0376DAB41CF0621800CCD5A4 /* FindMe_intro_00061.png in Resources */,
+				0376DA8A1CF0621800CCD5A4 /* FindMe_intro_00019.png in Resources */,
+				0376DA911CF0621800CCD5A4 /* FindMe_intro_00026.png in Resources */,
+				0376DAAF1CF0621800CCD5A4 /* FindMe_intro_00056.png in Resources */,
+				0376DABC1CF0621800CCD5A4 /* FindMe_intro_00069.png in Resources */,
+				0376DA7A1CF0621800CCD5A4 /* FindMe_intro_00003.png in Resources */,
+				0376DAA41CF0621800CCD5A4 /* FindMe_intro_00045.png in Resources */,
+				0376DAAC1CF0621800CCD5A4 /* FindMe_intro_00053.png in Resources */,
+				0376DAA71CF0621800CCD5A4 /* FindMe_intro_00048.png in Resources */,
+				0376DA881CF0621800CCD5A4 /* FindMe_intro_00017.png in Resources */,
+				0376DA971CF0621800CCD5A4 /* FindMe_intro_00032.png in Resources */,
+				0376DA8F1CF0621800CCD5A4 /* FindMe_intro_00024.png in Resources */,
+				0376DA811CF0621800CCD5A4 /* FindMe_intro_00010.png in Resources */,
+				0376DA781CF0621800CCD5A4 /* FindMe_intro_00001.png in Resources */,
+				0376DAB21CF0621800CCD5A4 /* FindMe_intro_00059.png in Resources */,
+				0376DAA61CF0621800CCD5A4 /* FindMe_intro_00047.png in Resources */,
+				0376DAB81CF0621800CCD5A4 /* FindMe_intro_00065.png in Resources */,
+				0376DA801CF0621800CCD5A4 /* FindMe_intro_00009.png in Resources */,
+				0376DAB11CF0621800CCD5A4 /* FindMe_intro_00058.png in Resources */,
+				0376DAB61CF0621800CCD5A4 /* FindMe_intro_00063.png in Resources */,
+				0376DA941CF0621800CCD5A4 /* FindMe_intro_00029.png in Resources */,
+				0376DA8E1CF0621800CCD5A4 /* FindMe_intro_00023.png in Resources */,
+				0376DAB91CF0621800CCD5A4 /* FindMe_intro_00066.png in Resources */,
 				03CF68FE1C97491400194684 /* umpc.gpx in Resources */,
+				0376DAA11CF0621800CCD5A4 /* FindMe_intro_00042.png in Resources */,
+				0376DA7D1CF0621800CCD5A4 /* FindMe_intro_00006.png in Resources */,
 				29E3C5F81C8B19B900DDD92A /* Assets.xcassets in Resources */,
 				29E3C5F61C8B19B900DDD92A /* Main.storyboard in Resources */,
+				0376DAA01CF0621800CCD5A4 /* FindMe_intro_00041.png in Resources */,
+				0376DA9F1CF0621800CCD5A4 /* FindMe_intro_00040.png in Resources */,
+				0376DA951CF0621800CCD5A4 /* FindMe_intro_00030.png in Resources */,
+				0376DA791CF0621800CCD5A4 /* FindMe_intro_00002.png in Resources */,
+				0376DAAD1CF0621800CCD5A4 /* FindMe_intro_00054.png in Resources */,
+				0376DA841CF0621800CCD5A4 /* FindMe_intro_00013.png in Resources */,
+				0376DAAE1CF0621800CCD5A4 /* FindMe_intro_00055.png in Resources */,
+				0376DAA21CF0621800CCD5A4 /* FindMe_intro_00043.png in Resources */,
+				0376DA981CF0621800CCD5A4 /* FindMe_intro_00033.png in Resources */,
+				0376DA9A1CF0621800CCD5A4 /* FindMe_intro_00035.png in Resources */,
+				0376DA7F1CF0621800CCD5A4 /* FindMe_intro_00008.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +576,7 @@
 				295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */,
 				29C3EC9C1CE31C0E00F613C1 /* WSService.swift in Sources */,
 				297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */,
+				0376DA301CEF6B8700CCD5A4 /* PulseAnimation.swift in Sources */,
 				29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
