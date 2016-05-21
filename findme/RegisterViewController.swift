@@ -16,6 +16,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var pulseView: UIImageView!
+    
+    @IBOutlet weak var registerAnimationView: UIImageView!
     
     @IBAction func registerButton(sender: AnyObject) {
         let username:NSString = self.usernameField.text!
@@ -41,13 +44,44 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        var imageName : String = ""
+        
+        var imageList : [UIImage] = []
+        
+        
+        for i in 0...9 {
+            imageName =  "FindMe_intro_0000\(i)"
+            imageList.append(UIImage(named: imageName)!)
+        }
+        for i in 10...69 {
+            imageName =  "FindMe_intro_000\(i)"
+            imageList.append(UIImage(named: imageName)!)
+        }
+
+        
+        self.registerAnimationView.animationImages = imageList
+        
+        startAniamtion()
     }
     
+    func startAniamtion(){
+        self.registerAnimationView.animationDuration = 2
+        self.registerAnimationView.animationRepeatCount = 1
+        self.registerAnimationView.startAnimating()
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.startPulse), userInfo: nil, repeats: false)
+    }
+    
+    func startPulse(){
+        let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:100, position: CGPoint(x: self.pulseView.center.x-72, y: self.pulseView.center.y-20))
+        pulseEffect.backgroundColor = UIColor(colorLiteralRed: 0.33, green: 0.69, blue: 0.69, alpha: 1).CGColor
+        view.layer.insertSublayer(pulseEffect, below: self.registerAnimationView.layer)
+    }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
     }
