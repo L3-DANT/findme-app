@@ -116,8 +116,14 @@ class WSService {
     }
     
     func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void){
-        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
-            onCompletion(err)
+        self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
+            if err == nil {
+                self.makeHTTPRequest(self.wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+                    onCompletion(nil)
+                })
+            } else {
+                onCompletion(err)
+            }
         })
     }
     
@@ -128,7 +134,7 @@ class WSService {
     }
     
     func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
-        makeHTTPRequest(wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+        self.makeHTTPRequest(self.wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
         })
     }
@@ -155,7 +161,7 @@ class WSService {
                     onCompletion(nil, error)
                 } else {
                     do {
-                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? [String:AnyObject]
+                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String:AnyObject]
                         onCompletion(json, nil)
                     } catch {
                         onCompletion(nil, error)
