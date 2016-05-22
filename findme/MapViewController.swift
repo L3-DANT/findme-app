@@ -170,26 +170,31 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
     
     @IBAction func findMe(sender: AnyObject) {
-        if mapView.userLocation.location != nil{
-            let location = mapView.userLocation.location
-            centerMapOnLocation(location!)
-            hideButtons()
-            rotateMenuButton(menuExpanded)
-            menuExpanded = false
-        } else {
-            let locationDisabledController = UIAlertController(title: "Location Disabled", message: "We can't find you", preferredStyle: .Alert)
-            
-            let settingsAction = UIAlertAction(title: "Settings", style: .Default, handler: {(alert: UIAlertAction!) in
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            })
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            
-            locationDisabledController.addAction(settingsAction)
-            locationDisabledController.addAction(cancelAction)
-            
-            self.presentViewController(locationDisabledController, animated : true, completion : nil)
-
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .NotDetermined, .Restricted, .Denied:
+                let locationDisabledController = UIAlertController(title: "Allow us to FindYou", message: "Please let us know where you are", preferredStyle: .Alert)
+                
+                let settingsAction = UIAlertAction(title: "Settings", style: .Default, handler: {(alert: UIAlertAction!) in
+                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                
+                locationDisabledController.addAction(settingsAction)
+                locationDisabledController.addAction(cancelAction)
+                
+                self.presentViewController(locationDisabledController, animated : true, completion : nil)
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                if mapView.userLocation.location != nil{
+                    let location = mapView.userLocation.location
+                    centerMapOnLocation(location!)
+                    hideButtons()
+                    rotateMenuButton(menuExpanded)
+                    menuExpanded = false
+                }
+            }
         }
     }
 
