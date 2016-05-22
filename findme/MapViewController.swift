@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import PusherSwift
 
 //Hide keyboard on touch around
 extension UIViewController {
@@ -36,6 +37,9 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     var locationManager = CLLocationManager()
     var users : [User] = []
     var user : User = User()
+    
+    var pusher : Pusher = Pusher(key: "")
+    var channels : [PusherChannel] = []
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIcon: UITextField!
@@ -85,6 +89,10 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         
         //affichage de la position de l'utilisateur
         self.mapView.showsUserLocation = true
+        
+        self.pusher = Pusher(key: "03576a442aa390f473c6")
+        self.pusher.connect()
+        self.initChannelsSubscription()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -126,11 +134,13 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         })
     }
     
-    //fonction appelée a chaque refresh de la location utilisée pour recentrer la caméra sur l'utilisateur automatiquement
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        
+        let regionForUpdate : CLRegion = CLCircularRegion(center: center, radius: 20, identifier: "currentRegion")
+        locationManager.startMonitoringForRegion(regionForUpdate)
 
         self.mapView.setRegion(region , animated: true )
         self.locationManager.stopUpdatingLocation()
@@ -139,6 +149,20 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
             rotateMenuButton(menuExpanded)
             menuExpanded = !menuExpanded
         }
+    }
+    
+    //when the user exit the circular region of 20 meter from his initial position
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        
+        locationManager.stopMonitoringForRegion(region)
+        
+        let currentLocation = locationManager.location!.coordinate
+        
+        let wsService = WSService()
+        wsService.updateCurrentUserLocation(self.user.pseudo, location : currentLocation)
+        
+        let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
+        locationManager.startMonitoringForRegion(newRegion)
     }
     
     //fonction appelée en cas d'erreur
@@ -311,6 +335,36 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         let longitude = userStored!["longitude"] as? Double
         let latitude = userStored!["latitude"] as? Double
         let phoneNumber = userStored!["phoneNumber"] as? String
-        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, phoneNumber: phoneNumber!)
+        var friends : [User] = []
+        for friend in (userStored!["friendList"] as? [NSDictionary])!{
+            let friendName = friend["pseudo"] as? String
+            let friendLatitude = friend["latitude"] as? Double
+            let friendLongitude = friend["longitude"] as? Double
+            let friendNumber = friend["phoneNumber"] as? String
+            friends.append(User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendNumber!))
+        }
+        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friends, phoneNumber: phoneNumber!)
+    }
+    
+    func initChannelsSubscription(){
+    
+        for friend in self.user.friendList!{
+            self.channels.append(self.pusher.subscribe("private-\(friend.pseudo)"))
+        }
+        
+        for channel in channels{
+            channel.bind("hasMoved", callback: { (data: AnyObject?) -> Void in
+                if let data = data as? Dictionary<String, AnyObject> {
+                    if let latitude = data["latitude"] as? Double, longitude = data["longitude"] as? Double, name = data["pseudo"] as? String {
+                        for annotation in (self.mapView.annotations as? [UserAnnotation])!{
+                            if annotation.title == name{
+                                let newCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                                annotation.updateCoordinate(newCoordinate)
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
 }

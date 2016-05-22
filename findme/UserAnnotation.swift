@@ -9,18 +9,19 @@
 import UIKit
 import MapKit
 
-class UserAnnotation : NSObject, MKAnnotation {
+class UserAnnotation : MKPointAnnotation {
     
-    var coordinate:CLLocationCoordinate2D
-    var title:String?
-    var subtitle:String?
-    var numero:String?
     var pinCustomImageName : String?
     
     init(coordinate : CLLocationCoordinate2D, title : String?, subtitle : String?) {
+        super.init()
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
         self.pinCustomImageName = "customPin"
+    }
+    
+    func updateCoordinate(newCoordinate : CLLocationCoordinate2D){
+        self.coordinate = coordinate
     }
 }
