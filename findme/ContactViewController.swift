@@ -338,24 +338,75 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func sendFriendRequest(name : String){
-        getCurrentUser()
-        let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
         
-        let wsService = WSService()
-        wsService.sendFriendRequest(friendRequest, onCompletion: { err in
-            if err != nil {
-                let userNotExistController = UIAlertController(title: "The user does not exist", message: "Please don't try to add your imaginary friends", preferredStyle: .Alert)
+        var error = false;
+        
+        for friendName in items[0]{
+            if friendName == name{
+                let userNotExistController = UIAlertController(title: "Blind ?", message: "the user you are looking for already sent you a friend request", preferredStyle: .Alert)
                 
                 let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
                 
                 userNotExistController.addAction(cancelAction)
                 
                 self.presentViewController(userNotExistController, animated : true, completion : nil)
+                
+                error = true
             }
-            else {
-                self.loadItems()
+        }
+        
+        if error == false{
+            for friendName in items[1]{
+                if friendName == name{
+                    let userNotExistController = UIAlertController(title: "Alzheimer ?", message: "you already sent a friend request to this user", preferredStyle: .Alert)
+                
+                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                
+                    userNotExistController.addAction(cancelAction)
+                
+                    self.presentViewController(userNotExistController, animated : true, completion : nil)
+                
+                    error = true
+                }
             }
-        })
+        }
+        
+        if error == false{
+            for friendName in items[2]{
+                if friendName == name{
+                    let userNotExistController = UIAlertController(title: "Shame on you !", message: "the user you are looking for is already in your friendList", preferredStyle: .Alert)
+                
+                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                
+                    userNotExistController.addAction(cancelAction)
+                
+                    self.presentViewController(userNotExistController, animated : true, completion : nil)
+                
+                    error = true
+                }
+            }
+        }
+        
+        if error == false{
+            getCurrentUser()
+            let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
+        
+            let wsService = WSService()
+            wsService.sendFriendRequest(friendRequest, onCompletion: { err in
+                if err != nil {
+                    let userNotExistController = UIAlertController(title: "The user does not exist", message: "Please don't try to add your imaginary friends", preferredStyle: .Alert)
+                
+                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                
+                    userNotExistController.addAction(cancelAction)
+                
+                    self.presentViewController(userNotExistController, animated : true, completion : nil)
+                }
+                else {
+                    self.loadItems()
+                }
+            })
+        }
     }
     
     func getCurrentUser(){
@@ -366,4 +417,5 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let phoneNumber = userStored!["phoneNumber"] as? String
         self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, phoneNumber: phoneNumber!)
     }
+    
 }
