@@ -309,6 +309,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let friendrequest = ["caller" : caller, "receiver" : receiver]
         
         let wsService = WSService()
+        
         wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
             self.loadItems()
         })
@@ -342,7 +343,18 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let wsService = WSService()
         wsService.sendFriendRequest(friendRequest, onCompletion: { err in
-            self.loadItems()
+            if err != nil {
+                let userNotExistController = UIAlertController(title: "The user does not exist", message: "Please don't try to add your imaginary friends", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                
+                userNotExistController.addAction(cancelAction)
+                
+                self.presentViewController(userNotExistController, animated : true, completion : nil)
+            }
+            else {
+                self.loadItems()
+            }
         })
     }
     

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0340A4BA1CBE888100A4984D /* AddFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340A4B91CBE888100A4984D /* AddFriendController.swift */; };
 		0340A4BC1CBE88A700A4984D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340A4BB1CBE88A700A4984D /* User.swift */; };
 		0376DA301CEF6B8700CCD5A4 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */; };
 		0376DA771CF0621800CCD5A4 /* FindMe_intro_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */; };
@@ -116,7 +115,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0340A4B91CBE888100A4984D /* AddFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendController.swift; sourceTree = "<group>"; };
 		0340A4BB1CBE88A700A4984D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00000.png; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 				292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */,
 				03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */,
 				03B27FEB1C9AE3F000D744DA /* Users.swift */,
-				0340A4B91CBE888100A4984D /* AddFriendController.swift */,
 				0340A4BB1CBE88A700A4984D /* User.swift */,
 				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
 				295635711CDB7A20007F3DE9 /* WSConnection.swift */,
@@ -702,7 +699,6 @@
 				0340A4BC1CBE88A700A4984D /* User.swift in Sources */,
 				03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */,
 				292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */,
-				0340A4BA1CBE888100A4984D /* AddFriendController.swift in Sources */,
 				0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */,
 				295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */,
 				29C3EC9C1CE31C0E00F613C1 /* WSService.swift in Sources */,

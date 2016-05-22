@@ -180,7 +180,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
             let locationDisabledController = UIAlertController(title: "Location Disabled", message: "We can't find you", preferredStyle: .Alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .Default, handler: {(alert: UIAlertAction!) in
-                self.paramButton.sendActionsForControlEvents(.TouchUpInside)
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
