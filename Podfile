@@ -6,16 +6,23 @@ target 'findme' do
   use_frameworks!
 
   # Pods for findme
+  
+  source 'https://github.com/CocoaPods/Specs.git'
+  platform :ios, '8.0'
+  use_frameworks!
+  
+  pod 'PusherSwift'
 
   target 'findmeTests' do
     inherit! :search_paths
     # Pods for testing
 
     source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-use_frameworks!
+	platform :ios, '8.0'
+	use_frameworks!
 
-pod 'PusherSwift'
+	pod 'PusherSwift'
+	
   end
 
 end

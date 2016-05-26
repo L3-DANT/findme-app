@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031E79891CF1C4940013B420 /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E79881CF1C4940013B420 /* PusherService.swift */; };
 		0340A4BC1CBE88A700A4984D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340A4BB1CBE88A700A4984D /* User.swift */; };
 		0376DA301CEF6B8700CCD5A4 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */; };
 		0376DA771CF0621800CCD5A4 /* FindMe_intro_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */; };
@@ -115,6 +116,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		031E79881CF1C4940013B420 /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
 		0340A4BB1CBE88A700A4984D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		0376DA311CF0621800CCD5A4 /* FindMe_intro_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00000.png; sourceTree = "<group>"; };
@@ -241,12 +243,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		035FA8F51CEE143A006991B6 /* Supporting Files */ = {
+		035FA8F51CEE143A006991B6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				036D9E6C1CEE19F500B76278 /* login animation */,
 			);
-			name = "Supporting Files";
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 		036D9E6C1CEE19F500B76278 /* login animation */ = {
@@ -380,8 +382,9 @@
 				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
 				295635711CDB7A20007F3DE9 /* WSConnection.swift */,
 				29C3EC9B1CE31C0E00F613C1 /* WSService.swift */,
+				031E79881CF1C4940013B420 /* PusherService.swift */,
 				0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */,
-				035FA8F51CEE143A006991B6 /* Supporting Files */,
+				035FA8F51CEE143A006991B6 /* Support Files */,
 			);
 			path = findme;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				292D66811C9AA92100BE0DEC /* LoginViewController.swift in Sources */,
 				0340A4BC1CBE88A700A4984D /* User.swift in Sources */,
 				03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */,
+				031E79891CF1C4940013B420 /* PusherService.swift in Sources */,
 				292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */,
 				0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */,
 				295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */,
@@ -837,6 +841,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = findme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.findme-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -852,6 +857,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = findme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.findme-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
