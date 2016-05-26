@@ -11,7 +11,7 @@ import Foundation
 class userService {
     let phonePattern: String = "(0|(\\+33)|(0033))[1-9][0-9]{8}"
 
-    func isValidPhoneNumber(phoneNumber: String) -> bool {
+    func isValidPhoneNumber(phoneNumber: String) -> Bool {
         if phoneNumber.rangeOfString(self.phonePattern, options: .RegularExpressionSearch) != nil {
             return true
         }
