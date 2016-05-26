@@ -8,6 +8,19 @@
 
 import UIKit
 
+
+//Hide keyboard on touch around
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class LoginViewController: UIViewController {
 
     let wsBaseUrl = WSConnection.getInstance.getBaseUrl()

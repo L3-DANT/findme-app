@@ -11,17 +11,6 @@ import MapKit
 import CoreLocation
 import PusherSwift
 
-//Hide keyboard on touch around
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
 
 class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     

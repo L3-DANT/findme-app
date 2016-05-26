@@ -8,6 +8,6 @@
 
 import PusherSwift
 
-public class PusherService{
+public class PusherService {
     
-    }
+}
