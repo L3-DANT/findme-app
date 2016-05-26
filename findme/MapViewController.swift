@@ -93,11 +93,18 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         self.pusher = Pusher(key: "03576a442aa390f473c6")
         self.pusher.connect()
         self.initChannelsSubscription()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
         
+    }
+    
+    func updateLocation(){
+        getCurrentUser()
+        let wsService = WSService()
+        wsService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -346,6 +353,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friends, phoneNumber: phoneNumber!)
     }
     
+    
     func initChannelsSubscription(){
     
         for friend in self.user.friendList!{
@@ -353,7 +361,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         }
         
         for channel in channels{
-            channel.bind("hasMoved", callback: { (data: AnyObject?) -> Void in
+            channel.bind("position-updated", callback: { (data: AnyObject?) -> Void in
                 if let data = data as? Dictionary<String, AnyObject> {
                     if let latitude = data["latitude"] as? Double, longitude = data["longitude"] as? Double, name = data["pseudo"] as? String {
                         for annotation in (self.mapView.annotations as? [UserAnnotation])!{
