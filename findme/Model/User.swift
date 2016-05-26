@@ -15,7 +15,6 @@ class User {
     var latitude : Double = 0.0
     var friendList : [User]?
     var phoneNumber : String = "000000000"
-    let phonePattern: String = "(0|(\\+33)|(0033))[1-9][0-9]{8}"
 
     init() {}
 
