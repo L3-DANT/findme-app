@@ -92,8 +92,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     func updateLocation(){
         getCurrentUser()
-        let wsService = WSService()
-        wsService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
+        let apiService = APIService()
+        apiService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -154,8 +154,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         
         let currentLocation = locationManager.location!.coordinate
         
-        let wsService = WSService()
-        wsService.updateCurrentUserLocation(self.user.pseudo, location : currentLocation)
+        let apiService = APIService()
+        apiService.updateCurrentUserLocation(self.user.pseudo, location : currentLocation)
         
         let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
         locationManager.startMonitoringForRegion(newRegion)
