@@ -8,97 +8,98 @@
 
 /* Begin PBXBuildFile section */
 		03CF68FE1C97491400194684 /* umpc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 03CF68FD1C97491400194684 /* umpc.gpx */; };
-		2920D0FC1CF747940043BC1C /* APICommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0981CF747940043BC1C /* APICommunicator.swift */; };
-		2920D0FD1CF747940043BC1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0991CF747940043BC1C /* AppDelegate.swift */; };
-		2920D0FE1CF747940043BC1C /* FindMe_intro_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D09B1CF747940043BC1C /* FindMe_intro_00000.png */; };
-		2920D0FF1CF747940043BC1C /* FindMe_intro_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D09C1CF747940043BC1C /* FindMe_intro_00001.png */; };
-		2920D1001CF747940043BC1C /* FindMe_intro_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D09D1CF747940043BC1C /* FindMe_intro_00002.png */; };
-		2920D1011CF747940043BC1C /* FindMe_intro_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D09E1CF747940043BC1C /* FindMe_intro_00003.png */; };
-		2920D1021CF747940043BC1C /* FindMe_intro_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D09F1CF747940043BC1C /* FindMe_intro_00004.png */; };
-		2920D1031CF747940043BC1C /* FindMe_intro_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A01CF747940043BC1C /* FindMe_intro_00005.png */; };
-		2920D1041CF747940043BC1C /* FindMe_intro_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A11CF747940043BC1C /* FindMe_intro_00006.png */; };
-		2920D1051CF747940043BC1C /* FindMe_intro_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A21CF747940043BC1C /* FindMe_intro_00007.png */; };
-		2920D1061CF747940043BC1C /* FindMe_intro_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A31CF747940043BC1C /* FindMe_intro_00008.png */; };
-		2920D1071CF747940043BC1C /* FindMe_intro_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A41CF747940043BC1C /* FindMe_intro_00009.png */; };
-		2920D1081CF747940043BC1C /* FindMe_intro_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A51CF747940043BC1C /* FindMe_intro_00010.png */; };
-		2920D1091CF747940043BC1C /* FindMe_intro_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A61CF747940043BC1C /* FindMe_intro_00011.png */; };
-		2920D10A1CF747940043BC1C /* FindMe_intro_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A71CF747940043BC1C /* FindMe_intro_00012.png */; };
-		2920D10B1CF747940043BC1C /* FindMe_intro_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A81CF747940043BC1C /* FindMe_intro_00013.png */; };
-		2920D10C1CF747940043BC1C /* FindMe_intro_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0A91CF747940043BC1C /* FindMe_intro_00014.png */; };
-		2920D10D1CF747940043BC1C /* FindMe_intro_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AA1CF747940043BC1C /* FindMe_intro_00015.png */; };
-		2920D10E1CF747940043BC1C /* FindMe_intro_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AB1CF747940043BC1C /* FindMe_intro_00016.png */; };
-		2920D10F1CF747940043BC1C /* FindMe_intro_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AC1CF747940043BC1C /* FindMe_intro_00017.png */; };
-		2920D1101CF747940043BC1C /* FindMe_intro_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AD1CF747940043BC1C /* FindMe_intro_00018.png */; };
-		2920D1111CF747940043BC1C /* FindMe_intro_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AE1CF747940043BC1C /* FindMe_intro_00019.png */; };
-		2920D1121CF747940043BC1C /* FindMe_intro_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0AF1CF747940043BC1C /* FindMe_intro_00020.png */; };
-		2920D1131CF747940043BC1C /* FindMe_intro_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B01CF747940043BC1C /* FindMe_intro_00021.png */; };
-		2920D1141CF747940043BC1C /* FindMe_intro_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B11CF747940043BC1C /* FindMe_intro_00022.png */; };
-		2920D1151CF747940043BC1C /* FindMe_intro_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B21CF747940043BC1C /* FindMe_intro_00023.png */; };
-		2920D1161CF747940043BC1C /* FindMe_intro_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B31CF747940043BC1C /* FindMe_intro_00024.png */; };
-		2920D1171CF747940043BC1C /* FindMe_intro_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B41CF747940043BC1C /* FindMe_intro_00025.png */; };
-		2920D1181CF747940043BC1C /* FindMe_intro_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B51CF747940043BC1C /* FindMe_intro_00026.png */; };
-		2920D1191CF747940043BC1C /* FindMe_intro_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B61CF747940043BC1C /* FindMe_intro_00027.png */; };
-		2920D11A1CF747940043BC1C /* FindMe_intro_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B71CF747940043BC1C /* FindMe_intro_00028.png */; };
-		2920D11B1CF747940043BC1C /* FindMe_intro_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B81CF747940043BC1C /* FindMe_intro_00029.png */; };
-		2920D11C1CF747940043BC1C /* FindMe_intro_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0B91CF747940043BC1C /* FindMe_intro_00030.png */; };
-		2920D11D1CF747940043BC1C /* FindMe_intro_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BA1CF747940043BC1C /* FindMe_intro_00031.png */; };
-		2920D11E1CF747940043BC1C /* FindMe_intro_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BB1CF747940043BC1C /* FindMe_intro_00032.png */; };
-		2920D11F1CF747940043BC1C /* FindMe_intro_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BC1CF747940043BC1C /* FindMe_intro_00033.png */; };
-		2920D1201CF747940043BC1C /* FindMe_intro_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BD1CF747940043BC1C /* FindMe_intro_00034.png */; };
-		2920D1211CF747940043BC1C /* FindMe_intro_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BE1CF747940043BC1C /* FindMe_intro_00035.png */; };
-		2920D1221CF747940043BC1C /* FindMe_intro_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0BF1CF747940043BC1C /* FindMe_intro_00036.png */; };
-		2920D1231CF747940043BC1C /* FindMe_intro_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C01CF747940043BC1C /* FindMe_intro_00037.png */; };
-		2920D1241CF747940043BC1C /* FindMe_intro_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C11CF747940043BC1C /* FindMe_intro_00038.png */; };
-		2920D1251CF747940043BC1C /* FindMe_intro_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C21CF747940043BC1C /* FindMe_intro_00039.png */; };
-		2920D1261CF747940043BC1C /* FindMe_intro_00040.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C31CF747940043BC1C /* FindMe_intro_00040.png */; };
-		2920D1271CF747940043BC1C /* FindMe_intro_00041.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C41CF747940043BC1C /* FindMe_intro_00041.png */; };
-		2920D1281CF747940043BC1C /* FindMe_intro_00042.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C51CF747940043BC1C /* FindMe_intro_00042.png */; };
-		2920D1291CF747940043BC1C /* FindMe_intro_00043.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C61CF747940043BC1C /* FindMe_intro_00043.png */; };
-		2920D12A1CF747940043BC1C /* FindMe_intro_00044.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C71CF747940043BC1C /* FindMe_intro_00044.png */; };
-		2920D12B1CF747940043BC1C /* FindMe_intro_00045.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C81CF747940043BC1C /* FindMe_intro_00045.png */; };
-		2920D12C1CF747940043BC1C /* FindMe_intro_00046.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0C91CF747940043BC1C /* FindMe_intro_00046.png */; };
-		2920D12D1CF747940043BC1C /* FindMe_intro_00047.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CA1CF747940043BC1C /* FindMe_intro_00047.png */; };
-		2920D12E1CF747940043BC1C /* FindMe_intro_00048.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CB1CF747940043BC1C /* FindMe_intro_00048.png */; };
-		2920D12F1CF747940043BC1C /* FindMe_intro_00049.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CC1CF747940043BC1C /* FindMe_intro_00049.png */; };
-		2920D1301CF747940043BC1C /* FindMe_intro_00050.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CD1CF747940043BC1C /* FindMe_intro_00050.png */; };
-		2920D1311CF747940043BC1C /* FindMe_intro_00051.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CE1CF747940043BC1C /* FindMe_intro_00051.png */; };
-		2920D1321CF747940043BC1C /* FindMe_intro_00052.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0CF1CF747940043BC1C /* FindMe_intro_00052.png */; };
-		2920D1331CF747940043BC1C /* FindMe_intro_00053.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D01CF747940043BC1C /* FindMe_intro_00053.png */; };
-		2920D1341CF747940043BC1C /* FindMe_intro_00054.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D11CF747940043BC1C /* FindMe_intro_00054.png */; };
-		2920D1351CF747940043BC1C /* FindMe_intro_00055.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D21CF747940043BC1C /* FindMe_intro_00055.png */; };
-		2920D1361CF747940043BC1C /* FindMe_intro_00056.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D31CF747940043BC1C /* FindMe_intro_00056.png */; };
-		2920D1371CF747940043BC1C /* FindMe_intro_00057.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D41CF747940043BC1C /* FindMe_intro_00057.png */; };
-		2920D1381CF747940043BC1C /* FindMe_intro_00058.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D51CF747940043BC1C /* FindMe_intro_00058.png */; };
-		2920D1391CF747940043BC1C /* FindMe_intro_00059.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D61CF747940043BC1C /* FindMe_intro_00059.png */; };
-		2920D13A1CF747940043BC1C /* FindMe_intro_00060.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D71CF747940043BC1C /* FindMe_intro_00060.png */; };
-		2920D13B1CF747940043BC1C /* FindMe_intro_00061.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D81CF747940043BC1C /* FindMe_intro_00061.png */; };
-		2920D13C1CF747940043BC1C /* FindMe_intro_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0D91CF747940043BC1C /* FindMe_intro_00062.png */; };
-		2920D13D1CF747940043BC1C /* FindMe_intro_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DA1CF747940043BC1C /* FindMe_intro_00063.png */; };
-		2920D13E1CF747940043BC1C /* FindMe_intro_00064.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DB1CF747940043BC1C /* FindMe_intro_00064.png */; };
-		2920D13F1CF747940043BC1C /* FindMe_intro_00065.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DC1CF747940043BC1C /* FindMe_intro_00065.png */; };
-		2920D1401CF747940043BC1C /* FindMe_intro_00066.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DD1CF747940043BC1C /* FindMe_intro_00066.png */; };
-		2920D1411CF747940043BC1C /* FindMe_intro_00067.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DE1CF747940043BC1C /* FindMe_intro_00067.png */; };
-		2920D1421CF747940043BC1C /* FindMe_intro_00068.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0DF1CF747940043BC1C /* FindMe_intro_00068.png */; };
-		2920D1431CF747940043BC1C /* FindMe_intro_00069.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0E01CF747940043BC1C /* FindMe_intro_00069.png */; };
-		2920D1441CF747940043BC1C /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0E21CF747940043BC1C /* Enum.swift */; };
-		2920D1451CF747940043BC1C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0E41CF747940043BC1C /* FontAwesome.otf */; };
-		2920D1461CF747940043BC1C /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0E51CF747940043BC1C /* FontAwesome.swift */; };
-		2920D1471CF747940043BC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0E61CF747940043BC1C /* Assets.xcassets */; };
-		2920D1481CF747940043BC1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0E71CF747940043BC1C /* LaunchScreen.storyboard */; };
-		2920D1491CF747940043BC1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2920D0E91CF747940043BC1C /* Main.storyboard */; };
-		2920D14A1CF747940043BC1C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0EC1CF747940043BC1C /* AboutViewController.swift */; };
-		2920D14B1CF747940043BC1C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0ED1CF747940043BC1C /* ContactViewController.swift */; };
-		2920D14C1CF747940043BC1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0EE1CF747940043BC1C /* LoginViewController.swift */; };
-		2920D14D1CF747940043BC1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0EF1CF747940043BC1C /* MapViewController.swift */; };
-		2920D14E1CF747940043BC1C /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F01CF747940043BC1C /* ParamViewController.swift */; };
-		2920D14F1CF747940043BC1C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F11CF747940043BC1C /* RegisterViewController.swift */; };
-		2920D1511CF747940043BC1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F41CF747940043BC1C /* User.swift */; };
-		2920D1521CF747940043BC1C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F61CF747940043BC1C /* APIService.swift */; };
-		2920D1531CF747940043BC1C /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F71CF747940043BC1C /* PulseAnimation.swift */; };
-		2920D1541CF747940043BC1C /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F81CF747940043BC1C /* PusherService.swift */; };
-		2920D1551CF747940043BC1C /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0F91CF747940043BC1C /* UserAnnotation.swift */; };
-		2920D1561CF747940043BC1C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0FA1CF747940043BC1C /* UserService.swift */; };
-		2920D1571CF747940043BC1C /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D0FB1CF747940043BC1C /* UserAnnotationView.swift */; };
+		2920D1C01CF74CDE0043BC1C /* APICommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D15C1CF74CDE0043BC1C /* APICommunicator.swift */; };
+		2920D1C11CF74CDE0043BC1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D15D1CF74CDE0043BC1C /* AppDelegate.swift */; };
+		2920D1C21CF74CDE0043BC1C /* FindMe_intro_00000.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D15F1CF74CDE0043BC1C /* FindMe_intro_00000.png */; };
+		2920D1C31CF74CDE0043BC1C /* FindMe_intro_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1601CF74CDE0043BC1C /* FindMe_intro_00001.png */; };
+		2920D1C41CF74CDE0043BC1C /* FindMe_intro_00002.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1611CF74CDE0043BC1C /* FindMe_intro_00002.png */; };
+		2920D1C51CF74CDE0043BC1C /* FindMe_intro_00003.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1621CF74CDE0043BC1C /* FindMe_intro_00003.png */; };
+		2920D1C61CF74CDE0043BC1C /* FindMe_intro_00004.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1631CF74CDE0043BC1C /* FindMe_intro_00004.png */; };
+		2920D1C71CF74CDE0043BC1C /* FindMe_intro_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1641CF74CDE0043BC1C /* FindMe_intro_00005.png */; };
+		2920D1C81CF74CDE0043BC1C /* FindMe_intro_00006.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1651CF74CDE0043BC1C /* FindMe_intro_00006.png */; };
+		2920D1C91CF74CDE0043BC1C /* FindMe_intro_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1661CF74CDE0043BC1C /* FindMe_intro_00007.png */; };
+		2920D1CA1CF74CDE0043BC1C /* FindMe_intro_00008.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1671CF74CDE0043BC1C /* FindMe_intro_00008.png */; };
+		2920D1CB1CF74CDE0043BC1C /* FindMe_intro_00009.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1681CF74CDE0043BC1C /* FindMe_intro_00009.png */; };
+		2920D1CC1CF74CDE0043BC1C /* FindMe_intro_00010.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1691CF74CDE0043BC1C /* FindMe_intro_00010.png */; };
+		2920D1CD1CF74CDE0043BC1C /* FindMe_intro_00011.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16A1CF74CDE0043BC1C /* FindMe_intro_00011.png */; };
+		2920D1CE1CF74CDE0043BC1C /* FindMe_intro_00012.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16B1CF74CDE0043BC1C /* FindMe_intro_00012.png */; };
+		2920D1CF1CF74CDE0043BC1C /* FindMe_intro_00013.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16C1CF74CDE0043BC1C /* FindMe_intro_00013.png */; };
+		2920D1D01CF74CDE0043BC1C /* FindMe_intro_00014.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16D1CF74CDE0043BC1C /* FindMe_intro_00014.png */; };
+		2920D1D11CF74CDE0043BC1C /* FindMe_intro_00015.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16E1CF74CDE0043BC1C /* FindMe_intro_00015.png */; };
+		2920D1D21CF74CDE0043BC1C /* FindMe_intro_00016.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D16F1CF74CDE0043BC1C /* FindMe_intro_00016.png */; };
+		2920D1D31CF74CDE0043BC1C /* FindMe_intro_00017.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1701CF74CDE0043BC1C /* FindMe_intro_00017.png */; };
+		2920D1D41CF74CDE0043BC1C /* FindMe_intro_00018.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1711CF74CDE0043BC1C /* FindMe_intro_00018.png */; };
+		2920D1D51CF74CDE0043BC1C /* FindMe_intro_00019.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1721CF74CDE0043BC1C /* FindMe_intro_00019.png */; };
+		2920D1D61CF74CDE0043BC1C /* FindMe_intro_00020.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1731CF74CDE0043BC1C /* FindMe_intro_00020.png */; };
+		2920D1D71CF74CDE0043BC1C /* FindMe_intro_00021.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1741CF74CDE0043BC1C /* FindMe_intro_00021.png */; };
+		2920D1D81CF74CDE0043BC1C /* FindMe_intro_00022.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1751CF74CDE0043BC1C /* FindMe_intro_00022.png */; };
+		2920D1D91CF74CDE0043BC1C /* FindMe_intro_00023.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1761CF74CDE0043BC1C /* FindMe_intro_00023.png */; };
+		2920D1DA1CF74CDE0043BC1C /* FindMe_intro_00024.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1771CF74CDE0043BC1C /* FindMe_intro_00024.png */; };
+		2920D1DB1CF74CDE0043BC1C /* FindMe_intro_00025.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1781CF74CDE0043BC1C /* FindMe_intro_00025.png */; };
+		2920D1DC1CF74CDE0043BC1C /* FindMe_intro_00026.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1791CF74CDE0043BC1C /* FindMe_intro_00026.png */; };
+		2920D1DD1CF74CDE0043BC1C /* FindMe_intro_00027.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17A1CF74CDE0043BC1C /* FindMe_intro_00027.png */; };
+		2920D1DE1CF74CDE0043BC1C /* FindMe_intro_00028.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17B1CF74CDE0043BC1C /* FindMe_intro_00028.png */; };
+		2920D1DF1CF74CDE0043BC1C /* FindMe_intro_00029.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17C1CF74CDE0043BC1C /* FindMe_intro_00029.png */; };
+		2920D1E01CF74CDE0043BC1C /* FindMe_intro_00030.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17D1CF74CDE0043BC1C /* FindMe_intro_00030.png */; };
+		2920D1E11CF74CDE0043BC1C /* FindMe_intro_00031.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17E1CF74CDE0043BC1C /* FindMe_intro_00031.png */; };
+		2920D1E21CF74CDE0043BC1C /* FindMe_intro_00032.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D17F1CF74CDE0043BC1C /* FindMe_intro_00032.png */; };
+		2920D1E31CF74CDE0043BC1C /* FindMe_intro_00033.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1801CF74CDE0043BC1C /* FindMe_intro_00033.png */; };
+		2920D1E41CF74CDE0043BC1C /* FindMe_intro_00034.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1811CF74CDE0043BC1C /* FindMe_intro_00034.png */; };
+		2920D1E51CF74CDE0043BC1C /* FindMe_intro_00035.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1821CF74CDE0043BC1C /* FindMe_intro_00035.png */; };
+		2920D1E61CF74CDE0043BC1C /* FindMe_intro_00036.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1831CF74CDE0043BC1C /* FindMe_intro_00036.png */; };
+		2920D1E71CF74CDE0043BC1C /* FindMe_intro_00037.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1841CF74CDE0043BC1C /* FindMe_intro_00037.png */; };
+		2920D1E81CF74CDE0043BC1C /* FindMe_intro_00038.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1851CF74CDE0043BC1C /* FindMe_intro_00038.png */; };
+		2920D1E91CF74CDE0043BC1C /* FindMe_intro_00039.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1861CF74CDE0043BC1C /* FindMe_intro_00039.png */; };
+		2920D1EA1CF74CDE0043BC1C /* FindMe_intro_00040.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1871CF74CDE0043BC1C /* FindMe_intro_00040.png */; };
+		2920D1EB1CF74CDE0043BC1C /* FindMe_intro_00041.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1881CF74CDE0043BC1C /* FindMe_intro_00041.png */; };
+		2920D1EC1CF74CDE0043BC1C /* FindMe_intro_00042.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1891CF74CDE0043BC1C /* FindMe_intro_00042.png */; };
+		2920D1ED1CF74CDE0043BC1C /* FindMe_intro_00043.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18A1CF74CDE0043BC1C /* FindMe_intro_00043.png */; };
+		2920D1EE1CF74CDE0043BC1C /* FindMe_intro_00044.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18B1CF74CDE0043BC1C /* FindMe_intro_00044.png */; };
+		2920D1EF1CF74CDE0043BC1C /* FindMe_intro_00045.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18C1CF74CDE0043BC1C /* FindMe_intro_00045.png */; };
+		2920D1F01CF74CDE0043BC1C /* FindMe_intro_00046.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18D1CF74CDE0043BC1C /* FindMe_intro_00046.png */; };
+		2920D1F11CF74CDE0043BC1C /* FindMe_intro_00047.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18E1CF74CDE0043BC1C /* FindMe_intro_00047.png */; };
+		2920D1F21CF74CDE0043BC1C /* FindMe_intro_00048.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D18F1CF74CDE0043BC1C /* FindMe_intro_00048.png */; };
+		2920D1F31CF74CDE0043BC1C /* FindMe_intro_00049.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1901CF74CDE0043BC1C /* FindMe_intro_00049.png */; };
+		2920D1F41CF74CDE0043BC1C /* FindMe_intro_00050.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1911CF74CDE0043BC1C /* FindMe_intro_00050.png */; };
+		2920D1F51CF74CDE0043BC1C /* FindMe_intro_00051.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1921CF74CDE0043BC1C /* FindMe_intro_00051.png */; };
+		2920D1F61CF74CDE0043BC1C /* FindMe_intro_00052.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1931CF74CDE0043BC1C /* FindMe_intro_00052.png */; };
+		2920D1F71CF74CDE0043BC1C /* FindMe_intro_00053.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1941CF74CDE0043BC1C /* FindMe_intro_00053.png */; };
+		2920D1F81CF74CDE0043BC1C /* FindMe_intro_00054.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1951CF74CDE0043BC1C /* FindMe_intro_00054.png */; };
+		2920D1F91CF74CDE0043BC1C /* FindMe_intro_00055.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1961CF74CDE0043BC1C /* FindMe_intro_00055.png */; };
+		2920D1FA1CF74CDE0043BC1C /* FindMe_intro_00056.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1971CF74CDE0043BC1C /* FindMe_intro_00056.png */; };
+		2920D1FB1CF74CDE0043BC1C /* FindMe_intro_00057.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1981CF74CDE0043BC1C /* FindMe_intro_00057.png */; };
+		2920D1FC1CF74CDE0043BC1C /* FindMe_intro_00058.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1991CF74CDE0043BC1C /* FindMe_intro_00058.png */; };
+		2920D1FD1CF74CDE0043BC1C /* FindMe_intro_00059.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19A1CF74CDE0043BC1C /* FindMe_intro_00059.png */; };
+		2920D1FE1CF74CDE0043BC1C /* FindMe_intro_00060.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19B1CF74CDE0043BC1C /* FindMe_intro_00060.png */; };
+		2920D1FF1CF74CDE0043BC1C /* FindMe_intro_00061.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19C1CF74CDE0043BC1C /* FindMe_intro_00061.png */; };
+		2920D2001CF74CDE0043BC1C /* FindMe_intro_00062.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19D1CF74CDE0043BC1C /* FindMe_intro_00062.png */; };
+		2920D2011CF74CDE0043BC1C /* FindMe_intro_00063.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19E1CF74CDE0043BC1C /* FindMe_intro_00063.png */; };
+		2920D2021CF74CDE0043BC1C /* FindMe_intro_00064.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D19F1CF74CDE0043BC1C /* FindMe_intro_00064.png */; };
+		2920D2031CF74CDE0043BC1C /* FindMe_intro_00065.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A01CF74CDE0043BC1C /* FindMe_intro_00065.png */; };
+		2920D2041CF74CDE0043BC1C /* FindMe_intro_00066.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A11CF74CDE0043BC1C /* FindMe_intro_00066.png */; };
+		2920D2051CF74CDE0043BC1C /* FindMe_intro_00067.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A21CF74CDE0043BC1C /* FindMe_intro_00067.png */; };
+		2920D2061CF74CDE0043BC1C /* FindMe_intro_00068.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A31CF74CDE0043BC1C /* FindMe_intro_00068.png */; };
+		2920D2071CF74CDE0043BC1C /* FindMe_intro_00069.png in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A41CF74CDE0043BC1C /* FindMe_intro_00069.png */; };
+		2920D2081CF74CDE0043BC1C /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1A61CF74CDE0043BC1C /* Enum.swift */; };
+		2920D2091CF74CDE0043BC1C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1A81CF74CDE0043BC1C /* FontAwesome.otf */; };
+		2920D20A1CF74CDE0043BC1C /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1A91CF74CDE0043BC1C /* FontAwesome.swift */; };
+		2920D20B1CF74CDE0043BC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1AA1CF74CDE0043BC1C /* Assets.xcassets */; };
+		2920D20C1CF74CDE0043BC1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1AB1CF74CDE0043BC1C /* LaunchScreen.storyboard */; };
+		2920D20D1CF74CDE0043BC1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1AD1CF74CDE0043BC1C /* Main.storyboard */; };
+		2920D20E1CF74CDE0043BC1C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B01CF74CDE0043BC1C /* AboutViewController.swift */; };
+		2920D20F1CF74CDE0043BC1C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B11CF74CDE0043BC1C /* ContactViewController.swift */; };
+		2920D2101CF74CDE0043BC1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B21CF74CDE0043BC1C /* LoginViewController.swift */; };
+		2920D2111CF74CDE0043BC1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B31CF74CDE0043BC1C /* MapViewController.swift */; };
+		2920D2121CF74CDE0043BC1C /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B41CF74CDE0043BC1C /* ParamViewController.swift */; };
+		2920D2131CF74CDE0043BC1C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B51CF74CDE0043BC1C /* RegisterViewController.swift */; };
+		2920D2141CF74CDE0043BC1C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1B61CF74CDE0043BC1C /* Info.plist */; };
+		2920D2151CF74CDE0043BC1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B81CF74CDE0043BC1C /* User.swift */; };
+		2920D2161CF74CDE0043BC1C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BA1CF74CDE0043BC1C /* APIService.swift */; };
+		2920D2171CF74CDE0043BC1C /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BB1CF74CDE0043BC1C /* PulseAnimation.swift */; };
+		2920D2181CF74CDE0043BC1C /* PusherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BC1CF74CDE0043BC1C /* PusherService.swift */; };
+		2920D2191CF74CDE0043BC1C /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BD1CF74CDE0043BC1C /* UserAnnotation.swift */; };
+		2920D21A1CF74CDE0043BC1C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BE1CF74CDE0043BC1C /* UserService.swift */; };
+		2920D21B1CF74CDE0043BC1C /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BF1CF74CDE0043BC1C /* UserAnnotationView.swift */; };
 		29E3C6061C8B19B900DDD92A /* findmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C6051C8B19B900DDD92A /* findmeTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,98 +115,99 @@
 
 /* Begin PBXFileReference section */
 		03CF68FD1C97491400194684 /* umpc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = umpc.gpx; sourceTree = "<group>"; };
-		2920D0981CF747940043BC1C /* APICommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICommunicator.swift; sourceTree = "<group>"; };
-		2920D0991CF747940043BC1C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2920D09B1CF747940043BC1C /* FindMe_intro_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00000.png; sourceTree = "<group>"; };
-		2920D09C1CF747940043BC1C /* FindMe_intro_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00001.png; sourceTree = "<group>"; };
-		2920D09D1CF747940043BC1C /* FindMe_intro_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00002.png; sourceTree = "<group>"; };
-		2920D09E1CF747940043BC1C /* FindMe_intro_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00003.png; sourceTree = "<group>"; };
-		2920D09F1CF747940043BC1C /* FindMe_intro_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00004.png; sourceTree = "<group>"; };
-		2920D0A01CF747940043BC1C /* FindMe_intro_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00005.png; sourceTree = "<group>"; };
-		2920D0A11CF747940043BC1C /* FindMe_intro_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00006.png; sourceTree = "<group>"; };
-		2920D0A21CF747940043BC1C /* FindMe_intro_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00007.png; sourceTree = "<group>"; };
-		2920D0A31CF747940043BC1C /* FindMe_intro_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00008.png; sourceTree = "<group>"; };
-		2920D0A41CF747940043BC1C /* FindMe_intro_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00009.png; sourceTree = "<group>"; };
-		2920D0A51CF747940043BC1C /* FindMe_intro_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00010.png; sourceTree = "<group>"; };
-		2920D0A61CF747940043BC1C /* FindMe_intro_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00011.png; sourceTree = "<group>"; };
-		2920D0A71CF747940043BC1C /* FindMe_intro_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00012.png; sourceTree = "<group>"; };
-		2920D0A81CF747940043BC1C /* FindMe_intro_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00013.png; sourceTree = "<group>"; };
-		2920D0A91CF747940043BC1C /* FindMe_intro_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00014.png; sourceTree = "<group>"; };
-		2920D0AA1CF747940043BC1C /* FindMe_intro_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00015.png; sourceTree = "<group>"; };
-		2920D0AB1CF747940043BC1C /* FindMe_intro_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00016.png; sourceTree = "<group>"; };
-		2920D0AC1CF747940043BC1C /* FindMe_intro_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00017.png; sourceTree = "<group>"; };
-		2920D0AD1CF747940043BC1C /* FindMe_intro_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00018.png; sourceTree = "<group>"; };
-		2920D0AE1CF747940043BC1C /* FindMe_intro_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00019.png; sourceTree = "<group>"; };
-		2920D0AF1CF747940043BC1C /* FindMe_intro_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00020.png; sourceTree = "<group>"; };
-		2920D0B01CF747940043BC1C /* FindMe_intro_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00021.png; sourceTree = "<group>"; };
-		2920D0B11CF747940043BC1C /* FindMe_intro_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00022.png; sourceTree = "<group>"; };
-		2920D0B21CF747940043BC1C /* FindMe_intro_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00023.png; sourceTree = "<group>"; };
-		2920D0B31CF747940043BC1C /* FindMe_intro_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00024.png; sourceTree = "<group>"; };
-		2920D0B41CF747940043BC1C /* FindMe_intro_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00025.png; sourceTree = "<group>"; };
-		2920D0B51CF747940043BC1C /* FindMe_intro_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00026.png; sourceTree = "<group>"; };
-		2920D0B61CF747940043BC1C /* FindMe_intro_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00027.png; sourceTree = "<group>"; };
-		2920D0B71CF747940043BC1C /* FindMe_intro_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00028.png; sourceTree = "<group>"; };
-		2920D0B81CF747940043BC1C /* FindMe_intro_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00029.png; sourceTree = "<group>"; };
-		2920D0B91CF747940043BC1C /* FindMe_intro_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00030.png; sourceTree = "<group>"; };
-		2920D0BA1CF747940043BC1C /* FindMe_intro_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00031.png; sourceTree = "<group>"; };
-		2920D0BB1CF747940043BC1C /* FindMe_intro_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00032.png; sourceTree = "<group>"; };
-		2920D0BC1CF747940043BC1C /* FindMe_intro_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00033.png; sourceTree = "<group>"; };
-		2920D0BD1CF747940043BC1C /* FindMe_intro_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00034.png; sourceTree = "<group>"; };
-		2920D0BE1CF747940043BC1C /* FindMe_intro_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00035.png; sourceTree = "<group>"; };
-		2920D0BF1CF747940043BC1C /* FindMe_intro_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00036.png; sourceTree = "<group>"; };
-		2920D0C01CF747940043BC1C /* FindMe_intro_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00037.png; sourceTree = "<group>"; };
-		2920D0C11CF747940043BC1C /* FindMe_intro_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00038.png; sourceTree = "<group>"; };
-		2920D0C21CF747940043BC1C /* FindMe_intro_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00039.png; sourceTree = "<group>"; };
-		2920D0C31CF747940043BC1C /* FindMe_intro_00040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00040.png; sourceTree = "<group>"; };
-		2920D0C41CF747940043BC1C /* FindMe_intro_00041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00041.png; sourceTree = "<group>"; };
-		2920D0C51CF747940043BC1C /* FindMe_intro_00042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00042.png; sourceTree = "<group>"; };
-		2920D0C61CF747940043BC1C /* FindMe_intro_00043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00043.png; sourceTree = "<group>"; };
-		2920D0C71CF747940043BC1C /* FindMe_intro_00044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00044.png; sourceTree = "<group>"; };
-		2920D0C81CF747940043BC1C /* FindMe_intro_00045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00045.png; sourceTree = "<group>"; };
-		2920D0C91CF747940043BC1C /* FindMe_intro_00046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00046.png; sourceTree = "<group>"; };
-		2920D0CA1CF747940043BC1C /* FindMe_intro_00047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00047.png; sourceTree = "<group>"; };
-		2920D0CB1CF747940043BC1C /* FindMe_intro_00048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00048.png; sourceTree = "<group>"; };
-		2920D0CC1CF747940043BC1C /* FindMe_intro_00049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00049.png; sourceTree = "<group>"; };
-		2920D0CD1CF747940043BC1C /* FindMe_intro_00050.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00050.png; sourceTree = "<group>"; };
-		2920D0CE1CF747940043BC1C /* FindMe_intro_00051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00051.png; sourceTree = "<group>"; };
-		2920D0CF1CF747940043BC1C /* FindMe_intro_00052.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00052.png; sourceTree = "<group>"; };
-		2920D0D01CF747940043BC1C /* FindMe_intro_00053.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00053.png; sourceTree = "<group>"; };
-		2920D0D11CF747940043BC1C /* FindMe_intro_00054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00054.png; sourceTree = "<group>"; };
-		2920D0D21CF747940043BC1C /* FindMe_intro_00055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00055.png; sourceTree = "<group>"; };
-		2920D0D31CF747940043BC1C /* FindMe_intro_00056.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00056.png; sourceTree = "<group>"; };
-		2920D0D41CF747940043BC1C /* FindMe_intro_00057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00057.png; sourceTree = "<group>"; };
-		2920D0D51CF747940043BC1C /* FindMe_intro_00058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00058.png; sourceTree = "<group>"; };
-		2920D0D61CF747940043BC1C /* FindMe_intro_00059.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00059.png; sourceTree = "<group>"; };
-		2920D0D71CF747940043BC1C /* FindMe_intro_00060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00060.png; sourceTree = "<group>"; };
-		2920D0D81CF747940043BC1C /* FindMe_intro_00061.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00061.png; sourceTree = "<group>"; };
-		2920D0D91CF747940043BC1C /* FindMe_intro_00062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00062.png; sourceTree = "<group>"; };
-		2920D0DA1CF747940043BC1C /* FindMe_intro_00063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00063.png; sourceTree = "<group>"; };
-		2920D0DB1CF747940043BC1C /* FindMe_intro_00064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00064.png; sourceTree = "<group>"; };
-		2920D0DC1CF747940043BC1C /* FindMe_intro_00065.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00065.png; sourceTree = "<group>"; };
-		2920D0DD1CF747940043BC1C /* FindMe_intro_00066.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00066.png; sourceTree = "<group>"; };
-		2920D0DE1CF747940043BC1C /* FindMe_intro_00067.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00067.png; sourceTree = "<group>"; };
-		2920D0DF1CF747940043BC1C /* FindMe_intro_00068.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00068.png; sourceTree = "<group>"; };
-		2920D0E01CF747940043BC1C /* FindMe_intro_00069.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00069.png; sourceTree = "<group>"; };
-		2920D0E21CF747940043BC1C /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
-		2920D0E31CF747940043BC1C /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
-		2920D0E41CF747940043BC1C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		2920D0E51CF747940043BC1C /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
-		2920D0E61CF747940043BC1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2920D0E81CF747940043BC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2920D0EA1CF747940043BC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2920D0EC1CF747940043BC1C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		2920D0ED1CF747940043BC1C /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
-		2920D0EE1CF747940043BC1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2920D0EF1CF747940043BC1C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		2920D0F01CF747940043BC1C /* ParamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamViewController.swift; sourceTree = "<group>"; };
-		2920D0F11CF747940043BC1C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		2920D0F41CF747940043BC1C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		2920D0F61CF747940043BC1C /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		2920D0F71CF747940043BC1C /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
-		2920D0F81CF747940043BC1C /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
-		2920D0F91CF747940043BC1C /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
-		2920D0FA1CF747940043BC1C /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		2920D0FB1CF747940043BC1C /* UserAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
+		2920D15C1CF74CDE0043BC1C /* APICommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICommunicator.swift; sourceTree = "<group>"; };
+		2920D15D1CF74CDE0043BC1C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2920D15F1CF74CDE0043BC1C /* FindMe_intro_00000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00000.png; sourceTree = "<group>"; };
+		2920D1601CF74CDE0043BC1C /* FindMe_intro_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00001.png; sourceTree = "<group>"; };
+		2920D1611CF74CDE0043BC1C /* FindMe_intro_00002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00002.png; sourceTree = "<group>"; };
+		2920D1621CF74CDE0043BC1C /* FindMe_intro_00003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00003.png; sourceTree = "<group>"; };
+		2920D1631CF74CDE0043BC1C /* FindMe_intro_00004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00004.png; sourceTree = "<group>"; };
+		2920D1641CF74CDE0043BC1C /* FindMe_intro_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00005.png; sourceTree = "<group>"; };
+		2920D1651CF74CDE0043BC1C /* FindMe_intro_00006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00006.png; sourceTree = "<group>"; };
+		2920D1661CF74CDE0043BC1C /* FindMe_intro_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00007.png; sourceTree = "<group>"; };
+		2920D1671CF74CDE0043BC1C /* FindMe_intro_00008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00008.png; sourceTree = "<group>"; };
+		2920D1681CF74CDE0043BC1C /* FindMe_intro_00009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00009.png; sourceTree = "<group>"; };
+		2920D1691CF74CDE0043BC1C /* FindMe_intro_00010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00010.png; sourceTree = "<group>"; };
+		2920D16A1CF74CDE0043BC1C /* FindMe_intro_00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00011.png; sourceTree = "<group>"; };
+		2920D16B1CF74CDE0043BC1C /* FindMe_intro_00012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00012.png; sourceTree = "<group>"; };
+		2920D16C1CF74CDE0043BC1C /* FindMe_intro_00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00013.png; sourceTree = "<group>"; };
+		2920D16D1CF74CDE0043BC1C /* FindMe_intro_00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00014.png; sourceTree = "<group>"; };
+		2920D16E1CF74CDE0043BC1C /* FindMe_intro_00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00015.png; sourceTree = "<group>"; };
+		2920D16F1CF74CDE0043BC1C /* FindMe_intro_00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00016.png; sourceTree = "<group>"; };
+		2920D1701CF74CDE0043BC1C /* FindMe_intro_00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00017.png; sourceTree = "<group>"; };
+		2920D1711CF74CDE0043BC1C /* FindMe_intro_00018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00018.png; sourceTree = "<group>"; };
+		2920D1721CF74CDE0043BC1C /* FindMe_intro_00019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00019.png; sourceTree = "<group>"; };
+		2920D1731CF74CDE0043BC1C /* FindMe_intro_00020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00020.png; sourceTree = "<group>"; };
+		2920D1741CF74CDE0043BC1C /* FindMe_intro_00021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00021.png; sourceTree = "<group>"; };
+		2920D1751CF74CDE0043BC1C /* FindMe_intro_00022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00022.png; sourceTree = "<group>"; };
+		2920D1761CF74CDE0043BC1C /* FindMe_intro_00023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00023.png; sourceTree = "<group>"; };
+		2920D1771CF74CDE0043BC1C /* FindMe_intro_00024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00024.png; sourceTree = "<group>"; };
+		2920D1781CF74CDE0043BC1C /* FindMe_intro_00025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00025.png; sourceTree = "<group>"; };
+		2920D1791CF74CDE0043BC1C /* FindMe_intro_00026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00026.png; sourceTree = "<group>"; };
+		2920D17A1CF74CDE0043BC1C /* FindMe_intro_00027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00027.png; sourceTree = "<group>"; };
+		2920D17B1CF74CDE0043BC1C /* FindMe_intro_00028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00028.png; sourceTree = "<group>"; };
+		2920D17C1CF74CDE0043BC1C /* FindMe_intro_00029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00029.png; sourceTree = "<group>"; };
+		2920D17D1CF74CDE0043BC1C /* FindMe_intro_00030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00030.png; sourceTree = "<group>"; };
+		2920D17E1CF74CDE0043BC1C /* FindMe_intro_00031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00031.png; sourceTree = "<group>"; };
+		2920D17F1CF74CDE0043BC1C /* FindMe_intro_00032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00032.png; sourceTree = "<group>"; };
+		2920D1801CF74CDE0043BC1C /* FindMe_intro_00033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00033.png; sourceTree = "<group>"; };
+		2920D1811CF74CDE0043BC1C /* FindMe_intro_00034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00034.png; sourceTree = "<group>"; };
+		2920D1821CF74CDE0043BC1C /* FindMe_intro_00035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00035.png; sourceTree = "<group>"; };
+		2920D1831CF74CDE0043BC1C /* FindMe_intro_00036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00036.png; sourceTree = "<group>"; };
+		2920D1841CF74CDE0043BC1C /* FindMe_intro_00037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00037.png; sourceTree = "<group>"; };
+		2920D1851CF74CDE0043BC1C /* FindMe_intro_00038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00038.png; sourceTree = "<group>"; };
+		2920D1861CF74CDE0043BC1C /* FindMe_intro_00039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00039.png; sourceTree = "<group>"; };
+		2920D1871CF74CDE0043BC1C /* FindMe_intro_00040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00040.png; sourceTree = "<group>"; };
+		2920D1881CF74CDE0043BC1C /* FindMe_intro_00041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00041.png; sourceTree = "<group>"; };
+		2920D1891CF74CDE0043BC1C /* FindMe_intro_00042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00042.png; sourceTree = "<group>"; };
+		2920D18A1CF74CDE0043BC1C /* FindMe_intro_00043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00043.png; sourceTree = "<group>"; };
+		2920D18B1CF74CDE0043BC1C /* FindMe_intro_00044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00044.png; sourceTree = "<group>"; };
+		2920D18C1CF74CDE0043BC1C /* FindMe_intro_00045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00045.png; sourceTree = "<group>"; };
+		2920D18D1CF74CDE0043BC1C /* FindMe_intro_00046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00046.png; sourceTree = "<group>"; };
+		2920D18E1CF74CDE0043BC1C /* FindMe_intro_00047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00047.png; sourceTree = "<group>"; };
+		2920D18F1CF74CDE0043BC1C /* FindMe_intro_00048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00048.png; sourceTree = "<group>"; };
+		2920D1901CF74CDE0043BC1C /* FindMe_intro_00049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00049.png; sourceTree = "<group>"; };
+		2920D1911CF74CDE0043BC1C /* FindMe_intro_00050.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00050.png; sourceTree = "<group>"; };
+		2920D1921CF74CDE0043BC1C /* FindMe_intro_00051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00051.png; sourceTree = "<group>"; };
+		2920D1931CF74CDE0043BC1C /* FindMe_intro_00052.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00052.png; sourceTree = "<group>"; };
+		2920D1941CF74CDE0043BC1C /* FindMe_intro_00053.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00053.png; sourceTree = "<group>"; };
+		2920D1951CF74CDE0043BC1C /* FindMe_intro_00054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00054.png; sourceTree = "<group>"; };
+		2920D1961CF74CDE0043BC1C /* FindMe_intro_00055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00055.png; sourceTree = "<group>"; };
+		2920D1971CF74CDE0043BC1C /* FindMe_intro_00056.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00056.png; sourceTree = "<group>"; };
+		2920D1981CF74CDE0043BC1C /* FindMe_intro_00057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00057.png; sourceTree = "<group>"; };
+		2920D1991CF74CDE0043BC1C /* FindMe_intro_00058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00058.png; sourceTree = "<group>"; };
+		2920D19A1CF74CDE0043BC1C /* FindMe_intro_00059.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00059.png; sourceTree = "<group>"; };
+		2920D19B1CF74CDE0043BC1C /* FindMe_intro_00060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00060.png; sourceTree = "<group>"; };
+		2920D19C1CF74CDE0043BC1C /* FindMe_intro_00061.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00061.png; sourceTree = "<group>"; };
+		2920D19D1CF74CDE0043BC1C /* FindMe_intro_00062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00062.png; sourceTree = "<group>"; };
+		2920D19E1CF74CDE0043BC1C /* FindMe_intro_00063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00063.png; sourceTree = "<group>"; };
+		2920D19F1CF74CDE0043BC1C /* FindMe_intro_00064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00064.png; sourceTree = "<group>"; };
+		2920D1A01CF74CDE0043BC1C /* FindMe_intro_00065.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00065.png; sourceTree = "<group>"; };
+		2920D1A11CF74CDE0043BC1C /* FindMe_intro_00066.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00066.png; sourceTree = "<group>"; };
+		2920D1A21CF74CDE0043BC1C /* FindMe_intro_00067.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00067.png; sourceTree = "<group>"; };
+		2920D1A31CF74CDE0043BC1C /* FindMe_intro_00068.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00068.png; sourceTree = "<group>"; };
+		2920D1A41CF74CDE0043BC1C /* FindMe_intro_00069.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindMe_intro_00069.png; sourceTree = "<group>"; };
+		2920D1A61CF74CDE0043BC1C /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		2920D1A71CF74CDE0043BC1C /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
+		2920D1A81CF74CDE0043BC1C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		2920D1A91CF74CDE0043BC1C /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		2920D1AA1CF74CDE0043BC1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2920D1AC1CF74CDE0043BC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2920D1AE1CF74CDE0043BC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2920D1B01CF74CDE0043BC1C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		2920D1B11CF74CDE0043BC1C /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		2920D1B21CF74CDE0043BC1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2920D1B31CF74CDE0043BC1C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2920D1B41CF74CDE0043BC1C /* ParamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamViewController.swift; sourceTree = "<group>"; };
+		2920D1B51CF74CDE0043BC1C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2920D1B61CF74CDE0043BC1C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2920D1B81CF74CDE0043BC1C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2920D1BA1CF74CDE0043BC1C /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		2920D1BB1CF74CDE0043BC1C /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
+		2920D1BC1CF74CDE0043BC1C /* PusherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PusherService.swift; sourceTree = "<group>"; };
+		2920D1BD1CF74CDE0043BC1C /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
+		2920D1BE1CF74CDE0043BC1C /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2920D1BF1CF74CDE0043BC1C /* UserAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
 		29E3C5ED1C8B19B900DDD92A /* findme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C6011C8B19B900DDD92A /* findmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = findmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C6051C8B19B900DDD92A /* findmeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findmeTests.swift; sourceTree = "<group>"; };
@@ -233,149 +235,150 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2920D0961CF747940043BC1C /* findme */ = {
+		2920D15A1CF74CDE0043BC1C /* findme */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0971CF747940043BC1C /* APICommunicator */,
-				2920D0991CF747940043BC1C /* AppDelegate.swift */,
-				2920D09A1CF747940043BC1C /* Assets */,
-				2920D0E61CF747940043BC1C /* Assets.xcassets */,
-				2920D0E71CF747940043BC1C /* LaunchScreen.storyboard */,
-				2920D0E91CF747940043BC1C /* Main.storyboard */,
-				2920D0EB1CF747940043BC1C /* Controller */,
-				2920D0F31CF747940043BC1C /* Model */,
-				2920D0F51CF747940043BC1C /* Service */,
-				2920D0FB1CF747940043BC1C /* UserAnnotationView.swift */,
+				2920D15B1CF74CDE0043BC1C /* APICommunicator */,
+				2920D15D1CF74CDE0043BC1C /* AppDelegate.swift */,
+				2920D15E1CF74CDE0043BC1C /* Assets */,
+				2920D1AA1CF74CDE0043BC1C /* Assets.xcassets */,
+				2920D1AB1CF74CDE0043BC1C /* LaunchScreen.storyboard */,
+				2920D1AD1CF74CDE0043BC1C /* Main.storyboard */,
+				2920D1AF1CF74CDE0043BC1C /* Controller */,
+				2920D1B61CF74CDE0043BC1C /* Info.plist */,
+				2920D1B71CF74CDE0043BC1C /* Model */,
+				2920D1B91CF74CDE0043BC1C /* Service */,
+				2920D1BF1CF74CDE0043BC1C /* UserAnnotationView.swift */,
 			);
 			path = findme;
 			sourceTree = "<group>";
 		};
-		2920D0971CF747940043BC1C /* APICommunicator */ = {
+		2920D15B1CF74CDE0043BC1C /* APICommunicator */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0981CF747940043BC1C /* APICommunicator.swift */,
+				2920D15C1CF74CDE0043BC1C /* APICommunicator.swift */,
 			);
 			path = APICommunicator;
 			sourceTree = "<group>";
 		};
-		2920D09A1CF747940043BC1C /* Assets */ = {
+		2920D15E1CF74CDE0043BC1C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				2920D09B1CF747940043BC1C /* FindMe_intro_00000.png */,
-				2920D09C1CF747940043BC1C /* FindMe_intro_00001.png */,
-				2920D09D1CF747940043BC1C /* FindMe_intro_00002.png */,
-				2920D09E1CF747940043BC1C /* FindMe_intro_00003.png */,
-				2920D09F1CF747940043BC1C /* FindMe_intro_00004.png */,
-				2920D0A01CF747940043BC1C /* FindMe_intro_00005.png */,
-				2920D0A11CF747940043BC1C /* FindMe_intro_00006.png */,
-				2920D0A21CF747940043BC1C /* FindMe_intro_00007.png */,
-				2920D0A31CF747940043BC1C /* FindMe_intro_00008.png */,
-				2920D0A41CF747940043BC1C /* FindMe_intro_00009.png */,
-				2920D0A51CF747940043BC1C /* FindMe_intro_00010.png */,
-				2920D0A61CF747940043BC1C /* FindMe_intro_00011.png */,
-				2920D0A71CF747940043BC1C /* FindMe_intro_00012.png */,
-				2920D0A81CF747940043BC1C /* FindMe_intro_00013.png */,
-				2920D0A91CF747940043BC1C /* FindMe_intro_00014.png */,
-				2920D0AA1CF747940043BC1C /* FindMe_intro_00015.png */,
-				2920D0AB1CF747940043BC1C /* FindMe_intro_00016.png */,
-				2920D0AC1CF747940043BC1C /* FindMe_intro_00017.png */,
-				2920D0AD1CF747940043BC1C /* FindMe_intro_00018.png */,
-				2920D0AE1CF747940043BC1C /* FindMe_intro_00019.png */,
-				2920D0AF1CF747940043BC1C /* FindMe_intro_00020.png */,
-				2920D0B01CF747940043BC1C /* FindMe_intro_00021.png */,
-				2920D0B11CF747940043BC1C /* FindMe_intro_00022.png */,
-				2920D0B21CF747940043BC1C /* FindMe_intro_00023.png */,
-				2920D0B31CF747940043BC1C /* FindMe_intro_00024.png */,
-				2920D0B41CF747940043BC1C /* FindMe_intro_00025.png */,
-				2920D0B51CF747940043BC1C /* FindMe_intro_00026.png */,
-				2920D0B61CF747940043BC1C /* FindMe_intro_00027.png */,
-				2920D0B71CF747940043BC1C /* FindMe_intro_00028.png */,
-				2920D0B81CF747940043BC1C /* FindMe_intro_00029.png */,
-				2920D0B91CF747940043BC1C /* FindMe_intro_00030.png */,
-				2920D0BA1CF747940043BC1C /* FindMe_intro_00031.png */,
-				2920D0BB1CF747940043BC1C /* FindMe_intro_00032.png */,
-				2920D0BC1CF747940043BC1C /* FindMe_intro_00033.png */,
-				2920D0BD1CF747940043BC1C /* FindMe_intro_00034.png */,
-				2920D0BE1CF747940043BC1C /* FindMe_intro_00035.png */,
-				2920D0BF1CF747940043BC1C /* FindMe_intro_00036.png */,
-				2920D0C01CF747940043BC1C /* FindMe_intro_00037.png */,
-				2920D0C11CF747940043BC1C /* FindMe_intro_00038.png */,
-				2920D0C21CF747940043BC1C /* FindMe_intro_00039.png */,
-				2920D0C31CF747940043BC1C /* FindMe_intro_00040.png */,
-				2920D0C41CF747940043BC1C /* FindMe_intro_00041.png */,
-				2920D0C51CF747940043BC1C /* FindMe_intro_00042.png */,
-				2920D0C61CF747940043BC1C /* FindMe_intro_00043.png */,
-				2920D0C71CF747940043BC1C /* FindMe_intro_00044.png */,
-				2920D0C81CF747940043BC1C /* FindMe_intro_00045.png */,
-				2920D0C91CF747940043BC1C /* FindMe_intro_00046.png */,
-				2920D0CA1CF747940043BC1C /* FindMe_intro_00047.png */,
-				2920D0CB1CF747940043BC1C /* FindMe_intro_00048.png */,
-				2920D0CC1CF747940043BC1C /* FindMe_intro_00049.png */,
-				2920D0CD1CF747940043BC1C /* FindMe_intro_00050.png */,
-				2920D0CE1CF747940043BC1C /* FindMe_intro_00051.png */,
-				2920D0CF1CF747940043BC1C /* FindMe_intro_00052.png */,
-				2920D0D01CF747940043BC1C /* FindMe_intro_00053.png */,
-				2920D0D11CF747940043BC1C /* FindMe_intro_00054.png */,
-				2920D0D21CF747940043BC1C /* FindMe_intro_00055.png */,
-				2920D0D31CF747940043BC1C /* FindMe_intro_00056.png */,
-				2920D0D41CF747940043BC1C /* FindMe_intro_00057.png */,
-				2920D0D51CF747940043BC1C /* FindMe_intro_00058.png */,
-				2920D0D61CF747940043BC1C /* FindMe_intro_00059.png */,
-				2920D0D71CF747940043BC1C /* FindMe_intro_00060.png */,
-				2920D0D81CF747940043BC1C /* FindMe_intro_00061.png */,
-				2920D0D91CF747940043BC1C /* FindMe_intro_00062.png */,
-				2920D0DA1CF747940043BC1C /* FindMe_intro_00063.png */,
-				2920D0DB1CF747940043BC1C /* FindMe_intro_00064.png */,
-				2920D0DC1CF747940043BC1C /* FindMe_intro_00065.png */,
-				2920D0DD1CF747940043BC1C /* FindMe_intro_00066.png */,
-				2920D0DE1CF747940043BC1C /* FindMe_intro_00067.png */,
-				2920D0DF1CF747940043BC1C /* FindMe_intro_00068.png */,
-				2920D0E01CF747940043BC1C /* FindMe_intro_00069.png */,
-				2920D0E11CF747940043BC1C /* Font Awesome */,
+				2920D15F1CF74CDE0043BC1C /* FindMe_intro_00000.png */,
+				2920D1601CF74CDE0043BC1C /* FindMe_intro_00001.png */,
+				2920D1611CF74CDE0043BC1C /* FindMe_intro_00002.png */,
+				2920D1621CF74CDE0043BC1C /* FindMe_intro_00003.png */,
+				2920D1631CF74CDE0043BC1C /* FindMe_intro_00004.png */,
+				2920D1641CF74CDE0043BC1C /* FindMe_intro_00005.png */,
+				2920D1651CF74CDE0043BC1C /* FindMe_intro_00006.png */,
+				2920D1661CF74CDE0043BC1C /* FindMe_intro_00007.png */,
+				2920D1671CF74CDE0043BC1C /* FindMe_intro_00008.png */,
+				2920D1681CF74CDE0043BC1C /* FindMe_intro_00009.png */,
+				2920D1691CF74CDE0043BC1C /* FindMe_intro_00010.png */,
+				2920D16A1CF74CDE0043BC1C /* FindMe_intro_00011.png */,
+				2920D16B1CF74CDE0043BC1C /* FindMe_intro_00012.png */,
+				2920D16C1CF74CDE0043BC1C /* FindMe_intro_00013.png */,
+				2920D16D1CF74CDE0043BC1C /* FindMe_intro_00014.png */,
+				2920D16E1CF74CDE0043BC1C /* FindMe_intro_00015.png */,
+				2920D16F1CF74CDE0043BC1C /* FindMe_intro_00016.png */,
+				2920D1701CF74CDE0043BC1C /* FindMe_intro_00017.png */,
+				2920D1711CF74CDE0043BC1C /* FindMe_intro_00018.png */,
+				2920D1721CF74CDE0043BC1C /* FindMe_intro_00019.png */,
+				2920D1731CF74CDE0043BC1C /* FindMe_intro_00020.png */,
+				2920D1741CF74CDE0043BC1C /* FindMe_intro_00021.png */,
+				2920D1751CF74CDE0043BC1C /* FindMe_intro_00022.png */,
+				2920D1761CF74CDE0043BC1C /* FindMe_intro_00023.png */,
+				2920D1771CF74CDE0043BC1C /* FindMe_intro_00024.png */,
+				2920D1781CF74CDE0043BC1C /* FindMe_intro_00025.png */,
+				2920D1791CF74CDE0043BC1C /* FindMe_intro_00026.png */,
+				2920D17A1CF74CDE0043BC1C /* FindMe_intro_00027.png */,
+				2920D17B1CF74CDE0043BC1C /* FindMe_intro_00028.png */,
+				2920D17C1CF74CDE0043BC1C /* FindMe_intro_00029.png */,
+				2920D17D1CF74CDE0043BC1C /* FindMe_intro_00030.png */,
+				2920D17E1CF74CDE0043BC1C /* FindMe_intro_00031.png */,
+				2920D17F1CF74CDE0043BC1C /* FindMe_intro_00032.png */,
+				2920D1801CF74CDE0043BC1C /* FindMe_intro_00033.png */,
+				2920D1811CF74CDE0043BC1C /* FindMe_intro_00034.png */,
+				2920D1821CF74CDE0043BC1C /* FindMe_intro_00035.png */,
+				2920D1831CF74CDE0043BC1C /* FindMe_intro_00036.png */,
+				2920D1841CF74CDE0043BC1C /* FindMe_intro_00037.png */,
+				2920D1851CF74CDE0043BC1C /* FindMe_intro_00038.png */,
+				2920D1861CF74CDE0043BC1C /* FindMe_intro_00039.png */,
+				2920D1871CF74CDE0043BC1C /* FindMe_intro_00040.png */,
+				2920D1881CF74CDE0043BC1C /* FindMe_intro_00041.png */,
+				2920D1891CF74CDE0043BC1C /* FindMe_intro_00042.png */,
+				2920D18A1CF74CDE0043BC1C /* FindMe_intro_00043.png */,
+				2920D18B1CF74CDE0043BC1C /* FindMe_intro_00044.png */,
+				2920D18C1CF74CDE0043BC1C /* FindMe_intro_00045.png */,
+				2920D18D1CF74CDE0043BC1C /* FindMe_intro_00046.png */,
+				2920D18E1CF74CDE0043BC1C /* FindMe_intro_00047.png */,
+				2920D18F1CF74CDE0043BC1C /* FindMe_intro_00048.png */,
+				2920D1901CF74CDE0043BC1C /* FindMe_intro_00049.png */,
+				2920D1911CF74CDE0043BC1C /* FindMe_intro_00050.png */,
+				2920D1921CF74CDE0043BC1C /* FindMe_intro_00051.png */,
+				2920D1931CF74CDE0043BC1C /* FindMe_intro_00052.png */,
+				2920D1941CF74CDE0043BC1C /* FindMe_intro_00053.png */,
+				2920D1951CF74CDE0043BC1C /* FindMe_intro_00054.png */,
+				2920D1961CF74CDE0043BC1C /* FindMe_intro_00055.png */,
+				2920D1971CF74CDE0043BC1C /* FindMe_intro_00056.png */,
+				2920D1981CF74CDE0043BC1C /* FindMe_intro_00057.png */,
+				2920D1991CF74CDE0043BC1C /* FindMe_intro_00058.png */,
+				2920D19A1CF74CDE0043BC1C /* FindMe_intro_00059.png */,
+				2920D19B1CF74CDE0043BC1C /* FindMe_intro_00060.png */,
+				2920D19C1CF74CDE0043BC1C /* FindMe_intro_00061.png */,
+				2920D19D1CF74CDE0043BC1C /* FindMe_intro_00062.png */,
+				2920D19E1CF74CDE0043BC1C /* FindMe_intro_00063.png */,
+				2920D19F1CF74CDE0043BC1C /* FindMe_intro_00064.png */,
+				2920D1A01CF74CDE0043BC1C /* FindMe_intro_00065.png */,
+				2920D1A11CF74CDE0043BC1C /* FindMe_intro_00066.png */,
+				2920D1A21CF74CDE0043BC1C /* FindMe_intro_00067.png */,
+				2920D1A31CF74CDE0043BC1C /* FindMe_intro_00068.png */,
+				2920D1A41CF74CDE0043BC1C /* FindMe_intro_00069.png */,
+				2920D1A51CF74CDE0043BC1C /* Font Awesome */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		2920D0E11CF747940043BC1C /* Font Awesome */ = {
+		2920D1A51CF74CDE0043BC1C /* Font Awesome */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0E21CF747940043BC1C /* Enum.swift */,
-				2920D0E31CF747940043BC1C /* FontAwesome.h */,
-				2920D0E41CF747940043BC1C /* FontAwesome.otf */,
-				2920D0E51CF747940043BC1C /* FontAwesome.swift */,
+				2920D1A61CF74CDE0043BC1C /* Enum.swift */,
+				2920D1A71CF74CDE0043BC1C /* FontAwesome.h */,
+				2920D1A81CF74CDE0043BC1C /* FontAwesome.otf */,
+				2920D1A91CF74CDE0043BC1C /* FontAwesome.swift */,
 			);
 			path = "Font Awesome";
 			sourceTree = "<group>";
 		};
-		2920D0EB1CF747940043BC1C /* Controller */ = {
+		2920D1AF1CF74CDE0043BC1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0EC1CF747940043BC1C /* AboutViewController.swift */,
-				2920D0ED1CF747940043BC1C /* ContactViewController.swift */,
-				2920D0EE1CF747940043BC1C /* LoginViewController.swift */,
-				2920D0EF1CF747940043BC1C /* MapViewController.swift */,
-				2920D0F01CF747940043BC1C /* ParamViewController.swift */,
-				2920D0F11CF747940043BC1C /* RegisterViewController.swift */,
+				2920D1B01CF74CDE0043BC1C /* AboutViewController.swift */,
+				2920D1B11CF74CDE0043BC1C /* ContactViewController.swift */,
+				2920D1B21CF74CDE0043BC1C /* LoginViewController.swift */,
+				2920D1B31CF74CDE0043BC1C /* MapViewController.swift */,
+				2920D1B41CF74CDE0043BC1C /* ParamViewController.swift */,
+				2920D1B51CF74CDE0043BC1C /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2920D0F31CF747940043BC1C /* Model */ = {
+		2920D1B71CF74CDE0043BC1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0F41CF747940043BC1C /* User.swift */,
+				2920D1B81CF74CDE0043BC1C /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2920D0F51CF747940043BC1C /* Service */ = {
+		2920D1B91CF74CDE0043BC1C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				2920D0F61CF747940043BC1C /* APIService.swift */,
-				2920D0F71CF747940043BC1C /* PulseAnimation.swift */,
-				2920D0F81CF747940043BC1C /* PusherService.swift */,
-				2920D0F91CF747940043BC1C /* UserAnnotation.swift */,
-				2920D0FA1CF747940043BC1C /* UserService.swift */,
+				2920D1BA1CF74CDE0043BC1C /* APIService.swift */,
+				2920D1BB1CF74CDE0043BC1C /* PulseAnimation.swift */,
+				2920D1BC1CF74CDE0043BC1C /* PusherService.swift */,
+				2920D1BD1CF74CDE0043BC1C /* UserAnnotation.swift */,
+				2920D1BE1CF74CDE0043BC1C /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -383,8 +386,8 @@
 		29E3C5E41C8B19B900DDD92A = {
 			isa = PBXGroup;
 			children = (
-				2920D0961CF747940043BC1C /* findme */,
 				03CF68FD1C97491400194684 /* umpc.gpx */,
+				2920D15A1CF74CDE0043BC1C /* findme */,
 				29E3C6041C8B19B900DDD92A /* findmeTests */,
 				29E3C5EE1C8B19B900DDD92A /* Products */,
 				E14EC0CF6B71E1EE123A8C71 /* Pods */,
@@ -507,81 +510,82 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2920D12C1CF747940043BC1C /* FindMe_intro_00046.png in Resources */,
-				2920D1211CF747940043BC1C /* FindMe_intro_00035.png in Resources */,
-				2920D1241CF747940043BC1C /* FindMe_intro_00038.png in Resources */,
-				2920D1001CF747940043BC1C /* FindMe_intro_00002.png in Resources */,
-				2920D1201CF747940043BC1C /* FindMe_intro_00034.png in Resources */,
-				2920D1321CF747940043BC1C /* FindMe_intro_00052.png in Resources */,
-				2920D1391CF747940043BC1C /* FindMe_intro_00059.png in Resources */,
-				2920D1331CF747940043BC1C /* FindMe_intro_00053.png in Resources */,
-				2920D0FE1CF747940043BC1C /* FindMe_intro_00000.png in Resources */,
-				2920D12F1CF747940043BC1C /* FindMe_intro_00049.png in Resources */,
-				2920D1301CF747940043BC1C /* FindMe_intro_00050.png in Resources */,
-				2920D1141CF747940043BC1C /* FindMe_intro_00022.png in Resources */,
-				2920D1381CF747940043BC1C /* FindMe_intro_00058.png in Resources */,
-				2920D1351CF747940043BC1C /* FindMe_intro_00055.png in Resources */,
-				2920D1451CF747940043BC1C /* FontAwesome.otf in Resources */,
-				2920D12A1CF747940043BC1C /* FindMe_intro_00044.png in Resources */,
-				2920D1061CF747940043BC1C /* FindMe_intro_00008.png in Resources */,
-				2920D1191CF747940043BC1C /* FindMe_intro_00027.png in Resources */,
-				2920D1281CF747940043BC1C /* FindMe_intro_00042.png in Resources */,
-				2920D13B1CF747940043BC1C /* FindMe_intro_00061.png in Resources */,
-				2920D1341CF747940043BC1C /* FindMe_intro_00054.png in Resources */,
-				2920D1361CF747940043BC1C /* FindMe_intro_00056.png in Resources */,
-				2920D1231CF747940043BC1C /* FindMe_intro_00037.png in Resources */,
-				2920D1051CF747940043BC1C /* FindMe_intro_00007.png in Resources */,
-				2920D11B1CF747940043BC1C /* FindMe_intro_00029.png in Resources */,
-				2920D1111CF747940043BC1C /* FindMe_intro_00019.png in Resources */,
-				2920D13A1CF747940043BC1C /* FindMe_intro_00060.png in Resources */,
-				2920D1271CF747940043BC1C /* FindMe_intro_00041.png in Resources */,
-				2920D1151CF747940043BC1C /* FindMe_intro_00023.png in Resources */,
-				2920D1221CF747940043BC1C /* FindMe_intro_00036.png in Resources */,
-				2920D1021CF747940043BC1C /* FindMe_intro_00004.png in Resources */,
-				2920D1481CF747940043BC1C /* LaunchScreen.storyboard in Resources */,
-				2920D13D1CF747940043BC1C /* FindMe_intro_00063.png in Resources */,
-				2920D13C1CF747940043BC1C /* FindMe_intro_00062.png in Resources */,
-				2920D11D1CF747940043BC1C /* FindMe_intro_00031.png in Resources */,
-				2920D1011CF747940043BC1C /* FindMe_intro_00003.png in Resources */,
-				2920D13F1CF747940043BC1C /* FindMe_intro_00065.png in Resources */,
-				2920D1041CF747940043BC1C /* FindMe_intro_00006.png in Resources */,
-				2920D11E1CF747940043BC1C /* FindMe_intro_00032.png in Resources */,
-				2920D1291CF747940043BC1C /* FindMe_intro_00043.png in Resources */,
-				2920D1101CF747940043BC1C /* FindMe_intro_00018.png in Resources */,
-				2920D1131CF747940043BC1C /* FindMe_intro_00021.png in Resources */,
-				2920D12E1CF747940043BC1C /* FindMe_intro_00048.png in Resources */,
-				2920D10B1CF747940043BC1C /* FindMe_intro_00013.png in Resources */,
-				2920D1401CF747940043BC1C /* FindMe_intro_00066.png in Resources */,
-				2920D1081CF747940043BC1C /* FindMe_intro_00010.png in Resources */,
-				2920D1181CF747940043BC1C /* FindMe_intro_00026.png in Resources */,
-				2920D1311CF747940043BC1C /* FindMe_intro_00051.png in Resources */,
-				2920D1261CF747940043BC1C /* FindMe_intro_00040.png in Resources */,
-				2920D10F1CF747940043BC1C /* FindMe_intro_00017.png in Resources */,
-				2920D1121CF747940043BC1C /* FindMe_intro_00020.png in Resources */,
-				2920D1491CF747940043BC1C /* Main.storyboard in Resources */,
+				2920D1F01CF74CDE0043BC1C /* FindMe_intro_00046.png in Resources */,
+				2920D1E51CF74CDE0043BC1C /* FindMe_intro_00035.png in Resources */,
+				2920D1E81CF74CDE0043BC1C /* FindMe_intro_00038.png in Resources */,
+				2920D1C41CF74CDE0043BC1C /* FindMe_intro_00002.png in Resources */,
+				2920D1E41CF74CDE0043BC1C /* FindMe_intro_00034.png in Resources */,
+				2920D1F61CF74CDE0043BC1C /* FindMe_intro_00052.png in Resources */,
+				2920D1FD1CF74CDE0043BC1C /* FindMe_intro_00059.png in Resources */,
+				2920D1F71CF74CDE0043BC1C /* FindMe_intro_00053.png in Resources */,
+				2920D1C21CF74CDE0043BC1C /* FindMe_intro_00000.png in Resources */,
+				2920D1F31CF74CDE0043BC1C /* FindMe_intro_00049.png in Resources */,
+				2920D1F41CF74CDE0043BC1C /* FindMe_intro_00050.png in Resources */,
+				2920D1D81CF74CDE0043BC1C /* FindMe_intro_00022.png in Resources */,
+				2920D1FC1CF74CDE0043BC1C /* FindMe_intro_00058.png in Resources */,
+				2920D1F91CF74CDE0043BC1C /* FindMe_intro_00055.png in Resources */,
+				2920D2091CF74CDE0043BC1C /* FontAwesome.otf in Resources */,
+				2920D1EE1CF74CDE0043BC1C /* FindMe_intro_00044.png in Resources */,
+				2920D1CA1CF74CDE0043BC1C /* FindMe_intro_00008.png in Resources */,
+				2920D1DD1CF74CDE0043BC1C /* FindMe_intro_00027.png in Resources */,
+				2920D1EC1CF74CDE0043BC1C /* FindMe_intro_00042.png in Resources */,
+				2920D1FF1CF74CDE0043BC1C /* FindMe_intro_00061.png in Resources */,
+				2920D1F81CF74CDE0043BC1C /* FindMe_intro_00054.png in Resources */,
+				2920D1FA1CF74CDE0043BC1C /* FindMe_intro_00056.png in Resources */,
+				2920D1E71CF74CDE0043BC1C /* FindMe_intro_00037.png in Resources */,
+				2920D1C91CF74CDE0043BC1C /* FindMe_intro_00007.png in Resources */,
+				2920D1DF1CF74CDE0043BC1C /* FindMe_intro_00029.png in Resources */,
+				2920D1D51CF74CDE0043BC1C /* FindMe_intro_00019.png in Resources */,
+				2920D1FE1CF74CDE0043BC1C /* FindMe_intro_00060.png in Resources */,
+				2920D1EB1CF74CDE0043BC1C /* FindMe_intro_00041.png in Resources */,
+				2920D2141CF74CDE0043BC1C /* Info.plist in Resources */,
+				2920D1D91CF74CDE0043BC1C /* FindMe_intro_00023.png in Resources */,
+				2920D1E61CF74CDE0043BC1C /* FindMe_intro_00036.png in Resources */,
+				2920D1C61CF74CDE0043BC1C /* FindMe_intro_00004.png in Resources */,
+				2920D20C1CF74CDE0043BC1C /* LaunchScreen.storyboard in Resources */,
+				2920D2011CF74CDE0043BC1C /* FindMe_intro_00063.png in Resources */,
+				2920D2001CF74CDE0043BC1C /* FindMe_intro_00062.png in Resources */,
+				2920D1E11CF74CDE0043BC1C /* FindMe_intro_00031.png in Resources */,
+				2920D1C51CF74CDE0043BC1C /* FindMe_intro_00003.png in Resources */,
+				2920D2031CF74CDE0043BC1C /* FindMe_intro_00065.png in Resources */,
+				2920D1C81CF74CDE0043BC1C /* FindMe_intro_00006.png in Resources */,
+				2920D1E21CF74CDE0043BC1C /* FindMe_intro_00032.png in Resources */,
+				2920D1ED1CF74CDE0043BC1C /* FindMe_intro_00043.png in Resources */,
+				2920D1D41CF74CDE0043BC1C /* FindMe_intro_00018.png in Resources */,
+				2920D1D71CF74CDE0043BC1C /* FindMe_intro_00021.png in Resources */,
+				2920D1F21CF74CDE0043BC1C /* FindMe_intro_00048.png in Resources */,
+				2920D1CF1CF74CDE0043BC1C /* FindMe_intro_00013.png in Resources */,
+				2920D2041CF74CDE0043BC1C /* FindMe_intro_00066.png in Resources */,
+				2920D1CC1CF74CDE0043BC1C /* FindMe_intro_00010.png in Resources */,
+				2920D1DC1CF74CDE0043BC1C /* FindMe_intro_00026.png in Resources */,
+				2920D1F51CF74CDE0043BC1C /* FindMe_intro_00051.png in Resources */,
+				2920D1EA1CF74CDE0043BC1C /* FindMe_intro_00040.png in Resources */,
+				2920D1D31CF74CDE0043BC1C /* FindMe_intro_00017.png in Resources */,
+				2920D1D61CF74CDE0043BC1C /* FindMe_intro_00020.png in Resources */,
+				2920D20D1CF74CDE0043BC1C /* Main.storyboard in Resources */,
 				03CF68FE1C97491400194684 /* umpc.gpx in Resources */,
-				2920D0FF1CF747940043BC1C /* FindMe_intro_00001.png in Resources */,
-				2920D1471CF747940043BC1C /* Assets.xcassets in Resources */,
-				2920D10D1CF747940043BC1C /* FindMe_intro_00015.png in Resources */,
-				2920D10C1CF747940043BC1C /* FindMe_intro_00014.png in Resources */,
-				2920D1161CF747940043BC1C /* FindMe_intro_00024.png in Resources */,
-				2920D1251CF747940043BC1C /* FindMe_intro_00039.png in Resources */,
-				2920D12D1CF747940043BC1C /* FindMe_intro_00047.png in Resources */,
-				2920D13E1CF747940043BC1C /* FindMe_intro_00064.png in Resources */,
-				2920D1371CF747940043BC1C /* FindMe_intro_00057.png in Resources */,
-				2920D11F1CF747940043BC1C /* FindMe_intro_00033.png in Resources */,
-				2920D1431CF747940043BC1C /* FindMe_intro_00069.png in Resources */,
-				2920D12B1CF747940043BC1C /* FindMe_intro_00045.png in Resources */,
-				2920D1421CF747940043BC1C /* FindMe_intro_00068.png in Resources */,
-				2920D10E1CF747940043BC1C /* FindMe_intro_00016.png in Resources */,
-				2920D11C1CF747940043BC1C /* FindMe_intro_00030.png in Resources */,
-				2920D1091CF747940043BC1C /* FindMe_intro_00011.png in Resources */,
-				2920D10A1CF747940043BC1C /* FindMe_intro_00012.png in Resources */,
-				2920D11A1CF747940043BC1C /* FindMe_intro_00028.png in Resources */,
-				2920D1031CF747940043BC1C /* FindMe_intro_00005.png in Resources */,
-				2920D1411CF747940043BC1C /* FindMe_intro_00067.png in Resources */,
-				2920D1071CF747940043BC1C /* FindMe_intro_00009.png in Resources */,
-				2920D1171CF747940043BC1C /* FindMe_intro_00025.png in Resources */,
+				2920D1C31CF74CDE0043BC1C /* FindMe_intro_00001.png in Resources */,
+				2920D20B1CF74CDE0043BC1C /* Assets.xcassets in Resources */,
+				2920D1D11CF74CDE0043BC1C /* FindMe_intro_00015.png in Resources */,
+				2920D1D01CF74CDE0043BC1C /* FindMe_intro_00014.png in Resources */,
+				2920D1DA1CF74CDE0043BC1C /* FindMe_intro_00024.png in Resources */,
+				2920D1E91CF74CDE0043BC1C /* FindMe_intro_00039.png in Resources */,
+				2920D1F11CF74CDE0043BC1C /* FindMe_intro_00047.png in Resources */,
+				2920D2021CF74CDE0043BC1C /* FindMe_intro_00064.png in Resources */,
+				2920D1FB1CF74CDE0043BC1C /* FindMe_intro_00057.png in Resources */,
+				2920D1E31CF74CDE0043BC1C /* FindMe_intro_00033.png in Resources */,
+				2920D2071CF74CDE0043BC1C /* FindMe_intro_00069.png in Resources */,
+				2920D1EF1CF74CDE0043BC1C /* FindMe_intro_00045.png in Resources */,
+				2920D2061CF74CDE0043BC1C /* FindMe_intro_00068.png in Resources */,
+				2920D1D21CF74CDE0043BC1C /* FindMe_intro_00016.png in Resources */,
+				2920D1E01CF74CDE0043BC1C /* FindMe_intro_00030.png in Resources */,
+				2920D1CD1CF74CDE0043BC1C /* FindMe_intro_00011.png in Resources */,
+				2920D1CE1CF74CDE0043BC1C /* FindMe_intro_00012.png in Resources */,
+				2920D1DE1CF74CDE0043BC1C /* FindMe_intro_00028.png in Resources */,
+				2920D1C71CF74CDE0043BC1C /* FindMe_intro_00005.png in Resources */,
+				2920D2051CF74CDE0043BC1C /* FindMe_intro_00067.png in Resources */,
+				2920D1CB1CF74CDE0043BC1C /* FindMe_intro_00009.png in Resources */,
+				2920D1DB1CF74CDE0043BC1C /* FindMe_intro_00025.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,23 +696,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2920D14C1CF747940043BC1C /* LoginViewController.swift in Sources */,
-				2920D14F1CF747940043BC1C /* RegisterViewController.swift in Sources */,
-				2920D1461CF747940043BC1C /* FontAwesome.swift in Sources */,
-				2920D0FD1CF747940043BC1C /* AppDelegate.swift in Sources */,
-				2920D0FC1CF747940043BC1C /* APICommunicator.swift in Sources */,
-				2920D14A1CF747940043BC1C /* AboutViewController.swift in Sources */,
-				2920D14E1CF747940043BC1C /* ParamViewController.swift in Sources */,
-				2920D1441CF747940043BC1C /* Enum.swift in Sources */,
-				2920D1531CF747940043BC1C /* PulseAnimation.swift in Sources */,
-				2920D14B1CF747940043BC1C /* ContactViewController.swift in Sources */,
-				2920D1541CF747940043BC1C /* PusherService.swift in Sources */,
-				2920D14D1CF747940043BC1C /* MapViewController.swift in Sources */,
-				2920D1561CF747940043BC1C /* UserService.swift in Sources */,
-				2920D1571CF747940043BC1C /* UserAnnotationView.swift in Sources */,
-				2920D1551CF747940043BC1C /* UserAnnotation.swift in Sources */,
-				2920D1521CF747940043BC1C /* APIService.swift in Sources */,
-				2920D1511CF747940043BC1C /* User.swift in Sources */,
+				2920D2101CF74CDE0043BC1C /* LoginViewController.swift in Sources */,
+				2920D2131CF74CDE0043BC1C /* RegisterViewController.swift in Sources */,
+				2920D20A1CF74CDE0043BC1C /* FontAwesome.swift in Sources */,
+				2920D1C11CF74CDE0043BC1C /* AppDelegate.swift in Sources */,
+				2920D1C01CF74CDE0043BC1C /* APICommunicator.swift in Sources */,
+				2920D20E1CF74CDE0043BC1C /* AboutViewController.swift in Sources */,
+				2920D2121CF74CDE0043BC1C /* ParamViewController.swift in Sources */,
+				2920D2081CF74CDE0043BC1C /* Enum.swift in Sources */,
+				2920D2171CF74CDE0043BC1C /* PulseAnimation.swift in Sources */,
+				2920D20F1CF74CDE0043BC1C /* ContactViewController.swift in Sources */,
+				2920D2181CF74CDE0043BC1C /* PusherService.swift in Sources */,
+				2920D2111CF74CDE0043BC1C /* MapViewController.swift in Sources */,
+				2920D21A1CF74CDE0043BC1C /* UserService.swift in Sources */,
+				2920D21B1CF74CDE0043BC1C /* UserAnnotationView.swift in Sources */,
+				2920D2191CF74CDE0043BC1C /* UserAnnotation.swift in Sources */,
+				2920D2161CF74CDE0043BC1C /* APIService.swift in Sources */,
+				2920D2151CF74CDE0043BC1C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,18 +735,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2920D0E71CF747940043BC1C /* LaunchScreen.storyboard */ = {
+		2920D1AB1CF74CDE0043BC1C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2920D0E81CF747940043BC1C /* Base */,
+				2920D1AC1CF74CDE0043BC1C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		2920D0E91CF747940043BC1C /* Main.storyboard */ = {
+		2920D1AD1CF74CDE0043BC1C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2920D0EA1CF747940043BC1C /* Base */,
+				2920D1AE1CF74CDE0043BC1C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -840,6 +844,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/findme/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.findme-app";
@@ -855,6 +860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/findme/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.findme-app";
