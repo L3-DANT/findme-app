@@ -6,7 +6,7 @@
 //  Copyright © 2016 Maxime Signoret. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 
 class APIService {
     let apiCommunicator = APICommunicator.getInstance.getBaseUrl()
@@ -136,6 +136,14 @@ class APIService {
     func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
         self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
+        })
+    }
+    
+    func updateCurrentUserLocation(name : String, location : CLLocationCoordinate2D){
+        let params = ["pseudo" : name, "latitude" : "\(location.latitude)", "longitude" : "\(location.longitude)"]
+        
+        self.makeHTTPRequest(self.apiCommunicator + "/update-coordinates", params: params, HTTPMethod : "POST", onCompletion: {json, err in
+
         })
     }
 
