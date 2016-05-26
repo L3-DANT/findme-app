@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    let wsBaseUrl = WSConnection.getInstance.getBaseUrl()
+    let wsBaseUrl = APICommunicator.getInstance.getBaseUrl()
     let userAppSession = "user"
     
     @IBOutlet weak var findMeIntroView: UIImageView!
@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
             UIAlert("Sign in Failed!", message: "Please enter Username and Password")
         } else {
             do {
-                let wsService = WSService()
-                wsService.signIn(username, password: password, onCompletion: { user, err in
+                let apiService = APIService()
+                apiService.signIn(username, password: password, onCompletion: { user, err in
                     if user != nil {
                         self.dismissViewControllerAnimated(true, completion: nil)
                     } else {

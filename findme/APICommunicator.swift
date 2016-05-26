@@ -1,5 +1,5 @@
 //
-//  WSConnection.swift
+//  APICommunicator.swift
 //  findme
 //
 //  Created by Maxime Signoret on 05/05/16.
@@ -9,8 +9,8 @@
 import Foundation
 
 
-class WSConnection {
-    static let getInstance = WSConnection()
+class APICommunicator {
+    static let getInstance = APICommunicator()
 
     let hostname = "http://localhost"
     let port = 8080

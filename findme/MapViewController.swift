@@ -108,8 +108,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         getCurrentUser()
         var annotations = [MKAnnotation]()
         
-        let wsService = WSService()
-        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
+        let apiService = APIService()
+        apiService.getUser(self.user.pseudo, onCompletion: { user, err in
             if user != nil && user?.friendList != nil {
                 for friend in user!.friendList!{
                     let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)

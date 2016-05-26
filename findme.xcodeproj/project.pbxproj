@@ -86,22 +86,18 @@
 		03B27FE61C99FE5400D744DA /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE51C99FE5400D744DA /* ParamViewController.swift */; };
 		03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE71C9A018600D744DA /* ContactViewController.swift */; };
 		03B27FEA1C9A2BF900D744DA /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */; };
-		03B27FEC1C9AE3F000D744DA /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27FEB1C9AE3F000D744DA /* Users.swift */; };
 		03CF68FE1C97491400194684 /* umpc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 03CF68FD1C97491400194684 /* umpc.gpx */; };
-		27E25A12ADAECA0C8D3D46BB /* Pods_findmeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */; };
 		292D66811C9AA92100BE0DEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66801C9AA92100BE0DEC /* LoginViewController.swift */; };
 		292D66831C9AA99B00BE0DEC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */; };
-		292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */; };
-		295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295635711CDB7A20007F3DE9 /* WSConnection.swift */; };
+		295635721CDB7A20007F3DE9 /* APICommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295635711CDB7A20007F3DE9 /* APICommunicator.swift */; };
 		297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */; };
-		29C3EC9C1CE31C0E00F613C1 /* WSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3EC9B1CE31C0E00F613C1 /* WSService.swift */; };
+		29C3EC9C1CE31C0E00F613C1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3EC9B1CE31C0E00F613C1 /* APIService.swift */; };
 		29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */; };
 		29E3C5F31C8B19B900DDD92A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C5F21C8B19B900DDD92A /* MapViewController.swift */; };
 		29E3C5F61C8B19B900DDD92A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F41C8B19B900DDD92A /* Main.storyboard */; };
 		29E3C5F81C8B19B900DDD92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F71C8B19B900DDD92A /* Assets.xcassets */; };
 		29E3C5FB1C8B19B900DDD92A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E3C5F91C8B19B900DDD92A /* LaunchScreen.storyboard */; };
 		29E3C6061C8B19B900DDD92A /* findmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3C6051C8B19B900DDD92A /* findmeTests.swift */; };
-		BEF23BF55139BE6844CCB5EE /* Pods_findme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C85E7EE193324D72BB8B90C /* Pods_findme.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,14 +191,12 @@
 		03B27FE51C99FE5400D744DA /* ParamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamViewController.swift; sourceTree = "<group>"; };
 		03B27FE71C9A018600D744DA /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
-		03B27FEB1C9AE3F000D744DA /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		03CF68FD1C97491400194684 /* umpc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = umpc.gpx; sourceTree = "<group>"; };
 		292D66801C9AA92100BE0DEC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSettings.swift; sourceTree = "<group>"; };
-		295635711CDB7A20007F3DE9 /* WSConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSConnection.swift; sourceTree = "<group>"; };
+		295635711CDB7A20007F3DE9 /* APICommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICommunicator.swift; sourceTree = "<group>"; };
 		297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		29C3EC9B1CE31C0E00F613C1 /* WSService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WSService.swift; path = ../WSService.swift; sourceTree = "<group>"; };
+		29C3EC9B1CE31C0E00F613C1 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = ../APIService.swift; sourceTree = "<group>"; };
 		29E3C5ED1C8B19B900DDD92A /* findme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29E3C5F21C8B19B900DDD92A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -213,8 +207,6 @@
 		29E3C6011C8B19B900DDD92A /* findmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = findmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E3C6051C8B19B900DDD92A /* findmeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findmeTests.swift; sourceTree = "<group>"; };
 		29E3C6071C8B19B900DDD92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C85E7EE193324D72BB8B90C /* Pods_findme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_findme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_findmeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9CBB78F6E833E8ACA030A3 /* Pods-findme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findme/Pods-findme.debug.xcconfig"; sourceTree = "<group>"; };
 		A629CCAD56C2752C3DC755D6 /* Pods-findmeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB008B91A044316AECEF39FA /* Pods-findme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findme.release.xcconfig"; path = "Pods/Target Support Files/Pods-findme/Pods-findme.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,7 +218,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEF23BF55139BE6844CCB5EE /* Pods_findme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +225,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E25A12ADAECA0C8D3D46BB /* Pods_findmeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +327,45 @@
 			name = "Font Awesome";
 			sourceTree = "<group>";
 		};
+		299059871CF6EAA300063EB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				29E3C5F21C8B19B900DDD92A /* MapViewController.swift */,
+				03B27FE51C99FE5400D744DA /* ParamViewController.swift */,
+				03B27FE71C9A018600D744DA /* ContactViewController.swift */,
+				292D66801C9AA92100BE0DEC /* LoginViewController.swift */,
+				292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */,
+				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		299059881CF6EAC700063EB1 /* APICommunicator */ = {
+			isa = PBXGroup;
+			children = (
+				295635711CDB7A20007F3DE9 /* APICommunicator.swift */,
+			);
+			name = APICommunicator;
+			sourceTree = "<group>";
+		};
+		299059891CF6EADE00063EB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0340A4BB1CBE88A700A4984D /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2990598A1CF6EAEE00063EB1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				03B27FE31C99F86700D744DA /* UserAnnotation.swift */,
+				29C3EC9B1CE31C0E00F613C1 /* APIService.swift */,
+				0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		29E3C5E41C8B19B900DDD92A = {
 			isa = PBXGroup;
 			children = (
@@ -345,7 +374,6 @@
 				29E3C6041C8B19B900DDD92A /* findmeTests */,
 				29E3C5EE1C8B19B900DDD92A /* Products */,
 				E14EC0CF6B71E1EE123A8C71 /* Pods */,
-				CAD5736B5CBB3B7C5CA01CD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -363,24 +391,15 @@
 			children = (
 				0376F73B1C9808DB0023C0A7 /* Font Awesome */,
 				29E3C5F01C8B19B900DDD92A /* AppDelegate.swift */,
-				29E3C5F21C8B19B900DDD92A /* MapViewController.swift */,
-				03B27FE51C99FE5400D744DA /* ParamViewController.swift */,
-				03B27FE71C9A018600D744DA /* ContactViewController.swift */,
-				03B27FE31C99F86700D744DA /* UserAnnotation.swift */,
+				2990598A1CF6EAEE00063EB1 /* Service */,
 				29E3C5F41C8B19B900DDD92A /* Main.storyboard */,
 				29E3C5F71C8B19B900DDD92A /* Assets.xcassets */,
+				03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */,
+				299059871CF6EAA300063EB1 /* Controller */,
 				29E3C5F91C8B19B900DDD92A /* LaunchScreen.storyboard */,
 				29E3C5FC1C8B19B900DDD92A /* Info.plist */,
-				292D66801C9AA92100BE0DEC /* LoginViewController.swift */,
-				292D66821C9AA99B00BE0DEC /* RegisterViewController.swift */,
-				292D66861C9ABDA800BE0DEC /* ConnectionSettings.swift */,
-				03B27FE91C9A2BF900D744DA /* UserAnnotationView.swift */,
-				03B27FEB1C9AE3F000D744DA /* Users.swift */,
-				0340A4BB1CBE88A700A4984D /* User.swift */,
-				297D04FB1CDA2B6B0012E149 /* AboutViewController.swift */,
-				295635711CDB7A20007F3DE9 /* WSConnection.swift */,
-				29C3EC9B1CE31C0E00F613C1 /* WSService.swift */,
-				0376DA2F1CEF6B8700CCD5A4 /* PulseAnimation.swift */,
+				299059881CF6EAC700063EB1 /* APICommunicator */,
+				299059891CF6EADE00063EB1 /* Model */,
 				035FA8F51CEE143A006991B6 /* Supporting Files */,
 			);
 			path = findme;
@@ -393,15 +412,6 @@
 				29E3C6071C8B19B900DDD92A /* Info.plist */,
 			);
 			path = findmeTests;
-			sourceTree = "<group>";
-		};
-		CAD5736B5CBB3B7C5CA01CD9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3C85E7EE193324D72BB8B90C /* Pods_findme.framework */,
-				83ADE859CB586A483D36AE23 /* Pods_findmeTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E14EC0CF6B71E1EE123A8C71 /* Pods */ = {
@@ -422,12 +432,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29E3C60A1C8B19B900DDD92A /* Build configuration list for PBXNativeTarget "findme" */;
 			buildPhases = (
-				ACF4626886EEDFE8074E7CCB /* 📦 Check Pods Manifest.lock */,
+				ACF4626886EEDFE8074E7CCB /* uD83DuDCE6 Check Pods Manifest.lock */,
 				29E3C5E91C8B19B900DDD92A /* Sources */,
 				29E3C5EA1C8B19B900DDD92A /* Frameworks */,
 				29E3C5EB1C8B19B900DDD92A /* Resources */,
-				780B9660ADE53449584F208D /* 📦 Embed Pods Frameworks */,
-				F5650830874FAEC96C087547 /* 📦 Copy Pods Resources */,
+				780B9660ADE53449584F208D /* uD83DuDCE6 Embed Pods Frameworks */,
+				F5650830874FAEC96C087547 /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -442,12 +452,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29E3C60D1C8B19B900DDD92A /* Build configuration list for PBXNativeTarget "findmeTests" */;
 			buildPhases = (
-				DCD2324680E3BD8E5BF38FE5 /* 📦 Check Pods Manifest.lock */,
+				DCD2324680E3BD8E5BF38FE5 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				29E3C5FD1C8B19B900DDD92A /* Sources */,
 				29E3C5FE1C8B19B900DDD92A /* Frameworks */,
 				29E3C5FF1C8B19B900DDD92A /* Resources */,
-				3D12D5D552F0459A02BEE2B3 /* 📦 Embed Pods Frameworks */,
-				032E4B46CEA6BB27F1B1695C /* 📦 Copy Pods Resources */,
+				3D12D5D552F0459A02BEE2B3 /* uD83DuDCE6 Embed Pods Frameworks */,
+				032E4B46CEA6BB27F1B1695C /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -591,14 +601,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		032E4B46CEA6BB27F1B1695C /* 📦 Copy Pods Resources */ = {
+		032E4B46CEA6BB27F1B1695C /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,14 +616,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D12D5D552F0459A02BEE2B3 /* 📦 Embed Pods Frameworks */ = {
+		3D12D5D552F0459A02BEE2B3 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,14 +631,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmeTests/Pods-findmeTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		780B9660ADE53449584F208D /* 📦 Embed Pods Frameworks */ = {
+		780B9660ADE53449584F208D /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,14 +646,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findme/Pods-findme-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ACF4626886EEDFE8074E7CCB /* 📦 Check Pods Manifest.lock */ = {
+		ACF4626886EEDFE8074E7CCB /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,14 +661,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DCD2324680E3BD8E5BF38FE5 /* 📦 Check Pods Manifest.lock */ = {
+		DCD2324680E3BD8E5BF38FE5 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,14 +676,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F5650830874FAEC96C087547 /* 📦 Copy Pods Resources */ = {
+		F5650830874FAEC96C087547 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,7 +700,6 @@
 			files = (
 				292D66831C9AA99B00BE0DEC /* RegisterViewController.swift in Sources */,
 				03B27FEA1C9A2BF900D744DA /* UserAnnotationView.swift in Sources */,
-				03B27FEC1C9AE3F000D744DA /* Users.swift in Sources */,
 				29E3C5F31C8B19B900DDD92A /* MapViewController.swift in Sources */,
 				03B27FE81C9A018600D744DA /* ContactViewController.swift in Sources */,
 				0376F7401C9809350023C0A7 /* Enum.swift in Sources */,
@@ -698,10 +707,9 @@
 				292D66811C9AA92100BE0DEC /* LoginViewController.swift in Sources */,
 				0340A4BC1CBE88A700A4984D /* User.swift in Sources */,
 				03B27FE41C99F86700D744DA /* UserAnnotation.swift in Sources */,
-				292D66871C9ABDA800BE0DEC /* ConnectionSettings.swift in Sources */,
 				0376F7421C9809350023C0A7 /* FontAwesome.swift in Sources */,
-				295635721CDB7A20007F3DE9 /* WSConnection.swift in Sources */,
-				29C3EC9C1CE31C0E00F613C1 /* WSService.swift in Sources */,
+				295635721CDB7A20007F3DE9 /* APICommunicator.swift in Sources */,
+				29C3EC9C1CE31C0E00F613C1 /* APIService.swift in Sources */,
 				297D04FC1CDA2B6B0012E149 /* AboutViewController.swift in Sources */,
 				0376DA301CEF6B8700CCD5A4 /* PulseAnimation.swift in Sources */,
 				29E3C5F11C8B19B900DDD92A /* AppDelegate.swift in Sources */,

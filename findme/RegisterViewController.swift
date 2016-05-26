@@ -10,7 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    let wsBaseUrl = WSConnection.getInstance.getBaseUrl()
+    let wsBaseUrl = APICommunicator.getInstance.getBaseUrl()
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var phoneNumberField: UITextField!
@@ -32,8 +32,8 @@ class RegisterViewController: UIViewController {
             UIAlert("Sign Up Failed!", message: "Passwords doesn't Match")
         } else {
             do {
-                let wsService = WSService()
-                wsService.signUp(username, phoneNumber: phoneNumber, password: password, confirmPassword: confirm_password, onCompletion: { user, err in
+                let apiService = APIService()
+                apiService.signUp(username, phoneNumber: phoneNumber, password: password, confirmPassword: confirm_password, onCompletion: { user, err in
                     if user != nil {
                         self.dismissViewControllerAnimated(true, completion: nil)
                     } else {

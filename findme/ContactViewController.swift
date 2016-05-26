@@ -189,8 +189,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         self.items[2] = []
         getCurrentUser()
         
-        let wsService = WSService()
-        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
+        let apiService = APIService()
+        apiService.getUser(self.user.pseudo, onCompletion: { user, err in
             if err == nil{
                 for friend in (user?.friendList)!{
                     self.items[2].append(friend.pseudo)
@@ -308,9 +308,9 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         let friendrequest = ["caller" : caller, "receiver" : receiver]
         
-        let wsService = WSService()
+        let apiService = APIService()
         
-        wsService.acceptFriendRequest(friendrequest, onCompletion: { err in
+        apiService.acceptFriendRequest(friendrequest, onCompletion: { err in
             self.loadItems()
         })
     }
@@ -320,8 +320,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let receiver = items[indexPath.section][indexPath.row]
         let caller = self.user.pseudo
     
-        let wsService = WSService()
-        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+        let apiService = APIService()
+        apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
             self.loadItems()
         })
     }
@@ -331,8 +331,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let caller = items[indexPath.section][indexPath.row]
         let receiver = self.user.pseudo
         
-        let wsService = WSService()
-        wsService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+        let apiService = APIService()
+        apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
             self.loadItems()
         })
     }
@@ -391,8 +391,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             getCurrentUser()
             let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
         
-            let wsService = WSService()
-            wsService.sendFriendRequest(friendRequest, onCompletion: { err in
+            let apiService = APIService()
+            apiService.sendFriendRequest(friendRequest, onCompletion: { err in
                 if err != nil {
                     let userNotExistController = UIAlertController(title: "The user does not exist", message: "Please don't try to add your imaginary friends", preferredStyle: .Alert)
                 

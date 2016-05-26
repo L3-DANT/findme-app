@@ -1,5 +1,5 @@
 //
-//  WSService.swift
+//  APIService.swift
 //  findme
 //
 //  Created by Maxime Signoret on 11/05/16.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-class WSService {
-    let wsConnection = WSConnection.getInstance.getBaseUrl()
+class APIService {
+    let apiCommunicator = APICommunicator.getInstance.getBaseUrl()
     let userAppSession = "user"
 
     func signIn(username: NSString, password: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         let postParams: [String: String] = ["pseudo": username as String, "password": password as String]
 
-        makeHTTPRequest(wsConnection + "/user/v1/login", params: postParams, HTTPMethod: "POST", onCompletion: { json, err in
+        makeHTTPRequest(self.apiCommunicator + "/user/v1/login", params: postParams, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -49,7 +49,7 @@ class WSService {
     func signUp(username: NSString, phoneNumber: NSString, password: NSString, confirmPassword: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         let postParams: [String: String] = ["pseudo": username as String, "phoneNumber": phoneNumber as String, "password": password as String]
         
-        makeHTTPRequest(wsConnection + "/user/v1/sign-up", params: postParams, HTTPMethod: "PUT", onCompletion: { json, err in
+        makeHTTPRequest(self.apiCommunicator + "/user/v1/sign-up", params: postParams, HTTPMethod: "PUT", onCompletion: { json, err in
             let data = json!["data"]
             
             if err != nil || (data is NSNull) {
@@ -69,7 +69,7 @@ class WSService {
     }
 
     func getUsers(onCompletion: (User?, ErrorType?) -> Void) {
-        makeHTTPRequest(wsConnection + "/user/v1/users", params: nil, onCompletion: { json, err in
+        makeHTTPRequest(self.apiCommunicator + "/user/v1/users", params: nil, onCompletion: { json, err in
             let data = json!["data"]
             
             if err != nil || (data is NSNull) {
@@ -89,7 +89,7 @@ class WSService {
     }
     
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        makeHTTPRequest(wsConnection + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
+        makeHTTPRequest(self.apiCommunicator + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
             if err != nil {
                 onCompletion(nil, err)
             } else {
@@ -118,7 +118,7 @@ class WSService {
     func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void){
         self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
             if err == nil {
-                self.makeHTTPRequest(self.wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+                self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
                     onCompletion(nil)
                 })
             } else {
@@ -128,13 +128,13 @@ class WSService {
     }
     
     func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void){
-        makeHTTPRequest(wsConnection + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+        makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
     func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
-        self.makeHTTPRequest(self.wsConnection + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+        self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
         })
     }
