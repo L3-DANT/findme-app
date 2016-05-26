@@ -4,22 +4,22 @@
 
 FindMe is an **iOS Application to locate your friends**.
 Its goal is to localize and make interaction between users.
-It provides a simple map that allows tracking and interactions with your friends
+It provides a simple map that allows tracking and interacting with your friends.
 
 ![](http://i.imgur.com/ujeljAu.gif)
 
 ## Features
 
-- Written in uncomplicated Swift
-- Stupidly [easy to use](https://github.com/L3-DANT/findme-app#usage)
-- Works on iPhone, iPad (iOS 8 minimum)
+- Written in simple Swift
+- Ridiculously [easy to use](https://github.com/L3-DANT/findme-app#usage)
+- Works on iPhone, iPad (requires iOS 8 or later)
 
 ## Installation
 
 ### Step 1: FindMe iOS App
 
-Download the latest binary from the [repo](https://github.com/L3-DANT/findme-app).
-Or clone the repo :
+Download the latest binary from the [repository](https://github.com/L3-DANT/findme-app).
+Or just clone it :
 ```bash
 $ git clone https://github.com/L3-DANT/findme-app.git
 ```
@@ -29,18 +29,18 @@ It's the easiest way to get started with `FindMe`.
 
 ### Step 2: Find Me Server
 
-To play with your application you need to deal with the FindMe server.
+To start using the application you need to start with the FindMe server.
 
-Download the latest binary from the [repository](https://github.com/L3-DANT/findme-maven) and follow instructions to install it.
+Follow the instructions on the [findme server repository](https://github.com/L3-DANT/findme-maven).
 
 ## Usage
 
 ### Basic usage
 
-Just launch application from your device and sip your drink!
+Just launch and... that's it !
 
 ## Contributing
 
 #### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/L3-DANT/findme-app/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/L3-DANT/findme-app/issues) to report any bug or feature request.
