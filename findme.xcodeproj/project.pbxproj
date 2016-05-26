@@ -92,7 +92,6 @@
 		2920D2111CF74CDE0043BC1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B31CF74CDE0043BC1C /* MapViewController.swift */; };
 		2920D2121CF74CDE0043BC1C /* ParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B41CF74CDE0043BC1C /* ParamViewController.swift */; };
 		2920D2131CF74CDE0043BC1C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B51CF74CDE0043BC1C /* RegisterViewController.swift */; };
-		2920D2141CF74CDE0043BC1C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2920D1B61CF74CDE0043BC1C /* Info.plist */; };
 		2920D2151CF74CDE0043BC1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1B81CF74CDE0043BC1C /* User.swift */; };
 		2920D2161CF74CDE0043BC1C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BA1CF74CDE0043BC1C /* APIService.swift */; };
 		2920D2171CF74CDE0043BC1C /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920D1BB1CF74CDE0043BC1C /* PulseAnimation.swift */; };
@@ -538,7 +537,6 @@
 				2920D1D51CF74CDE0043BC1C /* FindMe_intro_00019.png in Resources */,
 				2920D1FE1CF74CDE0043BC1C /* FindMe_intro_00060.png in Resources */,
 				2920D1EB1CF74CDE0043BC1C /* FindMe_intro_00041.png in Resources */,
-				2920D2141CF74CDE0043BC1C /* Info.plist in Resources */,
 				2920D1D91CF74CDE0043BC1C /* FindMe_intro_00023.png in Resources */,
 				2920D1E61CF74CDE0043BC1C /* FindMe_intro_00036.png in Resources */,
 				2920D1C61CF74CDE0043BC1C /* FindMe_intro_00004.png in Resources */,
@@ -790,7 +788,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -829,7 +827,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
