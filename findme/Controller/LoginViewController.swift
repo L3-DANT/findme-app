@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var pulseView: UIImageView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
 
     @IBAction func loginAction(sender: AnyObject) {
         let username:NSString = self.usernameField.text!
@@ -60,10 +59,12 @@ class LoginViewController: UIViewController {
         //Get user in session
         let user = NSUserDefaults.standardUserDefaults().objectForKey(self.userAppSession)
         //No need login if user in session
+        
         if user != nil {
             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
             self.showViewController(vc as UIViewController, sender: vc)
         }
+        
         var imageName : String = ""
         
         var imageList : [UIImage] = []

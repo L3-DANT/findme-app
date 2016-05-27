@@ -14,7 +14,7 @@ class APIService {
 
     func signIn(username: NSString, password: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         let postParams: [String: String] = ["pseudo": username as String, "password": password as String]
-
+        
         makeHTTPRequest(self.apiCommunicator + "/user/v1/login", params: postParams, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
