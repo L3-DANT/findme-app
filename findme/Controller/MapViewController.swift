@@ -183,10 +183,10 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     func initSearchField(){
         let paddingView = UIView(frame: CGRectMake(0, 0, 25, self.searchTextField.frame.height))
-        searchTextField.leftView = paddingView
-        searchTextField.leftViewMode = UITextFieldViewMode.Always
-        searchIcon.font = UIFont.fontAwesomeOfSize(15)
-        searchIcon.text = String.fontAwesomeIconWithName(.Search)
+        self.searchTextField.leftView = paddingView
+        self.searchTextField.leftViewMode = UITextFieldViewMode.Always
+        self.searchIcon.font = UIFont.fontAwesomeOfSize(15)
+        self.searchIcon.text = String.fontAwesomeIconWithName(.Search)
     }
     
     @IBAction func findMe(sender: AnyObject) {

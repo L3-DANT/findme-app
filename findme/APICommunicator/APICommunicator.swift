@@ -12,7 +12,7 @@ import Foundation
 class APICommunicator {
     static let getInstance = APICommunicator()
 
-    let hostname = "http://localhost"
+    let hostname = "http://192.168.1.12"
     let port = 8080
     let prefix = "/findme/api"
     var url: String = ""

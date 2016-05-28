@@ -11,6 +11,10 @@ import CoreLocation
 class APIService {
     let apiCommunicator = APICommunicator.getInstance.getBaseUrl()
     let userAppSession = "user"
+    
+    enum MyError : ErrorType {
+        case RuntimeError(String)
+    }
 
     func signIn(username: NSString, password: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         let postParams: [String: String] = ["pseudo": username as String, "password": password as String]
@@ -49,17 +53,20 @@ class APIService {
     func signUp(username: NSString, phoneNumber: NSString, password: NSString, confirmPassword: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         let postParams: [String: String] = ["pseudo": username as String, "phoneNumber": phoneNumber as String, "password": password as String]
         
-        makeHTTPRequest(self.apiCommunicator + "/user/v1/sign-up", params: postParams, HTTPMethod: "PUT", onCompletion: { json, err in
-            let data = json!["data"]
+        makeHTTPRequest(self.apiCommunicator + "/user/v1", params: postParams, HTTPMethod: "PUT", onCompletion: { json, err in
             
-            if err != nil || (data is NSNull) {
+            if err != nil {
                 onCompletion(nil, err)
             } else {
-                let name = data!["pseudo"] as? String
-                let latitude = data!["latitude"] as? Double
-                let longitude = data!["longitude"] as? Double
-                let friendList = data!["friendList"] as? [User]
-                let phoneNumber = data!["phoneNumber"] as? String
+                let userSession = NSUserDefaults.standardUserDefaults()
+                userSession.setObject(json!, forKey: self.userAppSession)
+                userSession.synchronize()
+                
+                let name = json!["pseudo"] as? String
+                let latitude = json!["latitude"] as? Double
+                let longitude = json!["longitude"] as? Double
+                let friendList = json!["friendList"] as? [User]
+                let phoneNumber = json!["phoneNumber"] as? String
                 
                 let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber: phoneNumber!)
                 
@@ -165,15 +172,17 @@ class APIService {
             let session = NSURLSession.sharedSession()
             
             let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-                if error != nil {
-                    onCompletion(nil, error)
-                } else {
+                let realResponse = response as? NSHTTPURLResponse
+                
+                if realResponse!.statusCode >= 200 && realResponse!.statusCode < 300 {
                     do {
                         let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String:AnyObject]
                         onCompletion(json, nil)
                     } catch {
                         onCompletion(nil, error)
                     }
+                } else {
+                    onCompletion(nil, MyError.RuntimeError("Bad credentials"))
                 }
             })
             

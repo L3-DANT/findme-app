@@ -30,14 +30,21 @@ class RegisterViewController: UIViewController {
             UIAlert("Sign Up Failed!", message: "Please enter Username and Password")
         } else if ( !password.isEqual(confirm_password) ) {
             UIAlert("Sign Up Failed!", message: "Passwords doesn't Match")
+        }
+        
+        if (!checkPhoneNumber(phoneNumber as String)) {
+            UIAlert("Sign Up Failed!", message: "Invalid phone number")
         } else {
             do {
                 let apiService = APIService()
                 apiService.signUp(username, phoneNumber: phoneNumber, password: password, confirmPassword: confirm_password, onCompletion: { user, err in
-                    if user != nil {
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    } else {
-                        self.UIAlert("Sign Up Failed!", message: "Wrong username or password")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if user != nil {
+                            let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
+                            self.showViewController(vc as UIViewController, sender: vc)
+                        } else {
+                            self.UIAlert("Sign Up Failed!", message: "Wrong username or password")
+                        }
                     }
                 })
             }
@@ -68,6 +75,14 @@ class RegisterViewController: UIViewController {
         self.registerAnimationView.animationImages = imageList
         
         startAniamtion()
+    }
+    
+    func checkPhoneNumber(phoneNumber: String) -> Bool {
+        let PHONE_REGEX = "(0|(\\+33)|(0033))[1-9][0-9]{8}"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluateWithObject(phoneNumber)
+        
+        return result
     }
     
     func startAniamtion(){

@@ -41,10 +41,13 @@ class LoginViewController: UIViewController {
             do {
                 let apiService = APIService()
                 apiService.signIn(username, password: password, onCompletion: { user, err in
-                    if user != nil {
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    } else {
-                        self.UIAlert("Sign in Failed!", message: "Wrong username or password")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if user != nil {
+                            let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
+                            self.showViewController(vc as UIViewController, sender: vc)
+                        } else {
+                            self.UIAlert("Sign in Failed!", message: "Wrong username or password")
+                        }
                     }
                 })
             }

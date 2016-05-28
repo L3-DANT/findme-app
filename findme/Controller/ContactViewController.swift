@@ -21,6 +21,14 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     var dataTask: NSURLSessionDataTask?
     
+    internal enum UITableViewCellEditingStyle : Int {
+        case None
+        case Delete
+        case Insert
+        case Sms
+        case Call
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
         
@@ -85,14 +93,18 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             // Add method to remove friend server side
             items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
-        if editingStyle == UITableViewCellEditingStyle.Insert {
-            let number = self.user.phoneNumber
+        if editingStyle == UITableViewCellEditingStyle.Sms {
+            let number = "sms:" + self.user.friendList![indexPath.row].phoneNumber
+            UIApplication.sharedApplication().openURL(NSURL(string: number)!)
+        }
+        if editingStyle == UITableViewCellEditingStyle.Call {
+            let number = "tel:" + self.user.friendList![indexPath.row].phoneNumber
             UIApplication.sharedApplication().openURL(NSURL(string: number)!)
         }
     }
@@ -132,14 +144,14 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         } else if(indexPath.section == 2){
             let sms = UITableViewRowAction(style: .Default, title: "Sms") { action, index in
                 print("sms button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: indexPath)
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Sms, forRowAtIndexPath: indexPath)
             }
             
             sms.backgroundColor = UIColor(colorLiteralRed: 0.9450, green: 0.7686, blue: 0.0588, alpha: 1.0)
             
             let call = UITableViewRowAction(style: .Normal, title: "Call") { action, index in
                 print("call button tapped")
-                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+                self.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Call, forRowAtIndexPath: indexPath)
             }
             
             call.backgroundColor = UIColor(colorLiteralRed: 0.1529, green: 0.6823, blue: 0.3764, alpha: 1.0)
@@ -414,8 +426,19 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let name = userStored!["pseudo"] as? String
         let longitude = userStored!["longitude"] as? Double
         let latitude = userStored!["latitude"] as? Double
+        let friends = userStored!["friendList"] as? [NSDictionary]
+        var friendList : [User] = []
+        for user in friends! as [NSDictionary]{
+            let friendName = user["pseudo"] as? String
+            let friendLatitude = user["latitude"] as? Double
+            let friendLongitude = user["longitude"] as? Double
+            let friendPhoneNumber = user["phoneNumber"] as? String
+            let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
+            friendList.append(friend)
+        }
         let phoneNumber = userStored!["phoneNumber"] as? String
-        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, phoneNumber: phoneNumber!)
+        
+        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
     }
     
 }

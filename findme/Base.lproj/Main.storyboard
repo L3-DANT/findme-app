@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -192,7 +192,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="V7R-gl-jc5" eventType="touchUpInside" id="Y7Z-z0-wjm"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="lsm-Ce-kbv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti2-a3-m0g">
@@ -749,8 +748,8 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1fI-LR-z2n"/>
         <segue reference="AKr-Fv-KPL"/>
-        <segue reference="lNq-q6-quc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>
