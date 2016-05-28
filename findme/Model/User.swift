@@ -18,9 +18,9 @@ class User {
     var state: State = State.OFFLINE
     
     enum State : String {
-        case ONLINE
-        case AWAY
-        case OFFLINE
+        case ONLINE = "ONLINE"
+        case AWAY = "AWAY"
+        case OFFLINE = "OFFLINE"
     }
 
     init() {}
