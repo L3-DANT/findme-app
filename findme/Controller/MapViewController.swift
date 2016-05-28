@@ -91,7 +91,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
     
     func updateLocation(){
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         let apiService = APIService()
         apiService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
     }
@@ -109,7 +109,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         var annotations = [MKAnnotation]()
         
         let apiService = APIService()
@@ -324,24 +324,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
             return nil
         }
     }
-    
-    func getCurrentUser(){
-        let userStored = NSUserDefaults.standardUserDefaults().objectForKey("user")
-        let name = userStored!["pseudo"] as? String
-        let longitude = userStored!["longitude"] as? Double
-        let latitude = userStored!["latitude"] as? Double
-        let phoneNumber = userStored!["phoneNumber"] as? String
-        var friends : [User] = []
-        for friend in (userStored!["friendList"] as? [NSDictionary])!{
-            let friendName = friend["pseudo"] as? String
-            let friendLatitude = friend["latitude"] as? Double
-            let friendLongitude = friend["longitude"] as? Double
-            let friendNumber = friend["phoneNumber"] as? String
-            friends.append(User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendNumber!))
-        }
-        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friends, phoneNumber: phoneNumber!)
-    }
-    
     
     func initChannelsSubscription(){
     

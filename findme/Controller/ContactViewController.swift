@@ -44,7 +44,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -199,7 +199,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
     func loadUsers(){
         self.items[2] = []
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         
         let apiService = APIService()
         apiService.getUser(self.user.pseudo, onCompletion: { user, err in
@@ -214,7 +214,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadAsked(){
         self.items[1] = []
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         
         if dataTask != nil {
             dataTask?.cancel()
@@ -261,7 +261,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func loadReceived(){
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         self.items[0] = []
         
         let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -314,7 +314,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     
     func acceptFriendRequest(indexPath : NSIndexPath){
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         let caller = items[indexPath.section][indexPath.row]
         let receiver = self.user.pseudo
         
@@ -328,7 +328,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func cancelFriendRequest(indexPath : NSIndexPath){
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         let receiver = items[indexPath.section][indexPath.row]
         let caller = self.user.pseudo
     
@@ -339,7 +339,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func declineFriendRequest(indexPath : NSIndexPath){
-        getCurrentUser()
+        self.user = UserService.getUserInSession()
         let caller = items[indexPath.section][indexPath.row]
         let receiver = self.user.pseudo
         
@@ -400,7 +400,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         }
         
         if error == false{
-            getCurrentUser()
+            self.user = UserService.getUserInSession()
             let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
         
             let apiService = APIService()
@@ -420,25 +420,4 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             })
         }
     }
-    
-    func getCurrentUser(){
-        let userStored = NSUserDefaults.standardUserDefaults().objectForKey("user")
-        let name = userStored!["pseudo"] as? String
-        let longitude = userStored!["longitude"] as? Double
-        let latitude = userStored!["latitude"] as? Double
-        let friends = userStored!["friendList"] as? [NSDictionary]
-        var friendList : [User] = []
-        for user in friends! as [NSDictionary]{
-            let friendName = user["pseudo"] as? String
-            let friendLatitude = user["latitude"] as? Double
-            let friendLongitude = user["longitude"] as? Double
-            let friendPhoneNumber = user["phoneNumber"] as? String
-            let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
-            friendList.append(friend)
-        }
-        let phoneNumber = userStored!["phoneNumber"] as? String
-        
-        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
-    }
-    
 }

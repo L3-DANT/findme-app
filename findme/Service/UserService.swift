@@ -16,8 +16,10 @@ class UserService {
         return NSUserDefaults.standardUserDefaults().objectForKey(UserService.userAppSession) != nil ? true : false
     }
 
-    static func getUserInSession() -> AnyObject {
-        return NSUserDefaults.standardUserDefaults().objectForKey(UserService.userAppSession)!
+    static func getUserInSession() -> User {
+        let serializedUser: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey(UserService.userAppSession) as! [String : AnyObject]
+        
+        return unserializeJsonResponse(serializedUser)
     }
     
     static func setUserInSession(serializedUser: [String:AnyObject]) {
@@ -31,6 +33,7 @@ class UserService {
         let latitude = response["latitude"] as! Double
         let longitude = response["longitude"] as! Double
         let phoneNumber = response["phoneNumber"] as! String
+        let state = User.State(rawValue: response["state"] as! String)!
         let friends = response["friendList"] as? [NSDictionary]
         var friendList : [User] = []
         
@@ -39,11 +42,12 @@ class UserService {
             let friendLatitude = friend["latitude"] as! Double
             let friendLongitude = friend["longitude"] as! Double
             let friendPhoneNumber = friend["phoneNumber"] as! String
+            let friendState = User.State(rawValue: friend["state"] as! String)!
             
-            friendList.append(User(pseudo: friendName, latitude: friendLatitude, longitude: friendLongitude, phoneNumber: friendPhoneNumber))
+            friendList.append(User(pseudo: friendName, latitude: friendLatitude, longitude: friendLongitude, phoneNumber: friendPhoneNumber, state: friendState))
         }
         
-        return User(pseudo: name, latitude: latitude, longitude: longitude, friendList: friendList, phoneNumber: phoneNumber)
+        return User(pseudo: name, latitude: latitude, longitude: longitude, phoneNumber: phoneNumber, state: state as User.State, friendList: friendList)
     }
     
     static func isValidPhoneNumber(phoneNumber: String) -> Bool {
