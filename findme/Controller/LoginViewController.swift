@@ -22,9 +22,7 @@ extension UIViewController {
 }
 
 class LoginViewController: UIViewController {
-
     let wsBaseUrl = APICommunicator.getInstance.getBaseUrl()
-    let userAppSession = "user"
     
     @IBOutlet weak var findMeIntroView: UIImageView!
     @IBOutlet weak var pulseView: UIImageView!
@@ -39,8 +37,9 @@ class LoginViewController: UIViewController {
             UIAlert("Sign in Failed!", message: "Please enter Username and Password")
         } else {
             do {
+                let params: [String: String] = ["pseudo": username as String, "password": password as String]
                 let apiService = APIService()
-                apiService.signIn(username, password: password, onCompletion: { user, err in
+                apiService.signIn(params, onCompletion: { user, err in
                     dispatch_async(dispatch_get_main_queue()) {
                         if user != nil {
                             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
@@ -59,11 +58,9 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        //Get user in session
-        let user = NSUserDefaults.standardUserDefaults().objectForKey(self.userAppSession)
-        //No need login if user in session
-        
-        if user != nil {
+
+        //Check user in session and skip login
+        if UserService.hasUserInSession() {
             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
             self.showViewController(vc as UIViewController, sender: vc)
         }

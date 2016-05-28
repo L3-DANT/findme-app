@@ -9,7 +9,6 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    
     let wsBaseUrl = APICommunicator.getInstance.getBaseUrl()
     
     @IBOutlet weak var usernameField: UITextField!
@@ -17,7 +16,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var pulseView: UIImageView!
-    
     @IBOutlet weak var registerAnimationView: UIImageView!
     
     @IBAction func registerButton(sender: AnyObject) {
@@ -36,8 +34,9 @@ class RegisterViewController: UIViewController {
             UIAlert("Sign Up Failed!", message: "Invalid phone number")
         } else {
             do {
+                let params: [String: String] = ["pseudo": username as String, "phoneNumber": phoneNumber as String, "password": password as String]
                 let apiService = APIService()
-                apiService.signUp(username, phoneNumber: phoneNumber, password: password, confirmPassword: confirm_password, onCompletion: { user, err in
+                apiService.signUp(params, onCompletion: { user, err in
                     dispatch_async(dispatch_get_main_queue()) {
                         if user != nil {
                             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
@@ -50,7 +49,6 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,18 +83,19 @@ class RegisterViewController: UIViewController {
         return result
     }
     
-    func startAniamtion(){
+    func startAniamtion() {
         self.registerAnimationView.animationDuration = 2
         self.registerAnimationView.animationRepeatCount = 1
         self.registerAnimationView.startAnimating()
         _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.startPulse), userInfo: nil, repeats: false)
     }
     
-    func startPulse(){
+    func startPulse() {
         let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:100, position: CGPoint(x: self.pulseView.center.x-72, y: self.pulseView.center.y-20))
         pulseEffect.backgroundColor = UIColor(colorLiteralRed: 0.33, green: 0.69, blue: 0.69, alpha: 1).CGColor
         view.layer.insertSublayer(pulseEffect, below: self.registerAnimationView.layer)
     }
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
     }

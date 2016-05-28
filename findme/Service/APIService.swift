@@ -10,85 +10,33 @@ import CoreLocation
 
 class APIService {
     let apiCommunicator = APICommunicator.getInstance.getBaseUrl()
-    let userAppSession = "user"
     
     enum MyError : ErrorType {
         case RuntimeError(String)
     }
 
-    func signIn(username: NSString, password: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        let postParams: [String: String] = ["pseudo": username as String, "password": password as String]
-        
-        makeHTTPRequest(self.apiCommunicator + "/user/v1/login", params: postParams, HTTPMethod: "POST", onCompletion: { json, err in
+    func signIn(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator + "/user/v1/login", params: params, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
             } else {
-                let userSession = NSUserDefaults.standardUserDefaults()
-                userSession.setObject(json!, forKey: self.userAppSession)
-                userSession.synchronize()
-                
-                let name = json!["pseudo"] as? String
-                let latitude = json!["latitude"] as? Double
-                let longitude = json!["longitude"] as? Double
-                let friends = json!["friendList"] as? [NSDictionary]
-                var friendList : [User] = []
-                for user in friends! as [NSDictionary]{
-                    let friendName = user["pseudo"] as? String
-                    let friendLatitude = user["latitude"] as? Double
-                    let friendLongitude = user["longitude"] as? Double
-                    let friendPhoneNumber = user["phoneNumber"] as? String
-                    let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
-                    friendList.append(friend)
-                }
-                let phoneNumber = json!["phoneNumber"] as? String
-
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
+                UserService.setUserInSession(json!)
+                let user: User = UserService.unserializeJsonResponse(json!)
 
                 onCompletion(user, nil)
             }
         })
     }
     
-    func signUp(username: NSString, phoneNumber: NSString, password: NSString, confirmPassword: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        let postParams: [String: String] = ["pseudo": username as String, "phoneNumber": phoneNumber as String, "password": password as String]
-        
-        makeHTTPRequest(self.apiCommunicator + "/user/v1", params: postParams, HTTPMethod: "PUT", onCompletion: { json, err in
+    func signUp(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator + "/user/v1", params: params, HTTPMethod: "PUT", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
             } else {
-                let userSession = NSUserDefaults.standardUserDefaults()
-                userSession.setObject(json!, forKey: self.userAppSession)
-                userSession.synchronize()
-                
-                let name = json!["pseudo"] as? String
-                let latitude = json!["latitude"] as? Double
-                let longitude = json!["longitude"] as? Double
-                let friendList = json!["friendList"] as? [User]
-                let phoneNumber = json!["phoneNumber"] as? String
-                
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber: phoneNumber!)
-                
-                onCompletion(user, nil)
-            }
-        })
-    }
-
-    func getUsers(onCompletion: (User?, ErrorType?) -> Void) {
-        makeHTTPRequest(self.apiCommunicator + "/user/v1/users", params: nil, onCompletion: { json, err in
-            let data = json!["data"]
-            
-            if err != nil || (data is NSNull) {
-                onCompletion(nil, err)
-            } else {
-                let name = data!["pseudo"] as? String
-                let latitude = data!["latitude"] as? Double
-                let longitude = data!["longitude"] as? Double
-                let friendList = data!["friendList"] as? [User]
-                let phoneNumber = data!["phoneNumber"] as? String
-                
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList!, phoneNumber: phoneNumber!)
+                UserService.setUserInSession(json!)
+                let user: User = UserService.unserializeJsonResponse(json!)
                 
                 onCompletion(user, nil)
             }
@@ -96,33 +44,18 @@ class APIService {
     }
     
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        makeHTTPRequest(self.apiCommunicator + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
             if err != nil {
                 onCompletion(nil, err)
             } else {
-                let name = json!["pseudo"] as? String
-                let latitude = json!["latitude"] as? Double
-                let longitude = json!["longitude"] as? Double
-                let friends = json!["friendList"] as? [NSDictionary]
-                var friendList : [User] = []
-                for user in friends! as [NSDictionary]{
-                    let friendName = user["pseudo"] as? String
-                    let friendLatitude = user["latitude"] as? Double
-                    let friendLongitude = user["longitude"] as? Double
-                    let friendPhoneNumber = user["phoneNumber"] as? String
-                    let friend : User = User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendPhoneNumber!)
-                    friendList.append(friend)
-                }
-                let phoneNumber = json!["phoneNumber"] as? String
-                
-                let user:User = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friendList, phoneNumber: phoneNumber!)
+                let user: User = UserService.unserializeJsonResponse(json!)
                 
                 onCompletion(user, nil)
             }
         })
     }
     
-    func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void){
+    func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void) {
         self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
             if err == nil {
                 self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
@@ -134,26 +67,26 @@ class APIService {
         })
     }
     
-    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void){
-        makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
-    func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void){
+    func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
-    func updateCurrentUserLocation(name : String, location : CLLocationCoordinate2D){
+    func updateCurrentUserLocation(name : String, location : CLLocationCoordinate2D) {
         let params = ["pseudo" : name, "latitude" : "\(location.latitude)", "longitude" : "\(location.longitude)"]
         
         self.makeHTTPRequest(self.apiCommunicator + "/update-coordinates", params: params, HTTPMethod : "POST", onCompletion: {json, err in
 
         })
     }
-
+    
     func makeHTTPRequest(path: String, params: [String: String]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
         do {
             let request = NSMutableURLRequest(URL: NSURL(string: path)!)
