@@ -13,6 +13,12 @@ import CoreLocation
 class ParamViewController: UITableViewController {
     
     @IBAction func logoutTapped(sender: UIButton) {
+        let currentUser: User = UserService.getUserInSession()
+        currentUser.state = User.State.OFFLINE
+        let dictUser = currentUser.toDict()
+        let apiService = APIService()
+        apiService.updateUser(dictUser, onCompletion: { user, err in
+        })
         let appDomain = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
     }

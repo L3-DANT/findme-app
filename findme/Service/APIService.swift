@@ -43,6 +43,20 @@ class APIService {
         })
     }
     
+    func updateUser(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator + "/user/v1", params: params, HTTPMethod: "POST", onCompletion: { json, err in
+            
+            if err != nil {
+                onCompletion(nil, err)
+            } else {
+                UserService.setUserInSession(json!)
+                let user: User = UserService.unserializeJsonResponse(json!)
+                
+                onCompletion(user, nil)
+            }
+        })
+    }
+    
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
             if err != nil {
@@ -106,6 +120,7 @@ class APIService {
             
             let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
                 let realResponse = response as? NSHTTPURLResponse
+                print(realResponse?.statusCode)
                 
                 if realResponse!.statusCode >= 200 && realResponse!.statusCode < 300 {
                     do {

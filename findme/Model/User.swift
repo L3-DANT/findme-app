@@ -32,4 +32,19 @@ class User {
         self.friendList = friendList
         self.phoneNumber = phoneNumber
     }
+    
+    func toDict() -> [String:String] {
+        var dict = [String:String]()
+        let otherSelf = Mirror(reflecting: self)
+        
+        for child in otherSelf.children {
+            if let key = child.label {
+                if key != "friendList" {
+                    dict[key] = String(child.value)
+                }
+            }
+        }
+        
+        return dict
+    }
 }
