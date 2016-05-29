@@ -287,7 +287,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="35" bottom="8" right="8"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="testSearch:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="FMR-wa-HeF"/>
                                 </connections>

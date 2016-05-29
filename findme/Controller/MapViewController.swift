@@ -25,7 +25,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     var pinAnnotationView: MKPinAnnotationView!
     var menuExpanded = false
     var locationManager = CLLocationManager()
-    var users: [User] = []
     var pusher : Pusher = Pusher(key: "")
     var channels : [PusherChannel] = []
     
@@ -46,10 +45,11 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
 
     @IBAction func testSearch(sender: AnyObject) {
         let search = searchTextField.text
-        for user in users{
-            if search == user.pseudo{
+        for user in self.user.friendList! {
+            if search == user.pseudo {
                 let searchLocation  = CLLocation(latitude: user.latitude, longitude: user.longitude)
                 centerMapOnLocation(searchLocation)
+                dismissKeyboard()
             }
         }
     }
