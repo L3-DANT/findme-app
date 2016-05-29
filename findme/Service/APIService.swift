@@ -70,6 +70,16 @@ class APIService {
         })
     }
     
+    func getFriendRequest(params: [String:String], onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: params, directParam: nil), params: nil, onCompletion: { json, err in
+            if err != nil {
+                onCompletion(nil, err)
+            } else {
+                onCompletion(json!, nil)
+            }
+        })
+    }
+    
     func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void) {
         self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
             if err == nil {
