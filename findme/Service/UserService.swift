@@ -50,6 +50,19 @@ class UserService {
         return User(pseudo: name, latitude: latitude, longitude: longitude, phoneNumber: phoneNumber, state: state as User.State, friendList: friendList)
     }
     
+    static func deleteFriend(username: String) {
+        var i: Int = 0
+        let user = UserService.getUserInSession()
+        
+        for friend in user.friendList! {
+            if friend.pseudo == username {
+                user.friendList!.removeAtIndex(i)
+                break
+            }
+            i += 1
+        }
+    }
+    
     static func isValidPhoneNumber(phoneNumber: String) -> Bool {
         if phoneNumber.rangeOfString(phonePattern, options: .RegularExpressionSearch) != nil {
             return true

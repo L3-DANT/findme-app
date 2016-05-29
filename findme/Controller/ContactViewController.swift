@@ -89,7 +89,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            // Add method to remove friend server side
+            print(indexPath.row)
             items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
@@ -275,13 +275,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         })
     }
     
-    func declineFriendRequest(indexPath : NSIndexPath){
-        self.user = UserService.getUserInSession()
-        let caller = items[indexPath.section][indexPath.row]
-        let receiver = self.user.pseudo
-        
-        let apiService = APIService()
-        apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+    func declineFriendRequest(indexPath : NSIndexPath) {
+        UserService.deleteFriend(self.items[indexPath.section][indexPath.row])
+        let serializedUser = self.user.toDict()
+        self.apiService.updateUser(serializedUser, onCompletion: { user, err in
             self.loadItems()
         })
     }
