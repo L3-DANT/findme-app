@@ -16,11 +16,11 @@ class ParamViewController: UITableViewController {
         let currentUser: User = UserService.getUserInSession()
         currentUser.state = User.State.OFFLINE
         let dictUser = currentUser.toDict()
+        let appDomain = NSBundle.mainBundle().bundleIdentifier
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
         let apiService = APIService()
         apiService.updateUser(dictUser, onCompletion: { user, err in
         })
-        let appDomain = NSBundle.mainBundle().bundleIdentifier
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
     }
     
     override func viewWillAppear(animated: Bool) {

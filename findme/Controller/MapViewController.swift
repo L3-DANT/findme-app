@@ -92,8 +92,12 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     func updateLocation(){
         self.user = UserService.getUserInSession()
+        self.user.state = User.State.ONLINE
         let currentLocation = locationManager.location!.coordinate
-        self.apiService.updateUser(["pseudo": self.user.pseudo, "longitude": String(currentLocation.longitude), "latitude": String(currentLocation.latitude)]) { (user, err) in
+        self.user.latitude = currentLocation.latitude
+        self.user.longitude = currentLocation.longitude
+        let dictUser = self.user.toDict()
+        self.apiService.updateUser(dictUser) { (user, err) in
         }
     }
     
