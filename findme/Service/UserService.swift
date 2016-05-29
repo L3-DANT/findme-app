@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 class UserService {
     static let phonePattern: String = "(0|(\\+33)|(0033))[1-9][0-9]{8}"
