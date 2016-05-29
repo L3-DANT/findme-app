@@ -29,27 +29,31 @@ class APICommunicator {
         return hostname + ":" + String(port) + prefix
     }
     
-    func generateRoute(route: String, parameters: Dictionary<String,String>?) -> NSURL {
+    func generateRoute(route: String, parameters: Dictionary<String,String>?, directParam: String?) -> NSURL {
         self.url = self.getBaseUrl() + route
         if parameters != nil {
-            self.addParameters(parameters!)
+            self.addParameters(parameters!, directParam: directParam)
         }
         
         return NSURL(string: url)!
     }
     
-    func addParameters(params: Dictionary<String,String>) {
-        var i = 0
+    func addParameters(params: Dictionary<String,String>, directParam: String?) {
+        if directParam != nil {
+            url += directParam!
+        } else {
+            var i = 0
         
-        for (parameterName, parameterValue) in params {
-            if i == 0 {
-                url += "?"
-            } else {
-                url += "&"
-            }
+            for (parameterName, parameterValue) in params {
+                if i == 0 {
+                    url += "?"
+                } else {
+                    url += "&"
+                }
             
-            url += parameterName + "=" + parameterValue
-            i += 1
+                url += parameterName + "=" + parameterValue
+                i += 1
+            }
         }
     }
 }

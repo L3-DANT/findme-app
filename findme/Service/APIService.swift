@@ -17,7 +17,7 @@ class APIService {
     }
 
     func signIn(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil, directParam: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -31,7 +31,7 @@ class APIService {
     }
     
     func signUp(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "PUT", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: params, HTTPMethod: "PUT", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -45,7 +45,7 @@ class APIService {
     }
     
     func updateUser(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -58,8 +58,8 @@ class APIService {
         })
     }
     
-    func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: ["pseudo": username as String]), params: nil, onCompletion: { json, err in
+    func getUser(username: String, onCompletion: (User?, ErrorType?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: username), params: nil, onCompletion: { json, err in
             if err != nil {
                 onCompletion(nil, err)
             } else {
@@ -73,7 +73,7 @@ class APIService {
     func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void) {
         self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
             if err == nil {
-                self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil), params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+                self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil, directParam: nil), params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
                     onCompletion(nil)
                 })
             } else {
@@ -83,13 +83,13 @@ class APIService {
     }
     
     func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: ["caller":caller, "receiver":receiver]), params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: ["caller":caller, "receiver":receiver], directParam: nil), params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
     func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil), params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil, directParam: nil), params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
         })
     }
