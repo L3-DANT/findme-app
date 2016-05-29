@@ -8,15 +8,16 @@
 
 import CoreLocation
 
+
 class APIService {
-    let apiCommunicator = APICommunicator.getInstance.getBaseUrl()
+    let apiCommunicator = APICommunicator.getInstance
     
     enum MyError : ErrorType {
         case RuntimeError(String)
     }
 
     func signIn(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/user/v1/login", params: params, HTTPMethod: "POST", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -30,7 +31,7 @@ class APIService {
     }
     
     func signUp(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/user/v1", params: params, HTTPMethod: "PUT", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "PUT", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -44,7 +45,7 @@ class APIService {
     }
     
     func updateUser(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/user/v1", params: params, HTTPMethod: "POST", onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil), params: params, HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
                 onCompletion(nil, err)
@@ -58,7 +59,7 @@ class APIService {
     }
     
     func getUser(username: NSString, onCompletion: (User?, ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/user/v1/\(username)", params: nil, onCompletion: { json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: ["pseudo": username as String]), params: nil, onCompletion: { json, err in
             if err != nil {
                 onCompletion(nil, err)
             } else {
@@ -72,7 +73,7 @@ class APIService {
     func sendFriendRequest(friendRequest : [String: String], onCompletion: (ErrorType?) -> Void) {
         self.getUser(friendRequest["receiver"]!, onCompletion: {user, err in
             if err == nil {
-                self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
+                self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil), params: friendRequest, HTTPMethod: "PUT", onCompletion : {json, err in
                     onCompletion(nil)
                 })
             } else {
@@ -82,28 +83,21 @@ class APIService {
     }
     
     func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1?caller=\(caller)&receiver=\(receiver)", params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: ["caller":caller, "receiver":receiver]), params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
     func acceptFriendRequest(friendRequest : [String : String], onCompletion: (ErrorType?) -> Void) {
-        self.makeHTTPRequest(self.apiCommunicator + "/friendrequest/v1", params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil), params: friendRequest, HTTPMethod: "POST", onCompletion : {json, err in
             onCompletion(err)
         })
     }
     
-    func updateCurrentUserLocation(name : String, location : CLLocationCoordinate2D) {
-        let params = ["pseudo" : name, "latitude" : "\(location.latitude)", "longitude" : "\(location.longitude)"]
-        
-        self.makeHTTPRequest(self.apiCommunicator + "/update-coordinates", params: params, HTTPMethod : "POST", onCompletion: {json, err in
-
-        })
-    }
-    
-    func makeHTTPRequest(path: String, params: [String: String]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
+    func makeHTTPRequest(path: NSURL, params: [String: String]?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
         do {
-            let request = NSMutableURLRequest(URL: NSURL(string: path)!)
+            print(path)
+            let request = NSMutableURLRequest(URL: path)
             request.HTTPMethod = HTTPMethod
             
             if HTTPMethod != "GET" && HTTPMethod != "DELETE"{

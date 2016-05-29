@@ -12,10 +12,16 @@ import Foundation
 class APICommunicator {
     static let getInstance = APICommunicator()
 
-    let hostname = "http://192.168.1.12"
+    let hostname = "http://localhost"
     let port = 8080
-    let prefix = "/findme/api"
+    let prefix = "/findme/api/"
     var url: String = ""
+    
+    enum Route : String {
+        case user = "user/v1/"
+        case login = "user/v1/login"
+        case friendRequest = "friendrequest/v1/"
+    }
     
     private init() {}
     
@@ -23,14 +29,19 @@ class APICommunicator {
         return hostname + ":" + String(port) + prefix
     }
     
-    func generateRoute(routeName: String) {
-        url = hostname + routeName
+    func generateRoute(route: String, parameters: Dictionary<String,String>?) -> NSURL {
+        self.url = self.getBaseUrl() + route
+        if parameters != nil {
+            self.addParameters(parameters!)
+        }
+        
+        return NSURL(string: url)!
     }
     
-    func addParameters(parameters: Dictionary<String,String>) {
+    func addParameters(params: Dictionary<String,String>) {
         var i = 0
         
-        for (parameterName, parameterValue) in parameters {
+        for (parameterName, parameterValue) in params {
             if i == 0 {
                 url += "?"
             } else {
@@ -38,7 +49,6 @@ class APICommunicator {
             }
             
             url += parameterName + "=" + parameterValue
-            
             i += 1
         }
     }

@@ -13,7 +13,7 @@ import PusherSwift
 
 
 class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
-    
+    let apiService = APIService()
     var searchController:UISearchController!
     var annotation:MKAnnotation!
     var localSearchRequest:MKLocalSearchRequest!
@@ -92,8 +92,9 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     func updateLocation(){
         self.user = UserService.getUserInSession()
-        let apiService = APIService()
-        apiService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
+        let currentLocation = locationManager.location!.coordinate
+        self.apiService.updateUser(["pseudo": self.user.pseudo, "longitude": String(currentLocation.longitude), "latitude": String(currentLocation.latitude)]) { (user, err) in
+        }
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -153,9 +154,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         locationManager.stopMonitoringForRegion(region)
         
         let currentLocation = locationManager.location!.coordinate
-        
-        let apiService = APIService()
-        apiService.updateCurrentUserLocation(self.user.pseudo, location : currentLocation)
+        self.apiService.updateUser(["pseudo": self.user.pseudo, "longitude": String(currentLocation.longitude), "latitude": String(currentLocation.latitude)]) { (user, err) in
+        }
         
         let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
         locationManager.startMonitoringForRegion(newRegion)
