@@ -255,11 +255,11 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let caller = items[indexPath.section][indexPath.row]
         let receiver = self.user.pseudo
         
-        let friendrequest = ["caller" : caller, "receiver" : receiver]
+        let friendRequest = ["caller" : caller, "receiver" : receiver]
         
         let apiService = APIService()
         
-        apiService.acceptFriendRequest(friendrequest, onCompletion: { err in
+        apiService.acceptFriendRequest(friendRequest, onCompletion: { err in
             self.loadItems()
         })
     }
@@ -271,14 +271,14 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
         let apiService = APIService()
         apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
-            self.loadItems()
         })
+        self.loadItems()
     }
     
     func declineFriendRequest(indexPath : NSIndexPath) {
         UserService.deleteFriend(self.items[indexPath.section][indexPath.row])
-        let serializedUser = self.user.toDict()
-        self.apiService.updateUser(serializedUser, onCompletion: { user, err in
+        let jsonUser = JSONSerializer.toJson(self.user)
+        self.apiService.updateUser(jsonUser, onCompletion: { user, err in
             self.loadItems()
         })
     }

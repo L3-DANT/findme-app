@@ -15,11 +15,12 @@ class ParamViewController: UITableViewController {
     @IBAction func logoutTapped(sender: UIButton) {
         let currentUser: User = UserService.getUserInSession()
         currentUser.state = User.State.OFFLINE
-        let dictUser = currentUser.toDict()
+        let jsonUser = JSONSerializer.toJson(currentUser)
         let appDomain = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+
         let apiService = APIService()
-        apiService.updateUser(dictUser, onCompletion: { user, err in
+        apiService.updateUser(jsonUser, onCompletion: { user, err in
         })
     }
     

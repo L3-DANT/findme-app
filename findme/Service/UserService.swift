@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class UserService {
     static let phonePattern: String = "(0|(\\+33)|(0033))[1-9][0-9]{8}"
@@ -48,6 +49,17 @@ class UserService {
         }
         
         return User(pseudo: name, latitude: latitude, longitude: longitude, phoneNumber: phoneNumber, state: state as User.State, friendList: friendList)
+    }
+    
+    static func toJson(params: [String:String]) -> NSData {
+        var jsonData: NSData = NSData()
+        do {
+            jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
+        } catch {
+            NSLog("Error: %ld", "Bad data");
+        }
+        
+        return jsonData
     }
     
     static func deleteFriend(username: String) {

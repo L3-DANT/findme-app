@@ -58,6 +58,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         initSearchField()
+        self.updateLocation()
         
         mapView.delegate = self
         
@@ -89,13 +90,14 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         
     }
     
-    func updateLocation(){
+    //update location for pusher
+    func updateLocation() {
         self.user.state = User.State.ONLINE
         let currentLocation = locationManager.location!.coordinate
         self.user.latitude = currentLocation.latitude
         self.user.longitude = currentLocation.longitude
-        let dictUser = self.user.toDict()
-        self.apiService.updateUser(dictUser) { (user, err) in
+        let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
+        self.apiService.updateLocation(params) { (user, err) in
         }
     }
     
@@ -150,7 +152,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         locationManager.stopMonitoringForRegion(region)
         
         let currentLocation = locationManager.location!.coordinate
-        self.apiService.updateUser(["pseudo": self.user.pseudo, "longitude": String(currentLocation.longitude), "latitude": String(currentLocation.latitude)]) { (user, err) in
+        let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
+        self.apiService.updateLocation(params) { (user, err) in
         }
         
         let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")

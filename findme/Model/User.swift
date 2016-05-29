@@ -10,11 +10,11 @@ import Foundation
 
 
 class User {
-    var pseudo: String = ""
-    var longitude: Double = 0.0
-    var latitude: Double = 0.0
+    var pseudo: String = String()
+    var longitude: Double = Double()
+    var latitude: Double = Double()
     var friendList: [User]?
-    var phoneNumber: String = "000000000"
+    var phoneNumber: String = String()
     var state: State = State.OFFLINE
     
     enum State : String {
@@ -31,20 +31,5 @@ class User {
         self.latitude = latitude
         self.friendList = friendList
         self.phoneNumber = phoneNumber
-    }
-    
-    func toDict() -> [String:String] {
-        var dict = [String:String]()
-        let otherSelf = Mirror(reflecting: self)
-        
-        for child in otherSelf.children {
-            if let key = child.label {
-                if key != "friendList" {
-                    dict[key] = String(child.value)
-                }
-            }
-        }
-        
-        return dict
     }
 }
