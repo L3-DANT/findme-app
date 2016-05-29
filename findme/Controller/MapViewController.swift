@@ -14,19 +14,18 @@ import PusherSwift
 
 class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     let apiService = APIService()
-    var searchController:UISearchController!
-    var annotation:MKAnnotation!
-    var localSearchRequest:MKLocalSearchRequest!
-    var localSearch:MKLocalSearch!
-    var localSearchResponse:MKLocalSearchResponse!
-    var error:NSError!
-    var pointAnnotation:MKPointAnnotation!
-    var pinAnnotationView:MKPinAnnotationView!
+    var user: User = UserService.getUserInSession()
+    var searchController: UISearchController!
+    var annotation: MKAnnotation!
+    var localSearchRequest: MKLocalSearchRequest!
+    var localSearch: MKLocalSearch!
+    var localSearchResponse: MKLocalSearchResponse!
+    var error: NSError!
+    var pointAnnotation: MKPointAnnotation!
+    var pinAnnotationView: MKPinAnnotationView!
     var menuExpanded = false
     var locationManager = CLLocationManager()
-    var users : [User] = []
-    var user : User = User()
-    
+    var users: [User] = []
     var pusher : Pusher = Pusher(key: "")
     var channels : [PusherChannel] = []
     
@@ -91,7 +90,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
     
     func updateLocation(){
-        self.user = UserService.getUserInSession()
         self.user.state = User.State.ONLINE
         let currentLocation = locationManager.location!.coordinate
         self.user.latitude = currentLocation.latitude
@@ -114,25 +112,19 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
-        self.user = UserService.getUserInSession()
         var annotations = [MKAnnotation]()
+
+        for friend in self.user.friendList!{
+            let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
+            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
+            annotations.append(friendAnnotation)
+        }
         
-        let apiService = APIService()
-        apiService.getUser(self.user.pseudo, onCompletion: { user, err in
-            if user != nil && user?.friendList != nil {
-                for friend in user!.friendList!{
-                    let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
-                    let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
-                    annotations.append(friendAnnotation)
-                    self.users.append(friend)
-                }
-                self.mapView.addAnnotations(annotations)
-                if let location = self.mapView.userLocation.location {
-                    self.centerMapOnLocation(location)
-                }
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-        })
+        self.mapView.addAnnotations(annotations)
+        
+        if let location = self.mapView.userLocation.location {
+            self.centerMapOnLocation(location)
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -185,7 +177,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         }
     }
     
-    func initSearchField(){
+    func initSearchField() {
         let paddingView = UIView(frame: CGRectMake(0, 0, 25, self.searchTextField.frame.height))
         self.searchTextField.leftView = paddingView
         self.searchTextField.leftViewMode = UITextFieldViewMode.Always
