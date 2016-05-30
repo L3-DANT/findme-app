@@ -21,7 +21,7 @@ class UserAnnotation : MKPointAnnotation {
         self.pinCustomImageName = image
     }
     
-    func updateCoordinate(newCoordinate : CLLocationCoordinate2D){
-        self.coordinate = coordinate
+    func updateCoordinate(newCoordinate : CLLocationCoordinate2D) {
+        self.coordinate = newCoordinate
     }
 }
