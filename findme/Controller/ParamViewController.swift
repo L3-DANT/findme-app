@@ -12,6 +12,14 @@ import CoreLocation
 
 class ParamViewController: UITableViewController {
     
+    @IBOutlet weak var allowLocationSharing: UISwitch!
+    let apiService = APIService()
+    let userService = UserService()
+    
+    @IBAction func switchLocationSharing(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(allowLocationSharing.on, forKey: "allowSharing")
+    }
+    
     @IBAction func logoutTapped(sender: UIButton) {
         let currentUser: User = UserService.getUserInSession()
         currentUser.state = User.State.OFFLINE
@@ -33,5 +41,74 @@ class ParamViewController: UITableViewController {
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
+        let locationAllowed: Bool? = NSUserDefaults.standardUserDefaults().boolForKey("allowSharing")
+        allowLocationSharing.setOn(locationAllowed!, animated: false)
+        
     }
+    
+    @IBAction func changePassword(sender: AnyObject) {
+        let currentUser = UserService.getUserInSession()
+        
+        let alert = UIAlertController(title: "Change Password", message: "", preferredStyle: .Alert)
+        
+        alert.addTextFieldWithConfigurationHandler({ (newPassword) -> Void in })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
+            let newPassword = alert.textFields![0] as UITextField
+            if( newPassword.text != ""){
+                let updatedUser : [String : String] = ["pseudo" : currentUser.pseudo, "password" : newPassword.text!, "latitude" : "\(currentUser.latitude)", "longitude" : "\(currentUser.longitude)", "state" : currentUser.state.rawValue]
+                self.apiService.updateUser(updatedUser, onCompletion: { data in
+                    
+                })
+            }
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func changePhoneNumber(sender: AnyObject) {
+        let currentUser = UserService.getUserInSession()
+        
+        let alert = UIAlertController(title: "Change Phone Number", message: "enter your new phone number", preferredStyle: .Alert)
+        
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            if(textField != ""){
+                currentUser.phoneNumber = textField.text!
+                self.apiService.updateUser(currentUser, onCompletion: { data in
+                    
+                })
+            }
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteAccount(sender: AnyObject) {
+        let currentUser = UserService.getUserInSession()
+        
+        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your awesome account ?", preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action) -> Void in
+            self.apiService.updateUser(currentUser, onCompletion: { data in
+                
+            })
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func newPhoneNumber(phoneNumber : String){
+        
+    }
+    
+    func newPassword(password: String){
+        
+    }
+    
 }
