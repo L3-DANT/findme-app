@@ -119,7 +119,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         
         for friend in self.user.friendList!{
             let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
-            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
+            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "", image:friend.state.rawValue)
             self.annotations.append(friendAnnotation)
         }
         
