@@ -188,7 +188,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         self.loadReceived()
     }
     
-        
+    
     func loadUsers(){
         self.items[2] = []
         
@@ -255,13 +255,10 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         self.apiService.acceptFriendRequest(friendRequest, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue()) {
-            }
-        })
-        self.apiService.getUser(self.user.pseudo, onCompletion: { (user, error) in
-            dispatch_async(dispatch_get_main_queue()) {
-                if user != nil {
-                    self.loadItems()
-                }
+                let user = User()
+                user.pseudo = caller
+                self.user.friendList?.append(user)
+                self.loadItems()
             }
         })
     }
