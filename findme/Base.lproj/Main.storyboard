@@ -507,7 +507,6 @@
                                                     <state key="normal" title="Se déconnecter"/>
                                                     <connections>
                                                         <action selector="logoutTapped:" destination="vtc-A9-yoa" eventType="touchUpInside" id="roP-Um-UCH"/>
-                                                        <segue destination="1mY-7i-B5A" kind="show" id="1fI-LR-z2n"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -748,7 +747,7 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fI-LR-z2n"/>
+        <segue reference="lNq-q6-quc"/>
         <segue reference="AKr-Fv-KPL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>

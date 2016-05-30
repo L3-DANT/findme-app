@@ -61,7 +61,7 @@ class UserService {
         return jsonData
     }
     
-    static func deleteFriend(username: String) {
+    static func deleteFriend(username: String) -> User {
         var i: Int = 0
         let user = UserService.getUserInSession()
         
@@ -72,6 +72,8 @@ class UserService {
             }
             i += 1
         }
+        
+        return user
     }
     
     static func isValidPhoneNumber(phoneNumber: String) -> Bool {

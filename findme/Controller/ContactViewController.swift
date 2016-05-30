@@ -260,8 +260,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let apiService = APIService()
         
         apiService.acceptFriendRequest(friendRequest, onCompletion: { err in
-            self.loadItems()
         })
+        self.loadItems()
     }
     
     func cancelFriendRequest(indexPath : NSIndexPath){
@@ -271,15 +271,26 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
         let apiService = APIService()
         apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue()) {
+                if err == nil {
+                    self.user = UserService.getUserInSession()
+                    self.loadItems()
+                }
+            }
         })
         self.loadItems()
     }
     
     func declineFriendRequest(indexPath : NSIndexPath) {
-        UserService.deleteFriend(self.items[indexPath.section][indexPath.row])
-        let jsonUser = JSONSerializer.toJson(self.user)
+        let user = UserService.deleteFriend(self.items[indexPath.section][indexPath.row])
+        let jsonUser = JSONSerializer.toJson(user)
         self.apiService.updateUser(jsonUser, onCompletion: { user, err in
-            self.loadItems()
+            dispatch_async(dispatch_get_main_queue()) {
+                if user != nil {
+                    self.user = UserService.getUserInSession()
+                    self.loadItems()
+                }
+            }
         })
     }
     

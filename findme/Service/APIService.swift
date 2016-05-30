@@ -45,6 +45,15 @@ class APIService {
     
     func updateLocation(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(params), HTTPMethod: "POST", onCompletion: { json, err in
+            
+            if err != nil {
+                onCompletion(nil, err)
+            } else {
+                UserService.setUserInSession(json!)
+                let user: User = UserService.unserializeJsonResponse(json!)
+                
+                onCompletion(user, nil)
+            }
         })
     }
     
