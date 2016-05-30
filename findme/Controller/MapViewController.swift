@@ -27,6 +27,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     var locationManager = CLLocationManager()
     var pusher : Pusher = Pusher(key: "")
     var channels : [PusherChannel] = []
+    var annotations = [MKAnnotation]()
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIcon: UITextField!
@@ -58,7 +59,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         initSearchField()
-        self.updateLocation()
         
         mapView.delegate = self
         
@@ -67,8 +67,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         initButton(paramButton, icon:"fa-cogs", submenu: true)
         initButton(contactButton, icon:"fa-users", submenu: true)
         initButton(findMeButton, icon:"fa-street-view", submenu: true)
-        
-        initContactMarkers()
         
         //gestion de la localisation de l'utilisateur
         self.locationManager.delegate = self
@@ -87,7 +85,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
-        
+        self.updateLocation()
+        self.initContactMarkers()
     }
     
     //update location for pusher
@@ -99,6 +98,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
         self.apiService.updateLocation(params) { (user, err) in
         }
+        self.user = UserService.getUserInSession()
+        self.mapView.removeAnnotations(self.annotations)
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -114,15 +115,15 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
-        var annotations = [MKAnnotation]()
-
+        self.annotations = [MKAnnotation]()
+        
         for friend in self.user.friendList!{
             let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
             let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
-            annotations.append(friendAnnotation)
+            self.annotations.append(friendAnnotation)
         }
         
-        self.mapView.addAnnotations(annotations)
+        self.mapView.addAnnotations(self.annotations)
         
         if let location = self.mapView.userLocation.location {
             self.centerMapOnLocation(location)
