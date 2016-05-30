@@ -15,11 +15,11 @@ class APIService {
         case RuntimeError(String)
     }
 
-    func signIn(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+    func signIn(params: [String:String], onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.login.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(params), HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, String(err!.debugDescription))
             } else {
                 UserService.setUserInSession(json!)
                 let user: User = UserService.unserializeJsonResponse(json!)
@@ -29,11 +29,11 @@ class APIService {
         })
     }
     
-    func signUp(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+    func signUp(params: [String:String], onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(params), HTTPMethod: "PUT", onCompletion: { json, err in
             
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, err!)
             } else {
                 UserService.setUserInSession(json!)
                 let user: User = UserService.unserializeJsonResponse(json!)
@@ -43,11 +43,11 @@ class APIService {
         })
     }
     
-    func updateLocation(params: [String:String], onCompletion: (User?, ErrorType?) -> Void) {
+    func updateLocation(params: [String:String], onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(params), HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, err!)
             } else {
                 UserService.setUserInSession(json!)
                 let user: User = UserService.unserializeJsonResponse(json!)
@@ -57,11 +57,11 @@ class APIService {
         })
     }
     
-    func updateUser(params: String, onCompletion: (User?, ErrorType?) -> Void) {
+    func updateUser(params: String, onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: nil), params: params.dataUsingEncoding(NSUTF8StringEncoding), HTTPMethod: "POST", onCompletion: { json, err in
             
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, err!)
             } else {
                 UserService.setUserInSession(json!)
                 let user: User = UserService.unserializeJsonResponse(json!)
@@ -71,10 +71,10 @@ class APIService {
         })
     }
     
-    func getUser(username: String, onCompletion: (User?, ErrorType?) -> Void) {
+    func getUser(username: String, onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: username), params: nil, onCompletion: { json, err in
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, err!)
             } else {
                 let user: User = UserService.unserializeJsonResponse(json!)
                 
@@ -83,36 +83,36 @@ class APIService {
         })
     }
     
-    func getFriendRequest(params: [String:String], onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
+    func getFriendRequest(params: [String:String], onCompletion: ([String:AnyObject]?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: params, directParam: nil), params: nil, onCompletion: { json, err in
             if err != nil {
-                onCompletion(nil, err)
+                onCompletion(nil, err!)
             } else {
                 onCompletion(json!, nil)
             }
         })
     }
     
-    func sendFriendRequest(friendRequest : [String:String], onCompletion: (ErrorType?) -> Void) {
+    func sendFriendRequest(friendRequest : [String:String], onCompletion: (String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(friendRequest), HTTPMethod: "PUT", onCompletion : {json, err in
                 onCompletion(nil)
             }
         )
     }
     
-    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (ErrorType?) -> Void) {
+    func deleteFriendRequest(caller : String, receiver : String, onCompletion: (String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: ["caller":caller, "receiver":receiver], directParam: nil), params: nil, HTTPMethod: "DELETE", onCompletion : {json, err in
-            onCompletion(err)
+            onCompletion(err!)
         })
     }
     
-    func acceptFriendRequest(friendRequest : [String:String], onCompletion: (ErrorType?) -> Void) {
+    func acceptFriendRequest(friendRequest : [String:String], onCompletion: (String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.friendRequest.rawValue, parameters: nil, directParam: nil), params: UserService.toJson(friendRequest), HTTPMethod: "POST", onCompletion : {json, err in
-            onCompletion(err)
+            onCompletion(err!)
         })
     }
     
-    func makeHTTPRequest(path: NSURL, params: NSData?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, ErrorType?) -> Void) {
+    func makeHTTPRequest(path: NSURL, params: NSData?, HTTPMethod: String = "GET", onCompletion: ([String:AnyObject]?, String?) -> Void) {
         let request = NSMutableURLRequest(URL: path)
         request.HTTPMethod = HTTPMethod
             
@@ -125,17 +125,21 @@ class APIService {
         let session = NSURLSession.sharedSession()
             
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let realResponse = response as? NSHTTPURLResponse
-                
-            if realResponse!.statusCode >= 200 && realResponse!.statusCode < 300 {
-                do {
-                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String:AnyObject]
-                    onCompletion(json, nil)
-                } catch {
-                    onCompletion(nil, error)
-                }
+            if error != nil {
+                onCompletion(nil, error!.localizedDescription)
             } else {
-                onCompletion(nil, MyError.RuntimeError("Bad credentials"))
+                let realResponse = response as? NSHTTPURLResponse
+
+                if realResponse!.statusCode >= 200 && realResponse!.statusCode < 300 {
+                    do {
+                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String:AnyObject]
+                        onCompletion(json, nil)
+                    } catch {
+                        onCompletion(nil, String(error))
+                    }
+                } else {
+                    onCompletion(nil, "Bad credentials")
+                }
             }
         })
             

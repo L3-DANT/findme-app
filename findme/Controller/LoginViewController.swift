@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
                             let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
                             self.showViewController(vc as UIViewController, sender: vc)
                         } else {
-                            self.UIAlert("Sign in Failed!", message: "Wrong username or password")
+                            self.UIAlert("Sign in Failed!", message: err!)
                         }
                     }
                 })
