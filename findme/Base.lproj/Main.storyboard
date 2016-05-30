@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaT-Y2-qn3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -47,7 +47,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="1mY-7i-B5A" eventType="touchUpInside" id="r26-bz-htv"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="GCt-V7-TB9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDr-DN-trs">
@@ -114,7 +113,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="findMeIntroView" destination="9B4-QX-EMt" id="oDA-yf-0xO"/>
-                        <outlet property="loginButton" destination="w05-vk-8xN" id="RbZ-V5-cTl"/>
                         <outlet property="passwordField" destination="EG8-j6-RJK" id="0Wm-xp-cma"/>
                         <outlet property="pulseView" destination="wyy-6B-2WZ" id="xAh-lY-yrn"/>
                         <outlet property="usernameField" destination="STT-wK-dWZ" id="FtF-51-2hk"/>
@@ -194,7 +192,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="V7R-gl-jc5" eventType="touchUpInside" id="Y7Z-z0-wjm"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="lsm-Ce-kbv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti2-a3-m0g">
@@ -290,7 +287,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="35" bottom="8" right="8"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="testSearch:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="FMR-wa-HeF"/>
                                 </connections>
@@ -510,7 +507,6 @@
                                                     <state key="normal" title="Se déconnecter"/>
                                                     <connections>
                                                         <action selector="logoutTapped:" destination="vtc-A9-yoa" eventType="touchUpInside" id="roP-Um-UCH"/>
-                                                        <segue destination="1mY-7i-B5A" kind="show" id="1fI-LR-z2n"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -751,9 +747,8 @@
         <image name="logo" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lsm-Ce-kbv"/>
-        <segue reference="AKr-Fv-KPL"/>
         <segue reference="lNq-q6-quc"/>
+        <segue reference="AKr-Fv-KPL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
 </document>

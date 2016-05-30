@@ -13,22 +13,21 @@ import PusherSwift
 
 
 class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
-    
-    var searchController:UISearchController!
-    var annotation:MKAnnotation!
-    var localSearchRequest:MKLocalSearchRequest!
-    var localSearch:MKLocalSearch!
-    var localSearchResponse:MKLocalSearchResponse!
-    var error:NSError!
-    var pointAnnotation:MKPointAnnotation!
-    var pinAnnotationView:MKPinAnnotationView!
+    let apiService = APIService()
+    var user: User = UserService.getUserInSession()
+    var searchController: UISearchController!
+    var annotation: MKAnnotation!
+    var localSearchRequest: MKLocalSearchRequest!
+    var localSearch: MKLocalSearch!
+    var localSearchResponse: MKLocalSearchResponse!
+    var error: NSError!
+    var pointAnnotation: MKPointAnnotation!
+    var pinAnnotationView: MKPinAnnotationView!
     var menuExpanded = false
     var locationManager = CLLocationManager()
-    var users : [User] = []
-    var user : User = User()
-    
     var pusher : Pusher = Pusher(key: "")
     var channels : [PusherChannel] = []
+    var annotations = [MKAnnotation]()
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIcon: UITextField!
@@ -47,10 +46,11 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
 
     @IBAction func testSearch(sender: AnyObject) {
         let search = searchTextField.text
-        for user in users{
-            if search == user.pseudo{
+        for user in self.user.friendList! {
+            if search == user.pseudo {
                 let searchLocation  = CLLocation(latitude: user.latitude, longitude: user.longitude)
                 centerMapOnLocation(searchLocation)
+                dismissKeyboard()
             }
         }
     }
@@ -67,8 +67,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         initButton(paramButton, icon:"fa-cogs", submenu: true)
         initButton(contactButton, icon:"fa-users", submenu: true)
         initButton(findMeButton, icon:"fa-street-view", submenu: true)
-        
-        initContactMarkers()
         
         //gestion de la localisation de l'utilisateur
         self.locationManager.delegate = self
@@ -87,13 +85,21 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
-        
+        self.updateLocation()
+        self.initContactMarkers()
     }
     
-    func updateLocation(){
-        getCurrentUser()
-        let wsService = WSService()
-        wsService.updateCurrentUserLocation(self.user.pseudo, location : (locationManager.location?.coordinate)!)
+    //update location for pusher
+    func updateLocation() {
+        self.user.state = User.State.ONLINE
+        let currentLocation = locationManager.location!.coordinate
+        self.user.latitude = currentLocation.latitude
+        self.user.longitude = currentLocation.longitude
+        let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
+        self.apiService.updateLocation(params) { (user, err) in
+        }
+        self.user = UserService.getUserInSession()
+        self.mapView.removeAnnotations(self.annotations)
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -109,25 +115,19 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
-        getCurrentUser()
-        var annotations = [MKAnnotation]()
+        self.annotations = [MKAnnotation]()
         
-        let wsService = WSService()
-        wsService.getUser(self.user.pseudo, onCompletion: { user, err in
-            if user != nil && user?.friendList != nil {
-                for friend in user!.friendList!{
-                    let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
-                    let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
-                    annotations.append(friendAnnotation)
-                    self.users.append(friend)
-                }
-                self.mapView.addAnnotations(annotations)
-                if let location = self.mapView.userLocation.location {
-                    self.centerMapOnLocation(location)
-                }
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-        })
+        for friend in self.user.friendList!{
+            let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
+            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
+            self.annotations.append(friendAnnotation)
+        }
+        
+        self.mapView.addAnnotations(self.annotations)
+        
+        if let location = self.mapView.userLocation.location {
+            self.centerMapOnLocation(location)
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -153,9 +153,9 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         locationManager.stopMonitoringForRegion(region)
         
         let currentLocation = locationManager.location!.coordinate
-        
-        let wsService = WSService()
-        wsService.updateCurrentUserLocation(self.user.pseudo, location : currentLocation)
+        let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
+        self.apiService.updateLocation(params) { (user, err) in
+        }
         
         let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
         locationManager.startMonitoringForRegion(newRegion)
@@ -181,12 +181,12 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         }
     }
     
-    func initSearchField(){
+    func initSearchField() {
         let paddingView = UIView(frame: CGRectMake(0, 0, 25, self.searchTextField.frame.height))
-        searchTextField.leftView = paddingView
-        searchTextField.leftViewMode = UITextFieldViewMode.Always
-        searchIcon.font = UIFont.fontAwesomeOfSize(15)
-        searchIcon.text = String.fontAwesomeIconWithName(.Search)
+        self.searchTextField.leftView = paddingView
+        self.searchTextField.leftViewMode = UITextFieldViewMode.Always
+        self.searchIcon.font = UIFont.fontAwesomeOfSize(15)
+        self.searchIcon.text = String.fontAwesomeIconWithName(.Search)
     }
     
     @IBAction func findMe(sender: AnyObject) {
@@ -324,24 +324,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
             return nil
         }
     }
-    
-    func getCurrentUser(){
-        let userStored = NSUserDefaults.standardUserDefaults().objectForKey("user")
-        let name = userStored!["pseudo"] as? String
-        let longitude = userStored!["longitude"] as? Double
-        let latitude = userStored!["latitude"] as? Double
-        let phoneNumber = userStored!["phoneNumber"] as? String
-        var friends : [User] = []
-        for friend in (userStored!["friendList"] as? [NSDictionary])!{
-            let friendName = friend["pseudo"] as? String
-            let friendLatitude = friend["latitude"] as? Double
-            let friendLongitude = friend["longitude"] as? Double
-            let friendNumber = friend["phoneNumber"] as? String
-            friends.append(User(pseudo: friendName!, latitude: friendLatitude!, longitude: friendLongitude!, phoneNumber: friendNumber!))
-        }
-        self.user = User(pseudo: name!, latitude: latitude!, longitude: longitude!, friendList: friends, phoneNumber: phoneNumber!)
-    }
-    
     
     func initChannelsSubscription(){
     

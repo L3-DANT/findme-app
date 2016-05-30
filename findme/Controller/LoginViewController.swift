@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  LoginViewController.swift
 //  findme
 //
 //  Created by Maxime Signoret on 05/05/16.
@@ -8,52 +8,66 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+
+//Hide keyboard on touch around
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
     
-    let wsBaseUrl = WSConnection.getInstance.getBaseUrl()
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+class LoginViewController: UIViewController {
+    let wsBaseUrl = APICommunicator.getInstance.getBaseUrl()
     
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var phoneNumberField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var findMeIntroView: UIImageView!
     @IBOutlet weak var pulseView: UIImageView!
-    
-    @IBOutlet weak var registerAnimationView: UIImageView!
-    
-    @IBAction func registerButton(sender: AnyObject) {
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+
+    @IBAction func loginAction(sender: AnyObject) {
         let username:NSString = self.usernameField.text!
-        let phoneNumber:NSString = self.phoneNumberField.text!
         let password:NSString = self.passwordField.text!
-        let confirm_password:NSString = self.confirmPasswordField.text!
         
-        if (username.isEqualToString("") || phoneNumber.isEqualToString("") || password.isEqualToString("") || confirm_password.isEqualToString("")) {
-            UIAlert("Sign Up Failed!", message: "Please enter Username and Password")
-        } else if ( !password.isEqual(confirm_password) ) {
-            UIAlert("Sign Up Failed!", message: "Passwords doesn't Match")
+        if (username.isEqualToString("") || password.isEqualToString("")) {
+            UIAlert("Sign in Failed!", message: "Please enter Username and Password")
         } else {
             do {
-                let wsService = WSService()
-                wsService.signUp(username, phoneNumber: phoneNumber, password: password, confirmPassword: confirm_password, onCompletion: { user, err in
-                    if user != nil {
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    } else {
-                        self.UIAlert("Sign Up Failed!", message: "Wrong username or password")
+                let params: [String: String] = ["pseudo": username as String, "password": password as String]
+                let apiService = APIService()
+                apiService.signIn(params, onCompletion: { user, err in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if user != nil {
+                            let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
+                            self.showViewController(vc as UIViewController, sender: vc)
+                        } else {
+                            self.UIAlert("Sign in Failed!", message: err!)
+                        }
                     }
                 })
             }
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+
+        //Check user in session and skip login
+        if UserService.hasUserInSession() {
+            let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController)!
+            self.showViewController(vc as UIViewController, sender: vc)
+        }
+        
         var imageName : String = ""
         
         var imageList : [UIImage] = []
-        
         
         for i in 0...9 {
             imageName =  "FindMe_intro_0000\(i)"
@@ -63,27 +77,23 @@ class RegisterViewController: UIViewController {
             imageName =  "FindMe_intro_000\(i)"
             imageList.append(UIImage(named: imageName)!)
         }
-
         
-        self.registerAnimationView.animationImages = imageList
+        self.findMeIntroView.animationImages = imageList
         
         startAniamtion()
     }
     
     func startAniamtion(){
-        self.registerAnimationView.animationDuration = 2
-        self.registerAnimationView.animationRepeatCount = 1
-        self.registerAnimationView.startAnimating()
+        self.findMeIntroView.animationDuration = 2
+        self.findMeIntroView.animationRepeatCount = 1
+        self.findMeIntroView.startAnimating()
         _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.startPulse), userInfo: nil, repeats: false)
     }
     
     func startPulse(){
-        let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:100, position: CGPoint(x: self.pulseView.center.x-72, y: self.pulseView.center.y-20))
+        let pulseEffect = PulseAnimation(repeatCount: Float.infinity, radius:100, position: self.pulseView.center)
         pulseEffect.backgroundColor = UIColor(colorLiteralRed: 0.33, green: 0.69, blue: 0.69, alpha: 1).CGColor
-        view.layer.insertSublayer(pulseEffect, below: self.registerAnimationView.layer)
-    }
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+        view.layer.insertSublayer(pulseEffect, below: self.findMeIntroView.layer)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -112,10 +122,18 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+    }
+    
     func UIAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
         self.presentViewController(alert, animated: true){}
     }
 }
-

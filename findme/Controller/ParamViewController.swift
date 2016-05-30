@@ -13,8 +13,17 @@ import CoreLocation
 class ParamViewController: UITableViewController {
     
     @IBAction func logoutTapped(sender: UIButton) {
+        let currentUser: User = UserService.getUserInSession()
+        currentUser.state = User.State.OFFLINE
+        let jsonUser = JSONSerializer.toJson(currentUser)
+
+        let apiService = APIService()
+        apiService.updateUser(jsonUser, onCompletion: { user, err in
+        })
         let appDomain = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+        let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController)!
+        self.showViewController(vc as UIViewController, sender: vc)
     }
     
     override func viewWillAppear(animated: Bool) {
