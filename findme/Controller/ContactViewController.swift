@@ -33,7 +33,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
     }
     
     override func viewDidLoad() {
@@ -77,7 +76,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
-        
         cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row])"
         
         return cell
@@ -89,7 +87,6 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            print(indexPath.row)
             items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
@@ -123,7 +120,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
                 let declineMenu = UIAlertController(title: nil, message: "Decline Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
                 
-                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
+                let declineAction = UIAlertAction(title: "Decline", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath.section, row: indexPath.row)})
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 
                 declineMenu.addAction(declineAction)
@@ -153,7 +150,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let delete = UITableViewRowAction(style: .Default, title: "Delete") { action, index in
                 let deleteMenu = UIAlertController(title: nil, message: "Remove \(self.items[indexPath.section][indexPath.row]) from your friend list ?", preferredStyle: .Alert)
                 
-                let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {(alert: UIAlertAction!) in self.declineFriendRequest(indexPath)})
+                let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {(alert: UIAlertAction!) in self.deleteFriend(indexPath)})
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
                 
                 deleteMenu.addAction(deleteAction)
@@ -169,7 +166,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
             let cancel = UITableViewRowAction(style: .Default, title: "Cancel") { action, index in
                 let cancelMenu = UIAlertController(title: nil, message: "Cancel Friend request from \(self.items[indexPath.section][indexPath.row]) ?", preferredStyle: .Alert)
                 
-                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: {(alert: UIAlertAction!) in self.cancelFriendRequest(indexPath)})
+                let acceptAction = UIAlertAction(title: "Yes", style: .Default, handler: {(alert: UIAlertAction!) in self.cancelFriendRequest(indexPath.section, row: indexPath.row)})
                 let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
                 
                 cancelMenu.addAction(acceptAction)
@@ -185,6 +182,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     func loadItems() {
+        self.items = [[],[],[]]
         self.loadUsers()
         self.loadAsked()
         self.loadReceived()
@@ -249,39 +247,44 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
     
-    
     func acceptFriendRequest(indexPath : NSIndexPath){
-        self.user = UserService.getUserInSession()
         let caller = items[indexPath.section][indexPath.row]
         let receiver = self.user.pseudo
         
         let friendRequest = ["caller" : caller, "receiver" : receiver]
         
-        let apiService = APIService()
-        
-        apiService.acceptFriendRequest(friendRequest, onCompletion: { err in
-        })
-        self.loadItems()
-    }
-    
-    func cancelFriendRequest(indexPath : NSIndexPath){
-        self.user = UserService.getUserInSession()
-        let receiver = items[indexPath.section][indexPath.row]
-        let caller = self.user.pseudo
-    
-        let apiService = APIService()
-        apiService.deleteFriendRequest(caller, receiver : receiver, onCompletion: { err in
+        self.apiService.acceptFriendRequest(friendRequest, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue()) {
-                if err == nil {
-                    self.user = UserService.getUserInSession()
+            }
+        })
+        self.apiService.getUser(self.user.pseudo, onCompletion: { (user, error) in
+            dispatch_async(dispatch_get_main_queue()) {
+                if user != nil {
                     self.loadItems()
                 }
             }
         })
-        self.loadItems()
     }
     
-    func declineFriendRequest(indexPath : NSIndexPath) {
+    func cancelFriendRequest(section: Int, row: Int) {
+        let params: [String:String] = ["caller": self.user.pseudo, "receiver": self.items[section][row]]
+        self.apiService.deleteFriendRequest(params, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.loadItems()
+            }
+        })
+    }
+    
+    func declineFriendRequest(section: Int, row: Int) {
+        let params: [String:String] = ["caller": self.items[section][row], "receiver": self.user.pseudo]
+        self.apiService.deleteFriendRequest(params, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.loadItems()
+            }
+        })
+    }
+    
+    func deleteFriend(indexPath : NSIndexPath) {
         let user = UserService.deleteFriend(self.items[indexPath.section][indexPath.row])
         let jsonUser = JSONSerializer.toJson(user)
         self.apiService.updateUser(jsonUser, onCompletion: { user, err in
@@ -294,75 +297,56 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         })
     }
     
-    func sendFriendRequest(name : String){
-        
+    func sendFriendRequest(name : String) {
         var error = false;
         
-        for friendName in items[0]{
-            if friendName == name{
-                let userNotExistController = UIAlertController(title: "Blind ?", message: "the user you are looking for already sent you a friend request", preferredStyle: .Alert)
-                
-                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-                
-                userNotExistController.addAction(cancelAction)
-                
-                self.presentViewController(userNotExistController, animated : true, completion : nil)
-                
+        for friendName in self.items[0]{
+            if friendName == name {
+                self.dispatchAlert("\(name) already sent you a friend request.")
                 error = true
             }
         }
         
-        if error == false{
+        if error == false {
             for friendName in items[1]{
                 if friendName == name{
-                    let userNotExistController = UIAlertController(title: "Alzheimer ?", message: "you already sent a friend request to this user", preferredStyle: .Alert)
-                
-                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-                
-                    userNotExistController.addAction(cancelAction)
-                
-                    self.presentViewController(userNotExistController, animated : true, completion : nil)
-                
+                    self.dispatchAlert("You already sent a friend request to \(name).")
                     error = true
                 }
             }
         }
         
-        if error == false{
+        if error == false {
             for friendName in items[2]{
-                if friendName == name{
-                    let userNotExistController = UIAlertController(title: "Shame on you !", message: "the user you are looking for is already in your friendList", preferredStyle: .Alert)
-                
-                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-                
-                    userNotExistController.addAction(cancelAction)
-                
-                    self.presentViewController(userNotExistController, animated : true, completion : nil)
-                
+                if friendName == name {
+                    self.dispatchAlert("\(name) is already in your friendList.")
                     error = true
                 }
             }
         }
         
-        if error == false{
-            self.user = UserService.getUserInSession()
-            let friendRequest = ["caller" :  self.user.pseudo, "receiver" : name]
-        
+        if error == false {
+            let friendRequest = ["caller": self.user.pseudo, "receiver": name]
             let apiService = APIService()
             apiService.sendFriendRequest(friendRequest, onCompletion: { err in
-                if err != nil {
-                    let userNotExistController = UIAlertController(title: "The user does not exist", message: "Please don't try to add your imaginary friends", preferredStyle: .Alert)
-                
-                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-                
-                    userNotExistController.addAction(cancelAction)
-                
-                    self.presentViewController(userNotExistController, animated : true, completion : nil)
-                }
-                else {
-                    self.loadItems()
+                dispatch_async(dispatch_get_main_queue()) {
+                    if err != nil {
+                        self.dispatchAlert("\(name) account does not exist.")
+                    } else {
+                        self.dispatchAlert("\(name) successfully add.", title: "Success")
+                        self.loadItems()
+                    }
                 }
             })
         }
+    }
+    
+    func dispatchAlert(message: String, title:String = "Warning") -> Void {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated : true, completion : nil)
     }
 }

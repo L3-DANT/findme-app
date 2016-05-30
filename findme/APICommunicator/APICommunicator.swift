@@ -34,7 +34,8 @@ class APICommunicator {
         if parameters != nil {
             self.addParameters(parameters!, directParam: directParam)
         }
-        
+        self.url = self.url.stringByReplacingOccurrencesOfString("ç", withString: "%C3%A7")
+
         return NSURL(string: url)!
     }
     
