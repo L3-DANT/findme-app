@@ -32,7 +32,7 @@ class APICommunicator {
     func generateRoute(route: String, parameters: Dictionary<String,String>?, directParam: String?) -> NSURL {
         self.url = self.getBaseUrl() + route
         if parameters != nil || directParam != nil {
-            self.addParameters(parameters!, directParam: directParam)
+            self.addParameters(parameters, directParam: directParam)
         }
         self.url = self.url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 

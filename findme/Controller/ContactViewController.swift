@@ -28,6 +28,14 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
         
+        self.apiService.getUser(self.user.pseudo, onCompletion: { user, err in
+            dispatch_async(dispatch_get_main_queue()) {
+                if user != nil {
+                    self.user = user!
+                }
+            }
+        })
+        
         navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 52/255, green: 73/255, blue: 94/255, alpha: 1.0)
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -201,7 +209,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     }
     
     
-    func loadUsers(){
+    func loadUsers() {
         self.items[2] = []
         
         for friend in self.user.friendList! {
@@ -271,7 +279,15 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 let user = User()
                 user.pseudo = caller
                 self.user.friendList?.append(user)
-                self.loadItems()
+                //self.loadItems()
+                self.apiService.getUser(self.user.pseudo, onCompletion: { user, err in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if user != nil {
+                            self.user = user!
+                            self.loadItems()
+                        }
+                    }
+                })
             }
         })
     }

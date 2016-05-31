@@ -90,8 +90,14 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         self.navigationController?.navigationBarHidden = true
 
         self.locationAllowed = NSUserDefaults.standardUserDefaults().boolForKey("allowSharing")
-
         self.user = UserService.getUserInSession()
+        self.apiService.getUser(self.user.pseudo, onCompletion: { user, err in
+            dispatch_async(dispatch_get_main_queue()) {
+                if user != nil {
+                    self.user = user!
+                }
+            }
+        })
 
         self.updateLocation()
         
@@ -103,18 +109,17 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     func updateLocation() {
 
         let updatedUser = UserService.getUserInSession()
-        if updatedUser.longitude != self.user.longitude || updatedUser.latitude != self.user.latitude || updatedUser.state != self.user.state {
+        //if updatedUser.longitude != self.user.longitude || updatedUser.latitude != self.user.latitude || updatedUser.state != self.user.state {
 
             if NSUserDefaults.standardUserDefaults().boolForKey("allowSharing"){
                 self.user.state = User.State.ONLINE
                 let currentLocation = locationManager.location!.coordinate
                 self.user.latitude = currentLocation.latitude
                 self.user.longitude = currentLocation.longitude
-            }
-            else{
+            } else {
                 self.user.state = User.State.OFFLINE
-                self.user.latitude = -1
-                self.user.longitude = -1
+                //self.user.latitude = -1
+                //self.user.longitude = -1
             }
         
             let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
@@ -126,7 +131,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
                     }
                 }
             }
-        }
+        //}
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -181,11 +186,12 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         locationManager.stopMonitoringForRegion(region)
         
         let currentLocation = locationManager.location!.coordinate
+        
         let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
         self.apiService.updateLocation(params) { (user, err) in
         }
         
-        let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
+        let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 1, identifier: "currentRegion")
         locationManager.startMonitoringForRegion(newRegion)
     }
     
@@ -218,6 +224,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     }
     
     @IBAction func findMe(sender: AnyObject) {
+        self.updateLocation()
         
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
