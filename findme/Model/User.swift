@@ -16,6 +16,7 @@ class User {
     var friendList: [User]?
     var phoneNumber: String = String()
     var state: State = State.OFFLINE
+    var password : String? = nil
     
     enum State : String {
         case ONLINE = "ONLINE"

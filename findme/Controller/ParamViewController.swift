@@ -57,7 +57,7 @@ class ParamViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
             let newPassword = alert.textFields![0] as UITextField
             if( newPassword.text != ""){
-                
+                currentUser.password = newPassword.text
                 let jsonUser = JSONSerializer.toJson(currentUser)
                 self.apiService.updateUser(jsonUser, onCompletion: { data in
                     
