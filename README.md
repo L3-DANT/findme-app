@@ -6,7 +6,7 @@ FindMe is an **iOS Application to locate your friends**.
 Its goal is to localize and make interaction between users.
 It provides a simple map that allows tracking and interacting with your friends.
 
-![](http://i.imgur.com/ujeljAu.gif)
+![](http://i.imgur.com/RelLq4o.gif)
 
 ## Features
 
