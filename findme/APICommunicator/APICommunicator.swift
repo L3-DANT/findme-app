@@ -31,7 +31,7 @@ class APICommunicator {
     
     func generateRoute(route: String, parameters: Dictionary<String,String>?, directParam: String?) -> NSURL {
         self.url = self.getBaseUrl() + route
-        if parameters != nil {
+        if parameters != nil || directParam != nil {
             self.addParameters(parameters!, directParam: directParam)
         }
         self.url = self.url.stringByReplacingOccurrencesOfString("ç", withString: "%C3%A7")
@@ -39,13 +39,13 @@ class APICommunicator {
         return NSURL(string: url)!
     }
     
-    func addParameters(params: Dictionary<String,String>, directParam: String?) {
+    func addParameters(params: Dictionary<String,String>?, directParam: String?) {
         if directParam != nil {
             url += directParam!
         } else {
             var i = 0
         
-            for (parameterName, parameterValue) in params {
+            for (parameterName, parameterValue) in params! {
                 if i == 0 {
                     url += "?"
                 } else {

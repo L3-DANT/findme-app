@@ -52,6 +52,7 @@ class ParamViewController: UITableViewController {
         let alert = UIAlertController(title: "Change Password", message: "", preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler({ (newPassword) -> Void in })
+        alert.textFields![0].secureTextEntry = true
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
@@ -74,7 +75,8 @@ class ParamViewController: UITableViewController {
         let alert = UIAlertController(title: "Change Phone Number", message: "enter your new phone number", preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in })
-        
+        alert.textFields![0].keyboardType = .PhonePad
+            
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
@@ -98,22 +100,14 @@ class ParamViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action) -> Void in
             self.apiService.deleteUser(currentUser.pseudo, onCompletion: { err in
-                if err == nil{
-                    let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController)!
-                    self.showViewController(vc as UIViewController, sender: vc)
-                }
+                let appDomain = NSBundle.mainBundle().bundleIdentifier
+                NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+                let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController)!
+                self.showViewController(vc as UIViewController, sender: vc)
+                
             })
         }))
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    func newPhoneNumber(phoneNumber : String){
-        
-    }
-    
-    func newPassword(password: String){
-        
-    }
-    
 }
