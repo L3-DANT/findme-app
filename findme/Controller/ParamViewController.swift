@@ -43,7 +43,6 @@ class ParamViewController: UITableViewController {
         
         let locationAllowed: Bool? = NSUserDefaults.standardUserDefaults().boolForKey("allowSharing")
         allowLocationSharing.setOn(locationAllowed!, animated: false)
-        
     }
     
     @IBAction func changePassword(sender: AnyObject) {

@@ -28,6 +28,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     var pusher : Pusher = Pusher(key: "")
     var channels : [PusherChannel] = []
     var annotations = [MKAnnotation]()
+    var locationAllowed: Bool = true
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIcon: UITextField!
@@ -85,21 +86,31 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
+        self.locationAllowed = NSUserDefaults.standardUserDefaults().boolForKey("allowSharing")
         self.updateLocation()
         self.initContactMarkers()
     }
     
     //update location for pusher
     func updateLocation() {
-        self.user.state = User.State.ONLINE
-        let currentLocation = locationManager.location!.coordinate
-        self.user.latitude = currentLocation.latitude
-        self.user.longitude = currentLocation.longitude
+        if NSUserDefaults.standardUserDefaults().boolForKey("allowSharing"){
+            self.user.state = User.State.ONLINE
+            let currentLocation = locationManager.location!.coordinate
+            self.user.latitude = currentLocation.latitude
+            self.user.longitude = currentLocation.longitude
+        }
+        else{
+            self.user.state = User.State.OFFLINE
+            self.user.latitude = -1
+            self.user.longitude = -1
+        }
+        
         let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
         self.apiService.updateLocation(params) { (user, err) in
         }
         self.user = UserService.getUserInSession()
         self.mapView.removeAnnotations(self.annotations)
+
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
