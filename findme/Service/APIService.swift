@@ -80,8 +80,9 @@ class APIService {
     func getUser(username: String, onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: username), params: nil, onCompletion: { json, err in
             if err != nil {
-                onCompletion(nil, err!)
+                onCompletion(nil, String(err!.debugDescription))
             } else {
+                UserService.setUserInSession(json!)
                 let user: User = UserService.unserializeJsonResponse(json!)
                 
                 onCompletion(user, nil)
