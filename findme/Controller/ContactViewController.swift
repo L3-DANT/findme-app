@@ -46,6 +46,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in })
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.sendFriendRequest(textField.text!)

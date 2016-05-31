@@ -71,6 +71,12 @@ class APIService {
         })
     }
     
+    func deleteUser(name: String, onCompletion: (String?) -> Void) {
+        self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: name),params: nil, HTTPMethod: "DELETE", onCompletion: { json, err in
+
+        })
+    }
+    
     func getUser(username: String, onCompletion: (User?, String?) -> Void) {
         self.makeHTTPRequest(self.apiCommunicator.generateRoute(APICommunicator.Route.user.rawValue, parameters: nil, directParam: username), params: nil, onCompletion: { json, err in
             if err != nil {
