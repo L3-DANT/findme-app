@@ -16,7 +16,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     let apiService = APIService()
     var user: User = UserService.getUserInSession()
     var items: [[String]] = [[],[],[]]
-    let sections: [String] = ["Incoming Requests", "Request sended", "Friends"]
+    let sections: [String] = ["Incoming Requests", "Outgoing Requests", "Friends"]
     var state : [String] = []
     
     internal enum UITableViewCellEditingStyle : Int {
