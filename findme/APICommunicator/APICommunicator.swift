@@ -34,9 +34,9 @@ class APICommunicator {
         if parameters != nil {
             self.addParameters(parameters!, directParam: directParam)
         }
-        self.url = self.url.stringByReplacingOccurrencesOfString("ç", withString: "%C3%A7")
+        self.url = self.url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
-        return NSURL(string: url)!
+        return NSURL(string: self.url)!
     }
     
     func addParameters(params: Dictionary<String,String>, directParam: String?) {
