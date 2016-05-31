@@ -16,7 +16,8 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     let apiService = APIService()
     var user: User = UserService.getUserInSession()
     var items: [[String]] = [[],[],[]]
-    let sections: [String] = ["Incoming Requests", "Request sended", "Friends"]
+    let sections: [String] = ["Incoming Requests", "Outgoing Requests", "Friends"]
+    var state : [String] = []
     
     internal enum UITableViewCellEditingStyle : Int {
         case Delete
@@ -30,6 +31,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 52/255, green: 73/255, blue: 94/255, alpha: 1.0)
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,6 +81,15 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row])"
         
+        if indexPath.section == 0 {
+            cell.imageView!.image = UIImage(named: "incoming")
+        } else if indexPath.section == 1 {
+            cell.imageView!.image = UIImage(named: "outgoing")
+        } else {
+            cell.imageView!.image = UIImage(named: self.state[indexPath.row])
+        }
+        
+
         return cell
     }
     
@@ -195,6 +206,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
         
         for friend in self.user.friendList! {
             self.items[2].append(friend.pseudo)
+            self.state.append(friend.state.rawValue)
         }
         
         self.friendsTable.reloadData()
