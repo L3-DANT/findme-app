@@ -13,15 +13,15 @@ class UserAnnotation : MKPointAnnotation {
     
     var pinCustomImageName : String?
     
-    init(coordinate : CLLocationCoordinate2D, title : String?, subtitle : String?) {
+    init(coordinate : CLLocationCoordinate2D, title : String?, subtitle : String?, image: String?) {
         super.init()
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
-        self.pinCustomImageName = "customPin"
+        self.pinCustomImageName = image
     }
     
-    func updateCoordinate(newCoordinate : CLLocationCoordinate2D){
-        self.coordinate = coordinate
+    func updateCoordinate(newCoordinate : CLLocationCoordinate2D) {
+        self.coordinate = newCoordinate
     }
 }

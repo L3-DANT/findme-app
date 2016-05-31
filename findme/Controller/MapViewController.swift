@@ -78,39 +78,55 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         //affichage de la position de l'utilisateur
         self.mapView.showsUserLocation = true
         
-        self.pusher = Pusher(key: "03576a442aa390f473c6")
-        self.pusher.connect()
-        self.initChannelsSubscription()
+        self.pusher = Pusher(
+            key: "03576a442aa390f473c6",
+            options: ["cluster": "eu"]
+        )
         
+        self.pusher.connect()
     }
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
+
         self.locationAllowed = NSUserDefaults.standardUserDefaults().boolForKey("allowSharing")
+
+        self.user = UserService.getUserInSession()
+
         self.updateLocation()
+        
+        self.initChannelsSubscription()
         self.initContactMarkers()
     }
     
     //update location for pusher
     func updateLocation() {
-        if NSUserDefaults.standardUserDefaults().boolForKey("allowSharing"){
-            self.user.state = User.State.ONLINE
-            let currentLocation = locationManager.location!.coordinate
-            self.user.latitude = currentLocation.latitude
-            self.user.longitude = currentLocation.longitude
-        }
-        else{
-            self.user.state = User.State.OFFLINE
-            self.user.latitude = -1
-            self.user.longitude = -1
-        }
-        
-        let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
-        self.apiService.updateLocation(params) { (user, err) in
-        }
-        self.user = UserService.getUserInSession()
-        self.mapView.removeAnnotations(self.annotations)
 
+        let updatedUser = UserService.getUserInSession()
+        if updatedUser.longitude != self.user.longitude || updatedUser.latitude != self.user.latitude || updatedUser.state != self.user.state {
+
+            if NSUserDefaults.standardUserDefaults().boolForKey("allowSharing"){
+                self.user.state = User.State.ONLINE
+                let currentLocation = locationManager.location!.coordinate
+                self.user.latitude = currentLocation.latitude
+                self.user.longitude = currentLocation.longitude
+            }
+            else{
+                self.user.state = User.State.OFFLINE
+                self.user.latitude = -1
+                self.user.longitude = -1
+            }
+        
+            let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
+            self.apiService.updateLocation(params) { (user, err) in
+                dispatch_async(dispatch_get_main_queue()) {
+                    if user != nil {
+                        self.user = UserService.getUserInSession()
+                        self.initContactMarkers()
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func paramButtonClic(sender: AnyObject) {
@@ -126,11 +142,12 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     //fonction qui initialise les markers des amis sur la carte
     func initContactMarkers() {
+        self.mapView.removeAnnotations(self.annotations)
         self.annotations = [MKAnnotation]()
         
-        for friend in self.user.friendList!{
+        for friend in self.user.friendList! {
             let friendLocation = CLLocationCoordinate2D(latitude: friend.latitude, longitude: friend.longitude)
-            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "")
+            let friendAnnotation = UserAnnotation(coordinate: friendLocation, title: friend.pseudo, subtitle: "", image:friend.state.rawValue)
             self.annotations.append(friendAnnotation)
         }
         
@@ -336,20 +353,48 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         }
     }
     
-    func initChannelsSubscription(){
+    func initChannelsSubscription() {
     
-        for friend in self.user.friendList!{
-            self.channels.append(self.pusher.subscribe("private-\(friend.pseudo)"))
+        for friend in self.user.friendList! {
+            self.channels.append(self.pusher.subscribe(friend.pseudo))
         }
         
-        for channel in channels{
+        for channel in channels {
             channel.bind("position-updated", callback: { (data: AnyObject?) -> Void in
+                print("------------PUSHER-UPDATE-POSITION-----------")
                 if let data = data as? Dictionary<String, AnyObject> {
-                    if let latitude = data["latitude"] as? Double, longitude = data["longitude"] as? Double, name = data["pseudo"] as? String {
-                        for annotation in (self.mapView.annotations as? [UserAnnotation])!{
-                            if annotation.title == name{
+                    if let latitude = data["latitude"] as? Double, longitude = data["longitude"] as? Double, name = data["pseudo"] as? String, state = data["state"] as? String {
+                        for annotation in (self.annotations as? [UserAnnotation])! {
+                            if annotation.title == name {
                                 let newCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                                for friend in self.user.friendList! {
+                                    if friend.pseudo == name {
+                                        friend.longitude = longitude
+                                        friend.latitude = latitude
+                                        friend.state = User.State(rawValue: state)!
+                                    }
+                                }
                                 annotation.updateCoordinate(newCoordinate)
+                            }
+                        }
+                    }
+                }
+            })
+            
+            channel.bind("friends-removed", callback: { (data: AnyObject?) -> Void in
+                print("------------PUSHER-FRIENDS-REMOVED-----------")
+                if let data = data as? [String] {
+                    for name in data {
+                        if name == self.user.pseudo {
+                            for friend in self.user.friendList! {
+                                if friend.pseudo == channel.name {
+                                    self.user = UserService.deleteFriend(friend.pseudo)
+                                }
+                            }
+                        }
+                        for annotation in (self.annotations as? [UserAnnotation])! {
+                            if annotation.title == channel.name {
+                                self.mapView.removeAnnotation(annotation)
                             }
                         }
                     }
