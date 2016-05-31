@@ -531,7 +531,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWf-Dz-peQ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWf-Dz-peQ">
                                                     <rect key="frame" x="25" y="7" width="177" height="30"/>
                                                     <state key="normal" title="Changer de Mot de passe"/>
                                                     <connections>
@@ -539,6 +539,10 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RWf-Dz-peQ" firstAttribute="leading" secondItem="Nco-UG-F58" secondAttribute="leadingMargin" constant="17" id="8zL-8b-Zbz"/>
+                                                <constraint firstItem="RWf-Dz-peQ" firstAttribute="centerY" secondItem="Nco-UG-F58" secondAttribute="centerY" id="wn4-fs-xmN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iwN-cO-PSF">
@@ -548,7 +552,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq0-wR-hx2">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq0-wR-hx2">
                                                     <rect key="frame" x="24" y="7" width="225" height="30"/>
                                                     <state key="normal" title="Changer le numéro de téléphone"/>
                                                     <connections>
@@ -556,6 +560,10 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gq0-wR-hx2" firstAttribute="leading" secondItem="6kZ-ne-Vxw" secondAttribute="leadingMargin" constant="16" id="03l-5h-GPM"/>
+                                                <constraint firstItem="gq0-wR-hx2" firstAttribute="centerY" secondItem="6kZ-ne-Vxw" secondAttribute="centerY" id="jBZ-Oo-4PH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ENL-ql-NAy">
@@ -565,7 +573,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-Dh-7y2">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-Dh-7y2">
                                                     <rect key="frame" x="27" y="7" width="144" height="30"/>
                                                     <state key="normal" title="Supprimer le compte"/>
                                                     <connections>
@@ -573,6 +581,10 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8cA-Dh-7y2" firstAttribute="leading" secondItem="TLP-vG-Ucn" secondAttribute="leadingMargin" constant="19" id="6iB-rp-Od6"/>
+                                                <constraint firstItem="8cA-Dh-7y2" firstAttribute="centerY" secondItem="TLP-vG-Ucn" secondAttribute="centerY" id="I1q-Ip-T8F"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YMb-YI-ZFT">

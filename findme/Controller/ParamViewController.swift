@@ -57,8 +57,9 @@ class ParamViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
             let newPassword = alert.textFields![0] as UITextField
             if( newPassword.text != ""){
-                let updatedUser : [String : String] = ["pseudo" : currentUser.pseudo, "password" : newPassword.text!, "latitude" : "\(currentUser.latitude)", "longitude" : "\(currentUser.longitude)", "state" : currentUser.state.rawValue]
-                self.apiService.updateUser(updatedUser, onCompletion: { data in
+                
+                let jsonUser = JSONSerializer.toJson(currentUser)
+                self.apiService.updateUser(jsonUser, onCompletion: { data in
                     
                 })
             }
@@ -79,7 +80,8 @@ class ParamViewController: UITableViewController {
             let textField = alert.textFields![0] as UITextField
             if(textField != ""){
                 currentUser.phoneNumber = textField.text!
-                self.apiService.updateUser(currentUser, onCompletion: { data in
+                let jsonUser = JSONSerializer.toJson(currentUser)
+                self.apiService.updateUser(jsonUser, onCompletion: { data in
                     
                 })
             }
@@ -95,8 +97,11 @@ class ParamViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action) -> Void in
-            self.apiService.updateUser(currentUser, onCompletion: { data in
-                
+            self.apiService.deleteUser(currentUser.pseudo, onCompletion: { err in
+                if err == nil{
+                    let vc : UIViewController = (self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController)!
+                    self.showViewController(vc as UIViewController, sender: vc)
+                }
             })
         }))
         

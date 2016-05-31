@@ -28,6 +28,12 @@ class UserService {
         userSession.synchronize()
     }
     
+    static func resetUserInSession(){
+        let userSession = NSUserDefaults.standardUserDefaults()
+        userSession.setObject(nil, forKey: UserService.userAppSession)
+        userSession.synchronize()
+    }
+    
     static func unserializeJsonResponse(response: [String:AnyObject]) -> User {
         let name = response["pseudo"] as! String
         let latitude = response["latitude"] as! Double
