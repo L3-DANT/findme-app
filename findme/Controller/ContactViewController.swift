@@ -203,9 +203,16 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
     
     func loadItems() {
         self.items = [[],[],[]]
-        self.loadUsers()
-        self.loadAsked()
-        self.loadReceived()
+        self.apiService.getUser(self.user.pseudo, onCompletion: { user, err in
+            dispatch_async(dispatch_get_main_queue()) {
+                if user != nil {
+                    self.user = user!
+                }
+                self.loadUsers()
+                self.loadAsked()
+                self.loadReceived()
+            }
+        })
     }
     
     
@@ -279,15 +286,7 @@ class ContactViewController: UITableViewController, NSURLConnectionDelegate {
                 let user = User()
                 user.pseudo = caller
                 self.user.friendList?.append(user)
-                //self.loadItems()
-                self.apiService.getUser(self.user.pseudo, onCompletion: { user, err in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if user != nil {
-                            self.user = user!
-                            self.loadItems()
-                        }
-                    }
-                })
+                self.loadItems()
             }
         })
     }

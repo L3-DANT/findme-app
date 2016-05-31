@@ -186,12 +186,11 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         locationManager.stopMonitoringForRegion(region)
         
         let currentLocation = locationManager.location!.coordinate
-        
         let params: [String: String] = ["pseudo": self.user.pseudo as String, "latitude": String(self.user.latitude), "longitude": String(self.user.longitude), "state": String(self.user.state)]
         self.apiService.updateLocation(params) { (user, err) in
         }
         
-        let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 1, identifier: "currentRegion")
+        let newRegion : CLRegion = CLCircularRegion(center: currentLocation, radius: 20, identifier: "currentRegion")
         locationManager.startMonitoringForRegion(newRegion)
     }
     
