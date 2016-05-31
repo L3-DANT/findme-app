@@ -32,5 +32,6 @@ class User {
         self.latitude = latitude
         self.friendList = friendList
         self.phoneNumber = phoneNumber
+        self.state = state
     }
 }
